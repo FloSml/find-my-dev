@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <main>
+        <section class="members">
+            <h2>
+                <span>{{ random(['L\'incroyable', 'L\'inimitable', 'L\'indomptable', 'L\'invincible', 'L\'irréductible',
+                    'L\'intraitable', 'L\'irrésistible', 'L\'inégalable', 'L\'incomparable', 'L\'indestructible', 'L\'incollable',
+                    'L\'incontournable', 'L\'incorrigible', 'L\'indispensable', 'L\'inébranlable', 'L\'inestimable', 'L\'infaillible',
+                    'L\'inflexible', 'L\'immuable', 'L\'insatiable', 'L\'inévitable', 'L\'implacable', 'L\'incorruptible', 'L\'impassible',
+                    'L\'imbattable', 'L\'inoubliable', 'L\'infatigable', 'L\'indémodable', 'L\'inclassable', 'L\'inépuisable', 'L\'impitoyable',
+                    'L\'indétrônable', 'L\'indéfectible', 'L\'irréprochable', 'L\'insoupçonnable']) }}</span><br>
+                {{ user.prenom }} {{ user.nom }}</h2>
+            <div class="container-fluid">
+                <div class="row">
+                        <article class="member col-12 p-3">
+                            <p class="name"><br>
+                                <span>{{ user.prenom }} {{ user.nom }}</span></p>
+                            <img src="{{ asset('assets/img/avatar/avatar1.png') }}" alt="Avatar 1">
+                            <p class="metier">{{ user.specialite }}<br>
+                            {% if user.experience == 0 %}
+                                <span>< 1 an d'expérience</span><br>
+                            {% elseif user.experience == 1 %}
+                                <span>{{ user.experience }} an d'expérience</span><br>
+                            {% else %}
+                                <span>{{ user.experience }} ans d'expérience</span><br>
+                            {% endif %}
+                                <span>{{ user.ville }}</span></p>
+                        </article>
+                </div>
+                <div class="row btn-members">
+                    <img src="{{ asset('assets/img/avatar/avatar6.png') }}" alt="Avatar 5">
+                    <a href="{{ path('members') }}" class="btn-fiche" role="button">Retour à la liste des membres</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

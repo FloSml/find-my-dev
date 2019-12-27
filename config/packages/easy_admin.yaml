@@ -1,0 +1,35 @@
+easy_admin:
+    design:
+        menu:
+            - label: 'members'
+              icon: 'newspaper-o'
+              children:
+                  - {entity: 'User', icon: 'user', label: 'members'}
+            - label: 'Blog'
+              icon: 'newspaper-o'
+              children:
+                  - {entity: 'Blog', icon: 'newspaper-o', label: 'Articles'}
+
+    entities:
+        User:
+            class: App\Entity\User
+            label: 'members'
+            list:
+                fields:
+                  - 'id'
+                  - 'nom'
+                  - 'prenom'
+                  - 'email'
+                  - 'telephone'
+                  - 'ville'
+                  - 'formation'
+                  - 'experience'
+                  - { property: 'recherche_poste',  type: 'boolean' }
+                  - 'en_poste'
+
+        Blog:
+            class: App\Entity\Blog
+            label: 'Articles'
+
+
+    site_name: 'PIMP MY ADMIN'

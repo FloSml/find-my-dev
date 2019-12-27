@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <!-- Main -->
+
+    <main id="page-login">
+        <div id="connexion" class="container-fluid">
+            <div class="container">
+                <div class="col-12 connexion-content">
+                    <a href="#" class="closebtn spin" onclick="off()"><i class="fas fa-times"></i></a>
+                    <div class="modal-content">
+                        <div class="col-12 user-img">
+                            <img src="{{ asset('assets/img/avatar/avatar1.png') }}" alt="Avatar">
+                        </div>
+                        <div class="col-12 form-input">
+                            <form method="post" action="{{ path('security_login')}}">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+
+                                <p class="text-center">Connectez-vous à votre compte</p>
+                                <label for="inputEmail">Email</label>
+                                <input type="email" name="_username" id="inputEmail" class="form-control" required autofocus>
+                                <label for="inputPassword">Mot de passe</label>
+                                <input type="password" name="_password" id="inputPassword" class="form-control" required>
+
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                                <div class="checkbox mb-3">
+                                    <label>
+                                        <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                                    </label>
+                                </div>
+
+                                <button class="btn btn-lg btn-primary" type="submit">
+                                    Se connecter
+                                </button>
+                            </form>
+                        </div>
+                        <div class="row mentions">
+                            <div class="col-6">
+                                <a href="#">Mot de passe oublié ?</a>
+                            </div>
+                            <div class="col-6">
+                                <a href="#">Je crée mon compte !</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

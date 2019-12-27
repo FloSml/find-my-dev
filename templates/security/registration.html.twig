@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <main>
+
+    <!-- TITLE SECTION -->
+
+    <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative">
+        <h1>Inscrivez-vous à Pimp My Dev</h1>
+    </div>
+    <div class="wave wave-title"></div>
+
+    <!-- FORM SECTION -->
+    <div class="container-fluid" id="registration-form-container">
+        <div class="row flex-column text-center align-items-center justify-content-center pt-5">
+            <p>Complétez les informations ci-dessous<br>Vous pourrez les consulter et les modifier à tout moment</p>
+            {{ form_start(form, {'attr':
+                {'class': 'registration-form p-3'}}) }}
+
+            <div class="form-errors row align-items-center justify-content-center">
+                {{ form_errors(form) }}
+            </div>
+
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-sm-8 col-md-6">
+                    {{ form_row(form.prenom, {'attr':
+                        {'placeholder': 'Votre prénom...'}}) }}
+                </div>
+                <div class="col-12 col-sm-8 col-md-6">
+                    {{ form_row(form.nom, {'attr':
+                        {'placeholder': 'Votre nom...'}}) }}
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-sm-8">
+            {{ form_row(form.email, {'attr':
+                {'placeholder': 'Votre email...'}}) }}
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-sm-8 col-md-6">
+                    {{ form_row(form.password, {'attr':
+                        {'placeholder': 'Mot de passe'}}) }}
+                </div>
+                <div class="col-12 col-sm-8 col-md-6">
+                    {{ form_row(form.confirm_password, {'attr':
+                        {'placeholder': 'Confirmez votre mot de passe'}}) }}
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-sm-8 col-md-6">
+                    {{ form_row(form.telephone, {'attr':
+                        {'placeholder': 'Votre téléphone...'}}) }}
+                </div>
+                <div class="col-12 col-sm-8 col-md-6">
+                    {{ form_row(form.ville, {'attr':
+                        {'placeholder': 'Votre ville...'}}) }}
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-sm-8 col-md-6">
+                    {{ form_row(form.specialite, {'attr':
+                        {'placeholder': 'Votre profession...'}}) }}
+                </div>
+                <div class="col-12 col-sm-8 col-md-6">
+                    {{ form_row(form.enPoste, {'attr':
+                        {'placeholder': 'Société, freelance, ...'}}) }}
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-sm-8 col-md-4">
+                    {{ form_row(form.avatar) }}
+                </div>
+                <div class="col-12 col-sm-8 col-md-4">
+                    {{ form_row(form.experience) }}
+                </div>
+                <div class="col-12 col-sm-8 col-md-4">
+                    {{ form_row(form.recherchePoste) }}
+                </div>
+            </div>
+            {{ form_row(form.valider, {'attr':
+                {'class': 'btn-fiche'}}) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

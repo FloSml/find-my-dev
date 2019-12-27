@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <main>
+        <section class="container-fluid">
+            <div class="row text-center flex-column">
+                <h1 class="mt-5 mb-4">Les membres de<br>Pimp My Dev</h1>
+                <p class="text-center">Faites une recherche parmi les <br>{{ users | length }} membres de Pimp My Dev</p>
+            </div>
+            <div class="row search-bar">
+
+            </div>
+            <div class="container-fluid">
+                <div class="row all-members m-0 p-2">
+                    {% for user in users %}
+                        <article class="member m-1">
+                            <p class="name">{{ random(['L\'incroyable', 'L\'inimitable', 'L\'indomptable', 'L\'invincible', 'L\'irréductible',
+                                    'L\'intraitable', 'L\'irrésistible', 'L\'inégalable', 'L\'incomparable', 'L\'indestructible', 'L\'incollable',
+                                    'L\'incontournable', 'L\'incorrigible', 'L\'indispensable', 'L\'inébranlable', 'L\'inestimable', 'L\'infaillible',
+                                    'L\'inflexible', 'L\'immuable', 'L\'insatiable', 'L\'inévitable', 'L\'implacable', 'L\'incorruptible', 'L\'impassible',
+                                    'L\'imbattable', 'L\'inoubliable', 'L\'infatigable', 'L\'indémodable', 'L\'inclassable', 'L\'inépuisable', 'L\'impitoyable',
+                                    'L\'indétrônable', 'L\'indéfectible', 'L\'irréprochable', 'L\'insoupçonnable']) }}<br>
+                                <span>{{ user.prenom }} {{ user.nom }}</span></p>
+                            <img src="{{ asset('assets/img/avatar/avatar1.png') }}" alt="Avatar 1">
+                            <p class="metier">{{ user.specialite }}<br>
+                                <span>{{ user.experience }} d'expérience</span><br>
+                                <span>{{ user.ville }}</span></p>
+                            <a href="{{ path('member',{'id': user.id}) }}" class="btn-fiche" role="button">Voir son profil</a>
+                        </article>
+                    {% endfor %}
+                </div>
+                <div class="row btn-members">
+                    <img src="{{ asset('assets/img/avatar/avatar6.png') }}" alt="Avatar 5">
+                    <a href="#" class="btn-fiche" role="button">Charger plus</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
