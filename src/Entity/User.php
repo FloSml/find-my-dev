@@ -112,6 +112,11 @@ class User implements UserInterface
      */
     private $experience;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $resume;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -310,6 +315,18 @@ class User implements UserInterface
     public function setExperience(string $experience): self
     {
         $this->experience = $experience;
+
+        return $this;
+    }
+
+    public function getResume(): ?string
+    {
+        return $this->resume;
+    }
+
+    public function setResume(?string $resume): self
+    {
+        $this->resume = $resume;
 
         return $this;
     }

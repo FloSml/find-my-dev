@@ -1,10 +1,10 @@
 easy_admin:
     design:
         menu:
-            - label: 'members'
+            - label: 'Membres'
               icon: 'newspaper-o'
               children:
-                  - {entity: 'User', icon: 'user', label: 'members'}
+                  - {entity: 'User', icon: 'user', label: 'Membres'}
             - label: 'Blog'
               icon: 'newspaper-o'
               children:
@@ -13,19 +13,39 @@ easy_admin:
     entities:
         User:
             class: App\Entity\User
-            label: 'members'
+            label: 'Membres'
+            # Affiche la liste des membres
             list:
+                title: "Liste des membres"
                 fields:
                   - 'id'
                   - 'nom'
-                  - 'prenom'
+                  - { property: 'prenom', label: 'Prénom' }
                   - 'email'
-                  - 'telephone'
                   - 'ville'
-                  - 'formation'
-                  - 'experience'
+                  - { property: 'specialite', label: 'Spécialité' }
+                  - { property: 'experience', label: 'Expérience' }
                   - { property: 'recherche_poste',  type: 'boolean' }
                   - 'en_poste'
+            # Affiche le formulaire de modification d'un membre
+            edit:
+                title: "Modifier le membre"
+                fields:
+                  - { type: 'group', columns: 4, label: 'Informations personnelles' }
+                  - 'id'
+                  - 'nom'
+                  - 'prenom'
+                  #- { property: 'roles', label: 'Rôle', type: 'array' }
+                  - { property: 'email', css_class: 'input-large', label: 'Email' }
+                  - { type: 'group', columns: 6, label: 'Informations profession' }
+                  - { property: 'specialite', label: 'Spécialité' }
+                  - { property: 'experience', label: 'Expérience' }
+                  - { property: 'resume', label: 'Résumé' }
+                  - 'recherche_poste'
+                  - 'en_poste'
+            # Affiche le formulaire d'ajout d'un membre
+            new:
+              title: "Ajouter un membre"
 
         Blog:
             class: App\Entity\Blog

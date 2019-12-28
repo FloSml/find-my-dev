@@ -20,13 +20,13 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => "Email",
+                'label' => "Email*",
             ])
             ->add('password', PasswordType::class, [
-                'label' => "Mot de passe",
+                'label' => "Mot de passe*",
             ])
             ->add('confirm_password', PasswordType::class, [
-                'label' => "Confirmation du mot de passe",
+                'label' => "Confirmation du mot de passe*",
             ])
             ->add('nom', TextType::class, [
                 'label' => "Nom*",
