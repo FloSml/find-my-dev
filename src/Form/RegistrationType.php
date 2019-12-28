@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class RegistrationType extends AbstractType
 {
@@ -48,8 +49,8 @@ class RegistrationType extends AbstractType
                 'label' => "Recherche un job ?",
                 'required' => false
             ])
-            ->add('avatar', FileType::class, [
-                'label' => "Choisissez un avatar",
+            ->add('imageFile', VichImageType::class, [
+                'label' => "Importer une photo",
                 'required' => false
             ])
             ->add('enPoste', TextType::class, [
