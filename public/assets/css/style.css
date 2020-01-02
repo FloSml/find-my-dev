@@ -5,7 +5,7 @@ Auteur : Florian Soumaille
 Date : octobre 2019
 Version : 1.0
 
-II - STRUCTURE SITE
+I - STRUCTURE SITE
   1-1 RESET
   1-2 FONT & TITRAGE
   1-3 NAV
@@ -13,38 +13,19 @@ II - STRUCTURE SITE
   1-5 COOKIES
   1-6 FOOTER
 
-III - PAGES SITE
+II - PAGES SITE
   2-1 HOME
   2-2 CONNEXION
   2-3 MEMBRES
-  2-4 CONTACT
+  2-4 MEMBRE
+  2-5 CONTACT
 
 IV - ANIMATIONS
 
 */
 /* I - STRUCTURE SITE */
-/* width */
-@import url("https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&display=swap");
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #5a398e;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #55328d;
-}
-
 /* 1-2 RESET */
+@import url("https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -553,6 +534,33 @@ section {
 }
 
 /* 2-3 PAGE MEMBRES */
+.search-length {
+  font-size: 1.5rem;
+}
+.search-length span {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #5a398e;
+}
+
+.search-bar {
+  margin: 10px 0 20px;
+  padding: 20px 0;
+}
+.search-bar .row {
+  padding: 5px 0;
+}
+.search-bar p {
+  margin: 0 5px;
+}
+.search-bar .btn-fiche {
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+.search-bar #search-member {
+  min-width: 300px;
+}
+
 .all-members .member {
   flex: 0 0 24%;
   max-width: 24%;
@@ -567,7 +575,58 @@ section {
   width: 100%;
 }
 
-/* 2-3 PAGE CONTACT */
+/* 2-4 PAGE MEMBRE */
+#member h1 span {
+  font-size: 0.5em;
+}
+#member .member-cv {
+  -webkit-box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 0.3);
+}
+#member .member-cv aside {
+  background-color: #f7f7f7;
+}
+#member .member-cv .member-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: solid 5px #5a398e;
+  -webkit-box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 0.3);
+  animation: bounce 2s;
+  animation-delay: 1s;
+}
+#member .member-cv .member-avatar img {
+  width: 100%;
+  height: auto;
+}
+#member .member-cv .member-title {
+  background: #f0f0f0;
+}
+#member .member-cv .member-title .member-name {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+#member .member-cv .member-title .member-job {
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1;
+}
+#member .member-cv .member-title .member-search {
+  color: #333;
+  margin: 0;
+}
+#member .member-cv .member-subtitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #5a398e;
+  text-decoration: underline;
+}
+#member .member-cv .member-resume {
+  width: 90%;
+}
+
+/* 2-5 PAGE CONTACT */
 .bandeau-contact {
   background: url(../img/team-header-home.jpg) no-repeat bottom center;
 }

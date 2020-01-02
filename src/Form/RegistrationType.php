@@ -10,10 +10,10 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class RegistrationType extends AbstractType
 {
@@ -49,8 +49,12 @@ class RegistrationType extends AbstractType
                 'label' => "Recherche un job ?",
                 'required' => false
             ])
-            ->add('imageFile', VichImageType::class, [
-                'label' => "Importer une photo",
+            ->add('resume', TextareaType::class, [
+                'label' => "Présentez-vous en quelques lignes.",
+                'required' => false
+            ])
+            ->add('avatar', FileType::class, [
+                'label' => "Importez votre photo",
                 'required' => false
             ])
             ->add('enPoste', TextType::class, [

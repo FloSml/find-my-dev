@@ -36,13 +36,42 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
-    //public function findAllLookingForJob()
-    //{
-    //    return $this->createQueryBuilder('u')
-    //        ->andWhere('u.recherchePoste = true')
-    //        ->getQuery()
-    //        ->getResult();
-    //}
+    public function findAllLookingForJob()
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.recherchePoste = true')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllExperienceAsc()
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.experience', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllExperienceDesc()
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.experience', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @param string $search
+     * @return array
+     */
+    public function findMember($search = ''){
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.ville LIKE :search OR u.specialite LIKE :search')
+            ->setParameter('search', '%'.$search.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     // /**
     //  * @return User[] Returns an array of User objects

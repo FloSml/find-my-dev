@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,6 +18,8 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository)
     {
+        // J'utilise le repository de User pour sélectionner tous les éléments de ma table user
+        // Les repositories permettent de faire les requêtes SELECT dans les tables de la BDD
         $user = $userRepository->findAll();
 
         return $this->render('index.html.twig', [
@@ -63,6 +66,55 @@ class UserController extends AbstractController
 
         return $this->render('members.html.twig', [
             'users' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/members/experience/asc", name="members_experience_asc")
+     * @param UserRepository $userRepository
+     * @return Response
+     */
+    public function membersExperienceAsc(UserRepository $userRepository)
+    {
+        $user = $userRepository->findAllExperienceAsc();
+
+        return $this->render('members.html.twig', [
+            'users' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/members/experience/desc", name="members_experience_desc")
+     * @param UserRepository $userRepository
+     * @return Response
+     */
+    public function membersExperienceDesc(UserRepository $userRepository)
+    {
+        $user = $userRepository->findAllExperienceDesc();
+
+        return $this->render('members.html.twig', [
+            'users' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/members/search/", name="members_search")
+     * @param UserRepository $userRepository
+     * @param Request $request
+     * @return Response
+     *
+     * Affiche les membres qui correspondent aux données transmises via le formulaire de recherche (en GET)
+     */
+    public function membersByCity(UserRepository $userRepository, Request $request)
+    {
+        $get = [];
+        $search = $request->query->get('search-member');
+        $get['search-member'] = $search;
+        $user = $userRepository->findMember($search);
+
+        return $this->render('members.html.twig', [
+            'users' => $user,
+            'get' => $get
         ]);
     }
 

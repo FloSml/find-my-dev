@@ -3,16 +3,66 @@
 {% block content %}
 
     <main>
-        <section class="container-fluid">
-            <div class="row text-center flex-column">
-                <h1 class="mt-5 mb-4">Les membres de<br>Pimp My Dev</h1>
-                <p class="text-center">Faites une recherche parmi les <br>{{ users | length }} membres de Pimp My Dev</p>
-            </div>
-            <div class="row search-bar">
 
+        <!-- TITLE SECTION -->
+
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative">
+            <h1 class="text-center">Les membres de<br>Pimp My Dev</h1>
+        </div>
+        <div class="wave wave-title"></div>
+
+        <!-- ALL MEMBERS SECTION -->
+
+        <section class="container-fluid">
+            <div class="row search-bar justify-content-center align-items-center flex-column">
+                <div class="row my-3">
+                    <div class="col-12 d-flex justify-content-center align-items-center flex-wrap">
+                        <p>Faites votre recherche...</p>
+                        <form action="{{ path('members_search') }}" method="get" class="d-flex justify-content-center align-items-center">
+                            <input type="text" class="form-control" name="search-member" id="search-member"
+                                   placeholder="Développeur web, Bordeaux, ...">
+
+                            <input id="submit" type="submit" value="Rechercher" class="ml-3 btn-fiche">
+                        </form>
+
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-center align-items-center flex-wrap">
+                        <a href="{{ path('members') }}" class="btn-fiche">Voir tous les membres</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 justify-content-center align-items-center flex-wrap more-filters">
+                        <a href="{{ path('members_job') }}" class="btn-fiche">Cherche un job</a>
+                        <a href="{{ path('members_experience_desc') }}" class="btn-fiche">Peu d'expérience</a>
+                        <a href="{{ path('members_experience_asc') }}" class="btn-fiche">Plus d'expérience</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center flex-column">
+                {% if users|length == 0 %}
+                    <p class="text-center search-length">Votre recherche
+                        {% if get is defined %}
+                            {% for get in get %}"{{ get }}"{% endfor %}
+                        {% endif %}
+                        ne compte aucun membre</p>
+                {% elseif users|length == 1 %}
+                    <p class="text-center search-length">Votre recherche
+                        {% if get is defined %}
+                            {% for get in get %}"{{ get }}"{% endfor %}
+                        {% endif %}
+                        compte <br><span>1 membre</span></p>
+                {% else %}
+                    <p class="text-center search-length">Votre recherche
+                        {% if get is defined %}
+                            {% for get in get %}"{{ get }}"{% endfor %}
+                        {% endif %}
+                        compte <br><span>{{ users | length }} membres</span></p>
+                {% endif %}
             </div>
             <div class="container-fluid">
-                <div class="row all-members m-0 p-2">
+                <div class="row all-members m-0 p-2 justify-content-around">
                     {% for user in users %}
                         <article class="member m-1">
                             <p class="name">{{ random(['L\'incroyable', 'L\'inimitable', 'L\'indomptable', 'L\'invincible', 'L\'irréductible',

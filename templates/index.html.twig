@@ -67,7 +67,7 @@
         <!-- Les members -->
 
         <section id="members">
-            <h2>Les nouveaux members</h2>
+            <h2>Les nouveaux membres</h2>
             <div class="container-fluid">
                 <div class="row m-0 p-2">
                     {% for user in users|sort|reverse|slice(0, 4) %}
@@ -89,7 +89,7 @@
                 </div>
                 <div class="row btn-members">
                     <img src="{{ asset('assets/img/avatar/avatar6.png') }}" alt="Avatar 5">
-                    <a href="{{ path('members') }}" class="btn-fiche" role="button">Voir tous les members</a>
+                    <a href="{{ path('members') }}" class="btn-fiche" role="button">Voir les {{ users | length }} membres</a>
                 </div>
             </div>
         </section>
