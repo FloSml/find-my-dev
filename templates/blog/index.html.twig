@@ -1,166 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block content %}
+{% block title %}Blog index{% endblock %}
 
-    <!-- Main -->
+{% block body %}
+    <h1>Blog index</h1>
 
-    <main id="page-accueil">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>DateAjout</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for blog in blogs %}
+            <tr>
+                <td>{{ blog.id }}</td>
+                <td>{{ blog.Titre }}</td>
+                <td>{{ blog.Auteur }}</td>
+                <td>{{ blog.DateAjout ? blog.DateAjout|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('blog_show', {'id': blog.id}) }}">show</a>
+                    <a href="{{ path('blog_edit', {'id': blog.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-        <!-- Formulaire de  connexion -->
-
-        <div id="connexion" class="container-fluid">
-            <div class="container">
-                <div class="col-12 connexion-content">
-                    <a href="#" class="closebtn" id="close-connexion"><i class="fas fa-times"></i></a>
-                    <div class="modal-content">
-                        <div class="col-12 user-img">
-                            <img src="{{ asset('assets/img/avatar1.png') }}" alt="Avatar">
-                        </div>
-                        <div class="col-12 form-input">
-                            <form>
-                                <p class="text-center">Connectez-vous à votre compte</p>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Votre email" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Votre mot de passe" required>
-                                </div>
-                                <button type="submit" class="btn-fiche">Connexion</button>
-                            </form>
-                        </div>
-                        <div class="row mentions">
-                            <div class="col-6">
-                                <a href="#">Mot de passe oublié ?</a>
-                            </div>
-                            <div class="col-6">
-                                <a href="#">Je crée mon compte !</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bandeau -->
-
-        <section class="bandeau bandeau-home">
-            <div class="wave"></div>
-            <hgroup>
-                <h1><img src="{{ asset('assets/img/find-my-team-logo.png') }}" alt="Find My Team"></h1>
-                <h2 class="text-apparition">La mise en relation des métiers du numérique !</h2>
-            </hgroup>
-            <a href="#principe" class="button btn-slider btn-slider-1 scrollTo"><span>C'est quoi le principe ? </span></a>
-            <a href="#" class="button btn-slider btn-slider-2"><span>Je monte ma team ! </span></a>
-        </section>
-
-        <!-- C'est quoi le principe ? -->
-
-        <section id="principe" class="container-fluid">
-            <h2>C'est quoi le principe ?</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <p class="explication">Que vous soyez freelance ou que vous cherchiez juste un peu d'aide,<br>
-                            définissez votre demande et les members pourront répondre à votre demande et rejoindre votre team !</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="container-principe col-12 text-center">
-                        <h3>Vous cherchez de l'aide pour votre projet ?</h3>
-                        <p>Trouvez parmi nos members les profils qui vous intéressent et contactez-les via la plateforme.</p>
-                        <p><em>Je suis écrivain et je cherche un illustrateur<br>
-                                Je suis game développeur et je cheche un graphiste 2D/3D</em></p>
-                        <a href="#" class="btn-fiche" role="button">En savoir plus</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2 -->
-
-        <div class="wave-gris"></div>
-        <section id="section2" class="container-fluid">
-            <h2>Titre section 2</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <p class="explication">Que vous soyez freelance ou que vous cherchiez juste un peu d'aide,<br>
-                            définissez votre demande et les members pourront répondre à votre demande et rejoindre votre team !</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="container-principe col-12 text-center">
-                        <h3>Vous cherchez de l'aide pour votre projet ?</h3>
-                        <p>Trouvez parmi nos members les profils qui vous intéressent et contactez-les via la plateforme.</p>
-                        <p><em>Je suis écrivain et je cherche un illustrateur<br>
-                                Je suis game développeur et je cheche un graphiste 2D/3D</em></p>
-                        <a href="#" class="btn-fiche" role="button">En savoir plus</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="wave-gris wave-gris-reverse"></div>
-
-        <!-- Les members -->
-
-        <section id="members">
-            <h2>Les nouveaux members</h2>
-            <div class="container-fluid">
-                <div class="row">
-                    <article class="member">
-                        <p class="name">{{ qualif }}<br>
-                            <span>John Doe</span></p>
-                        <img src="{{ asset('assets/img/avatar/avatar1.png') }}" alt="Avatar 1">
-                        <p class="metier">Développeur Front<br>
-                            <span>5 ans d'expérience</span><br>
-                            <span>Nantes</span></p>
-                        <a href="#" class="btn-fiche" role="button">Voir son profil</a>
-                    </article>
-                    <article class="member">
-                        <p class="name">La p'tite<br>
-                            <span>Jane Doe</span></p>
-                        <img src="{{ asset('assets/img/avatar/avatar2.png') }}" alt="Avatar 2">
-                        <p class="metier">Conceptrice Web<br>
-                            <span>7 ans d'expérience</span><br>
-                            <span>Bordeaux</span></p>
-                        <a href="#" class="btn-fiche" role="button">Voir son profil</a>
-                    </article>
-                    <article class="member">
-                        <p class="name">Le p'tit<br>
-                            <span>John Doe</span></p>
-                        <img src="{{ asset('assets/img/avatar/avatar3.png') }}" alt="Avatar 3">
-                        <p class="metier">Community Manager<br>
-                            <span>2 ans d'expérience</span><br>
-                            <span>Paris</span></p>
-                        <a href="#" class="btn-fiche" role="button">Voir son profil</a>
-                    </article>
-                    <article class="member">
-                        <p class="name">La p'tite<br>
-                            <span>Jane Doe</span></p>
-                        <img src="{{ asset('assets/img/avatar/avatar4.png') }}" alt="Avatar 4">
-                        <p class="metier">Rédactrice Web<br>
-                            <span>4 ans d'expérience</span><br>
-                            <span>Lyon</span></p>
-                        <a href="#" class="btn-fiche" role="button">Voir son profil</a>
-                    </article>
-                </div>
-                <div class="row btn-members">
-                    <img src="{{ asset('assets/img/avatar/avatar6.png') }}" alt="Avatar 5">
-                    <a href="#" class="btn-fiche" role="button">Voir tous les members</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter -->
-
-        <div class="wave-gris"></div>
-        <section id="newsletter" class="container-fluid">
-            <h2>Abonnez-vous aux dernières news</h2>
-            <form action="POST">
-                <input type="email" name="email">
-                <input type="submit" name="valider">
-            </form>
-        </section>
-    </main>
-
+    <a href="{{ path('blog_new') }}">Create new</a>
 {% endblock %}

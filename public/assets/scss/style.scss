@@ -84,6 +84,7 @@ nav{
     position: fixed !important;
     top: 0;
     width: 100%;
+    box-shadow: 0px -15px 26px #555;
     .navbar-collapse{
         flex-grow: initial;
     }
@@ -380,7 +381,7 @@ section{
     overflow: hidden;
 }
 
-    /* SECTION C'EST QUOI LE PRINCIPE */
+    /* DEV SECTION */
 
 #dev h2{
     margin-top: 20px;
@@ -408,9 +409,9 @@ section{
         margin: 0 auto 20px;
     }
 }
-    /* SECTION 2 */
+    /* RECRUITER SECTION */
 
-#section2{
+#recruiter{
     background: #f7f7f7;
 }
 
