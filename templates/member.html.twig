@@ -7,13 +7,8 @@
         <!-- TITLE SECTION -->
 
         <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative text-center">
-            <h1><span>{{ random(['L\'incroyable', 'L\'inimitable', 'L\'indomptable', 'L\'invincible', 'L\'irréductible',
-                        'L\'intraitable', 'L\'irrésistible', 'L\'inégalable', 'L\'incomparable', 'L\'indestructible', 'L\'incollable',
-                        'L\'incontournable', 'L\'incorrigible', 'L\'indispensable', 'L\'inébranlable', 'L\'inestimable', 'L\'infaillible',
-                        'L\'inflexible', 'L\'immuable', 'L\'insatiable', 'L\'inévitable', 'L\'implacable', 'L\'incorruptible', 'L\'impassible',
-                        'L\'imbattable', 'L\'inoubliable', 'L\'infatigable', 'L\'indémodable', 'L\'inclassable', 'L\'inépuisable', 'L\'impitoyable',
-                        'L\'indétrônable', 'L\'indéfectible', 'L\'irréprochable', 'L\'insoupçonnable']) }}</span><br>
-                {{ user.prenom }} {{ user.nom }}</h1>
+            <h1><span>{% include 'common/_random_adjectives.html.twig' %}</span><br>
+                {{ user.firstName }} {{ user.lastName }}</h1>
         </div>
         <div class="wave wave-title"></div>
 
@@ -28,13 +23,13 @@
                         </div>
                         <p class="member-subtitle">Infos</p>
                         <p>{{ user.experience }} d'expérience</p>
-                        <p>{{ user.ville }}</p>
+                        <p>{{ user.city }}</p>
                     </aside>
                     <div class="container-fluid col-9">
                         <div class="row py-3 justify-content-center align-items-center flex-column text-center member-title">
-                            <p class="member-name">{{ user.prenom }} {{ user.nom }}</p>
-                            <p class="member-job">{{ user.specialite }}</p>
-                            {%  if user.recherchePoste == 1 %}
+                            <p class="member-name">{{ user.firstName }} {{ user.lastName }}</p>
+                            <p class="member-job">{{ user.speciality }}</p>
+                            {%  if user.lookingForJob == 1 %}
                                 <p class="member-search">à la recherche d'opportunités</p>
                             {% endif %}
                         </div>

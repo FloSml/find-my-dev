@@ -11,7 +11,7 @@
   }
 
   .btn-slider {
-    top: 50%;
+    top: 75%;
     font-size: 16px;
   }
 
@@ -46,11 +46,6 @@
   }
 }
 @media (max-width: 768px) {
-  #title-home h1 img {
-    top: 20%;
-    width: 250px;
-  }
-
   #title-home h2 {
     top: 35%;
     font-size: 1.3em;
@@ -60,13 +55,23 @@
     font-size: 14px;
   }
 
+  .bandeau-home h1 img {
+    top: 32%;
+    width: 300px;
+  }
+  .bandeau-home h2 {
+    width: 80%;
+  }
+  .bandeau-home .text-apparition {
+    top: 57%;
+  }
+
   .btn-slider-1 {
-    top: 45%;
-    left: 50%;
+    display: none;
   }
 
   .btn-slider-2 {
-    display: none;
+    left: 50%;
   }
 
   #title-home {

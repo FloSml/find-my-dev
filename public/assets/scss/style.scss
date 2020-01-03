@@ -6,7 +6,7 @@ Version : 1.0
 
 I - STRUCTURE SITE
   1-1 RESET
-  1-2 FONT & TITRAGE
+  1-2 FONTS & TITLES
   1-3 NAV
   1-4 MAIN
   1-5 COOKIES
@@ -19,7 +19,7 @@ II - PAGES SITE
   2-4 MEMBRE
   2-5 CONTACT
 
-IV - ANIMATIONS
+III - ANIMATIONS
 
 */
 
@@ -44,7 +44,7 @@ $gris: #333;
     box-sizing: border-box;
 }
 
-/* 1-2 FONT & TITRAGE */
+/* 1-2 FONTS & TITLES */
 
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&display=swap');
 
@@ -84,11 +84,29 @@ nav{
     position: fixed !important;
     top: 0;
     width: 100%;
+    .navbar-collapse{
+        flex-grow: initial;
+    }
 }
 
 .nav-item{
     margin: 0 10px;
     font-size: 14px;
+    .account-links{
+        color: rgba(0, 0, 0, .5);
+        display: block;
+        padding: .5rem 0;
+        .account{
+            padding-left: 20px;
+        }
+        a {
+            color: rgba(0, 0, 0, .5);
+            text-decoration: none;
+            &:hover{
+                color: rgba(0,0,0,.7);
+            }
+        }
+    }
 }
 
 .dropdown-menu{
@@ -209,13 +227,21 @@ main{
 /* 1-6 FOOTER */
 
 footer{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    height: 200px;
-    width: 100%;
     background-color: $gris;
     color: #fff;
+    p{
+        color: #fff;
+    }
+    li{
+        list-style: none;
+        a{
+            color: #fff;
+            text-decoration: none;
+            &:hover{
+                color: #f7f7f7;
+            }
+        }
+    }
 }
 
 /* II - PAGES DU SITE */
@@ -243,6 +269,7 @@ footer{
 
     h2{
         position: absolute;
+        width: 100%;
         top: 60%;
         left: 50%;
         @include translate();
@@ -355,11 +382,11 @@ section{
 
     /* SECTION C'EST QUOI LE PRINCIPE */
 
-#principe h2{
+#dev h2{
     margin-top: 20px;
 }
 
-#principe h3{
+#dev h3{
     margin-bottom: 20px;
 }
 
@@ -368,7 +395,7 @@ section{
     margin-bottom: 40px;
 }
 
-.container-principe{
+.container-dev{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -376,12 +403,11 @@ section{
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-}
 
-.container-principe .btn-fiche{
-    margin: 0 auto 20px;
+    .btn-fiche{
+        margin: 0 auto 20px;
+    }
 }
-
     /* SECTION 2 */
 
 #section2{
@@ -389,8 +415,7 @@ section{
 }
 
 .wave-gris{
-    background: url(../img/wave-gris-3.png);
-    background-position: center;
+    background: url(../img/wave-gris-3.png) center;
     background-size: cover;
     width: 100%;
     height: 30px;
@@ -449,6 +474,7 @@ section{
     font-size: 1em;
     font-weight: 700;
     line-height: 1.2;
+    margin-top: .5rem;
 
     span {
         font-size: .8em;
@@ -573,6 +599,10 @@ section{
             >label{
                 margin: 0;
             }
+        }
+
+        #registration_resume{
+            height: 100px;
         }
 
         #registration_recherchePoste{

@@ -54,7 +54,7 @@ class User implements UserInterface
      *     message="Votre nom ne peut pas contenir de valeurs numériques"
      * )
      */
-    private $nom;
+    private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -65,27 +65,32 @@ class User implements UserInterface
      *     message="Votre prénom ne peut pas contenir de valeurs numériques"
      * )
      */
-    private $prenom;
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $telephone;
+    private $phone;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ville;
+    private $city;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $postalCode;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $specialite;
+    private $speciality;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $recherchePoste;
+    private $lookingForJob;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -95,7 +100,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $enPoste;
+    private $currentJob;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -201,74 +206,84 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getNom(): ?string
+    public function getLastName(): ?string
     {
-        return $this->nom;
+        return $this->lastName;
     }
 
-    public function setNom(string $nom): self
+    public function setLastName(string $lastName): self
     {
-        $this->nom = $nom;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function getPrenom(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->prenom;
+        return $this->firstName;
     }
 
-    public function setPrenom(string $prenom): self
+    public function setFirstName(string $firstName): self
     {
-        $this->prenom = $prenom;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getTelephone(): ?string
+    public function getPhone(): ?string
     {
-        return $this->telephone;
+        return $this->phone;
     }
 
-    public function setTelephone(string $telephone): self
+    public function setPhone(string $phone): self
     {
-        $this->telephone = $telephone;
+        $this->phone = $phone;
 
         return $this;
     }
 
-    public function getVille(): ?string
+    public function getCity(): ?string
     {
-        return $this->ville;
+        return $this->city;
     }
 
-    public function setVille(string $ville): self
+    public function setCity(string $city): self
     {
-        $this->ville = $ville;
+        $this->city = $city;
 
         return $this;
     }
 
-    public function getSpecialite(): ?string
+    public function getPostalCode()
     {
-        return $this->specialite;
+        return $this->postalCode;
     }
 
-    public function setSpecialite(string $specialite): self
+    public function setPostalCode($postalCode): void
     {
-        $this->specialite = $specialite;
+        $this->postalCode = $postalCode;
+    }
+
+    public function getSpeciality(): ?string
+    {
+        return $this->speciality;
+    }
+
+    public function setSpeciality(string $speciality): self
+    {
+        $this->speciality = $speciality;
 
         return $this;
     }
 
-    public function getRecherchePoste(): ?bool
+    public function getLookingForJob(): ?bool
     {
-        return $this->recherchePoste;
+        return $this->lookingForJob;
     }
 
-    public function setRecherchePoste(bool $recherchePoste): self
+    public function setLookingForJob(bool $lookingForJob): self
     {
-        $this->recherchePoste = $recherchePoste;
+        $this->lookingForJob = $lookingForJob;
 
         return $this;
     }
@@ -285,14 +300,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getEnPoste(): ?string
+    public function getCurrentJob(): ?string
     {
-        return $this->enPoste;
+        return $this->currentJob;
     }
 
-    public function setEnPoste(?string $enPoste): self
+    public function setCurrentJob(?string $currentJob): self
     {
-        $this->enPoste = $enPoste;
+        $this->currentJob = $currentJob;
 
         return $this;
     }

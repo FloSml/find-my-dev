@@ -9,26 +9,26 @@
         <section class="bandeau bandeau-home">
             <div class="wave"></div>
             <hgroup>
-                <h1><img src="{{ asset('assets/img/find-my-team-logo.png') }}" alt="Pimp My Dev"></h1>
-                <h2 class="text-apparition">La mise en relation des métiers du numérique !</h2>
+                <h1><img src="{{ asset('assets/img/find-my-dev-logo.png') }}" alt="Find My Dev"></h1>
+                <h2 class="text-apparition">La plateforme des dev juniors !</h2>
             </hgroup>
-            <a href="#principe" class="button btn-slider btn-slider-1 scrollTo"><span>C'est quoi le principe ? </span></a>
-            <a href="#" class="button btn-slider btn-slider-2"><span>Je trouve un parrain !</span></a>
+            <a href="#dev" class="button btn-slider btn-slider-1 scrollTo"><span>Je suis développeur !</span></a>
+            <a href="{{ path('members') }}" class="button btn-slider btn-slider-2"><span>Je suis recruteur !</span></a>
         </section>
 
-        <!-- C'est quoi le principe ? -->
+        <!-- Je suis développeur junior -->
 
-        <section id="principe" class="container-fluid">
-            <h2>C'est quoi le principe ?</h2>
+        <section id="dev" class="container-fluid">
+            <h2>Je suis développeur(euse) junior<br>C'est quoi le principe ?</h2>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <p class="explication">Que vous soyez freelance ou que vous cherchiez juste un peu d'aide,<br>
-                            définissez votre demande et les members pourront répondre à votre demande et rejoindre votre team !</p>
+                        <p class="explication">Vous êtes à la recherche d'un développeur junior ?<br>
+                            Faites votre recherche parmi tous nos membres pour trouver la perle rare.</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="container-principe col-12 text-center">
+                    <div class="container-dev col-12 text-center">
                         <h3>Vous cherchez de l'aide pour votre projet ?</h3>
                         <p>Trouvez parmi nos members les profils qui vous intéressent et contactez-les via la plateforme.</p>
                         <p><em>Je suis écrivain et je cherche un illustrateur<br>
@@ -43,7 +43,7 @@
 
         <div class="wave-gris"></div>
         <section id="section2" class="container-fluid">
-            <h2>Titre section 2</h2>
+            <h2>Je suis recruteur(euse)<br>C'est quoi le principe ?</h2>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -72,17 +72,12 @@
                 <div class="row m-0 p-2">
                     {% for user in users|sort|reverse|slice(0, 4) %}
                         <article class="member col-12 col-sm-6 col-md-4 col-lg-3 m-1">
-                            <p class="name">{{ random(['L\'incroyable', 'L\'inimitable', 'L\'indomptable', 'L\'invincible', 'L\'irréductible',
-                                    'L\'intraitable', 'L\'irrésistible', 'L\'inégalable', 'L\'incomparable', 'L\'indestructible', 'L\'incollable',
-                                    'L\'incontournable', 'L\'incorrigible', 'L\'indispensable', 'L\'inébranlable', 'L\'inestimable', 'L\'infaillible',
-                                    'L\'inflexible', 'L\'immuable', 'L\'insatiable', 'L\'inévitable', 'L\'implacable', 'L\'incorruptible', 'L\'impassible',
-                                    'L\'imbattable', 'L\'inoubliable', 'L\'infatigable', 'L\'indémodable', 'L\'inclassable', 'L\'inépuisable', 'L\'impitoyable',
-                                    'L\'indétrônable', 'L\'indéfectible', 'L\'irréprochable', 'L\'insoupçonnable']) }}<br>
-                                <span>{{ user.prenom }} {{ user.nom }}</span></p>
-                            <img src="{{ asset('assets/img/avatar/avatar1.png') }}" alt="Avatar 1">
-                            <p class="metier">{{ user.specialite }}<br>
+                            <p class="name">{% include 'common/_random_adjectives.html.twig' %}<br>
+                                <span>{{ user.firstName }} {{ user.lastName }}</span></p>
+                            <img src="{{ asset('assets/img/avatar/avatar' ~ variable ~ '.png') }}" alt="Avatar 1">
+                            <p class="metier">{{ user.speciality }}<br>
                                 <span>{{ user.experience }} d'expérience</span><br>
-                                <span>{{ user.ville }}</span></p>
+                                <span>{{ user.city }}</span></p>
                             <a href="{{ path('member',{'id': user.id}) }}" class="btn-fiche" role="button">Voir son profil</a>
                         </article>
                     {% endfor %}

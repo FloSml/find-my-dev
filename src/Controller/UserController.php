@@ -22,22 +22,12 @@ class UserController extends AbstractController
         // Les repositories permettent de faire les requêtes SELECT dans les tables de la BDD
         $user = $userRepository->findAll();
 
+        $variable = rand(1,4);
+
         return $this->render('index.html.twig', [
+            'current_menu' => 'index',
+            'variable' => $variable,
             'users' => $user,
-        ]);
-    }
-
-    /**
-     * @Route("/contact", name="contact")
-     * @param UserRepository $userRepository
-     * @return Response
-     */
-    public function contact(UserRepository $userRepository)
-    {
-        $user = $userRepository->findAll();
-
-        return $this->render('contact.html.twig', [
-            'user' => $user,
         ]);
     }
 
@@ -51,6 +41,7 @@ class UserController extends AbstractController
         $user = $userRepository->findAll();
 
         return $this->render('members.html.twig', [
+            'current_menu' => 'members',
             'users' => $user,
         ]);
     }
@@ -119,6 +110,21 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/member/update/{id}", name="update_member")
+     * @param UserRepository $userRepository
+     * @param $id
+     * @return Response
+     */
+    public function memberUpdate(UserRepository $userRepository, $id)
+    {
+        $user = $userRepository->find($id);
+
+        return $this->render('member.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
      * @Route("/member/{id}", name="member")
      * @param UserRepository $userRepository
      * @param $id
@@ -133,4 +139,3 @@ class UserController extends AbstractController
         ]);
     }
 }
-

@@ -7,7 +7,7 @@ Version : 1.0
 
 I - STRUCTURE SITE
   1-1 RESET
-  1-2 FONT & TITRAGE
+  1-2 FONTS & TITLES
   1-3 NAV
   1-4 MAIN
   1-5 COOKIES
@@ -20,7 +20,7 @@ II - PAGES SITE
   2-4 MEMBRE
   2-5 CONTACT
 
-IV - ANIMATIONS
+III - ANIMATIONS
 
 */
 /* I - STRUCTURE SITE */
@@ -33,7 +33,7 @@ IV - ANIMATIONS
   box-sizing: border-box;
 }
 
-/* 1-2 FONT & TITRAGE */
+/* 1-2 FONTS & TITLES */
 body {
   font-family: "Comfortaa", Arial, sans-serif;
 }
@@ -70,10 +70,28 @@ nav {
   top: 0;
   width: 100%;
 }
+nav .navbar-collapse {
+  flex-grow: initial;
+}
 
 .nav-item {
   margin: 0 10px;
   font-size: 14px;
+}
+.nav-item .account-links {
+  color: rgba(0, 0, 0, 0.5);
+  display: block;
+  padding: 0.5rem 0;
+}
+.nav-item .account-links .account {
+  padding-left: 20px;
+}
+.nav-item .account-links a {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+.nav-item .account-links a:hover {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .dropdown-menu {
@@ -181,13 +199,21 @@ main {
 
 /* 1-6 FOOTER */
 footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 200px;
-  width: 100%;
   background-color: #333;
   color: #fff;
+}
+footer p {
+  color: #fff;
+}
+footer li {
+  list-style: none;
+}
+footer li a {
+  color: #fff;
+  text-decoration: none;
+}
+footer li a:hover {
+  color: #f7f7f7;
 }
 
 /* II - PAGES DU SITE */
@@ -214,6 +240,7 @@ footer {
 }
 .bandeau-home h2 {
   position: absolute;
+  width: 100%;
   top: 60%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -322,11 +349,11 @@ section {
 }
 
 /* SECTION C'EST QUOI LE PRINCIPE */
-#principe h2 {
+#dev h2 {
   margin-top: 20px;
 }
 
-#principe h3 {
+#dev h3 {
   margin-bottom: 20px;
 }
 
@@ -335,7 +362,7 @@ section {
   margin-bottom: 40px;
 }
 
-.container-principe {
+.container-dev {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -344,8 +371,7 @@ section {
   -ms-flex-direction: column;
   flex-direction: column;
 }
-
-.container-principe .btn-fiche {
+.container-dev .btn-fiche {
   margin: 0 auto 20px;
 }
 
@@ -355,8 +381,7 @@ section {
 }
 
 .wave-gris {
-  background: url(../img/wave-gris-3.png);
-  background-position: center;
+  background: url(../img/wave-gris-3.png) center;
   background-size: cover;
   width: 100%;
   height: 30px;
@@ -413,6 +438,7 @@ section {
   font-size: 1em;
   font-weight: 700;
   line-height: 1.2;
+  margin-top: 0.5rem;
 }
 .metier span {
   font-size: 0.8em;
@@ -522,6 +548,9 @@ section {
 }
 #registration-form-container .registration-form label > label {
   margin: 0;
+}
+#registration-form-container .registration-form #registration_resume {
+  height: 100px;
 }
 #registration-form-container .registration-form #registration_recherchePoste {
   position: relative;

@@ -65,17 +65,12 @@
                 <div class="row all-members m-0 p-2 justify-content-around">
                     {% for user in users %}
                         <article class="member m-1">
-                            <p class="name">{{ random(['L\'incroyable', 'L\'inimitable', 'L\'indomptable', 'L\'invincible', 'L\'irréductible',
-                                    'L\'intraitable', 'L\'irrésistible', 'L\'inégalable', 'L\'incomparable', 'L\'indestructible', 'L\'incollable',
-                                    'L\'incontournable', 'L\'incorrigible', 'L\'indispensable', 'L\'inébranlable', 'L\'inestimable', 'L\'infaillible',
-                                    'L\'inflexible', 'L\'immuable', 'L\'insatiable', 'L\'inévitable', 'L\'implacable', 'L\'incorruptible', 'L\'impassible',
-                                    'L\'imbattable', 'L\'inoubliable', 'L\'infatigable', 'L\'indémodable', 'L\'inclassable', 'L\'inépuisable', 'L\'impitoyable',
-                                    'L\'indétrônable', 'L\'indéfectible', 'L\'irréprochable', 'L\'insoupçonnable']) }}<br>
-                                <span>{{ user.prenom }} {{ user.nom }}</span></p>
+                            <p class="name">{% include 'common/_random_adjectives.html.twig' %}<br>
+                                <span>{{ user.firstName }} {{ user.lastName }}</span></p>
                             <img src="{{ asset('assets/img/avatar/avatar1.png') }}" alt="Avatar 1">
-                            <p class="metier">{{ user.specialite }}<br>
+                            <p class="metier">{{ user.speciality }}<br>
                                 <span>{{ user.experience }} d'expérience</span><br>
-                                <span>{{ user.ville }}</span></p>
+                                <span>{{ user.city }}</span></p>
                             <a href="{{ path('member',{'id': user.id}) }}" class="btn-fiche" role="button">Voir son profil</a>
                         </article>
                     {% endfor %}

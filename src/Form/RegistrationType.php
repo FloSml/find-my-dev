@@ -29,24 +29,27 @@ class RegistrationType extends AbstractType
             ->add('confirm_password', PasswordType::class, [
                 'label' => "Confirmation du mot de passe*",
             ])
-            ->add('nom', TextType::class, [
+            ->add('lastName', TextType::class, [
                 'label' => "Nom*",
             ])
-            ->add('prenom', TextType::class, [
+            ->add('firstName', TextType::class, [
                 'label' => "Prénom*",
             ])
-            ->add('telephone', TextType::class, [
+            ->add('phone', TextType::class, [
                 'label' => "Téléphone",
                 'required' => false
             ])
-            ->add('ville', TextType::class, [
+            ->add('city', TextType::class, [
                 'label' => "Ville*",
             ])
-            ->add('specialite', TextType::class, [
+            ->add('postalCode', TextType::class, [
+                'label' => "Code postal*",
+            ])
+            ->add('speciality', TextType::class, [
                 'label' => "Profession*",
             ])
-            ->add('recherchePoste', CheckboxType::class, [
-                'label' => "Recherche un job ?",
+            ->add('lookingForJob', CheckboxType::class, [
+                'label' => "Vous recherchez un job ?",
                 'required' => false
             ])
             ->add('resume', TextareaType::class, [
@@ -57,7 +60,7 @@ class RegistrationType extends AbstractType
                 'label' => "Importez votre photo",
                 'required' => false
             ])
-            ->add('enPoste', TextType::class, [
+            ->add('currentJob', TextType::class, [
                 'label' => "Société",
                 'required' => false
             ])

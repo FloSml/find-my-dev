@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="author" content="Florian Soumaille">
-        <meta name="description" content="Pimp My Dev est une plateforme qui permet aux développeurs junior de monter en compétence.">
+        <meta name="description" content="Find My Dev est une plateforme qui permet aux développeurs junior de monter en compétence.">
         <meta name="keywords" content="développeur, dev, compétence">
 
-        <title>Pimp My Dev | La montée en compétence des développeurs</title>
+        <title>Find My Dev | Trouvez le développeur qui vous ressemble</title>
 
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
@@ -22,39 +22,37 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="logo" href="{{ path('index') }}">
-                    <img src="{{ asset('assets/img/loupe.png') }}" alt="Pimp My Dev">Pimp My Dev
+                    <img src="{{ asset('assets/img/loupe.png') }}" alt="Find My Dev">Find My Dev
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {% if current_menu is defined and current_menu == 'index' %}active{% endif %}" href="{{ path('index') }}">Accueil</a>
+                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">Infos</a>
+                            <a class="nav-link {% if current_menu is defined and current_menu == 'users' %}active{% endif %} dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">Infos</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">A propos</a>
                                 <a class="dropdown-item" href="#">FAQ</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('members') }}">Les membres</a>
+                            <a class="nav-link {% if current_menu is defined and current_menu == 'members' %}active{% endif %}" href="{{ path('members') }}">Les membres</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Mon compte</a>
+                            <a class="nav-link {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}" href="{{ path('contact') }}">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('contact') }}">Contact</a>
-                        </li>
-
                         {% if not app.user %}
                             <li class="nav-item">
                                 <a href="{{ path('security_login') }}" class="nav-link"><i class="fas fa-lock"></i> Connexion</a>
                             </li>
                         {% endif %}
-
                         {% if app.user %}
-                            <li class="nav-item">
-                                <p class="nav-link p-0 m-0">Bonjour {{ app.user.prenom }} <a href="{{ path('security_logout') }}" class="nav-link d-inline-block" id="open-connexion"><i class="fas fa-lock"></i> Me déconnecter</a></p>
+                            <li class="nav-item ">
+                                <span class="account-links">Bonjour {{ app.user.firstName }} ! <a class="account {% if current_menu is defined and current_menu == 'account' %}active{% endif %}" href="{{ app.user.id }}">Mon compte</a> | <a href="{{ path('security_logout') }}" class="d-inline-block" id="open-connexion"><i class="fas fa-lock"></i> Me déconnecter</a></span>
                             </li>
                         {% endif %}
                     </ul>
@@ -80,6 +78,62 @@
         -->
 
         {% block content %}{% endblock %}
+
+        <footer class="container-fluid">
+            <div class="row py-4">
+                <div class="col-12 col-sm-4 d-flex align-items-center flex-column">
+                    <p>nav</p>
+                    <ul>
+                        <li>
+                          <a href="{{ path('index') }}">Accueil</a>
+                        </li>
+                        <li>
+                          <a href="{{ path('members') }}">Les membres</a>
+                        </li>
+                        <li>
+                          <a href="{{ path('contact') }}">Contact</a>
+                        </li>
+                        <li>
+                          <a href="#">Mentions légales</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-4 d-flex align-items-center flex-column">
+                    <p>nav</p>
+                    <ul>
+                        <li>
+                            <a href="{{ path('index') }}">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('members') }}">Les membres</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contact') }}">Contact</a>
+                        </li>
+                        <li>
+                            <a href="#">Mentions légales</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-4 d-flex align-items-center flex-column">
+                    <p>nav</p>
+                    <ul>
+                        <li>
+                            <a href="{{ path('index') }}">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('members') }}">Les membres</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contact') }}">Contact</a>
+                        </li>
+                        <li>
+                            <a href="#">Mentions légales</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
 
         <!-- Bootstrap -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
