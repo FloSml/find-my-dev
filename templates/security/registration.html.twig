@@ -23,19 +23,23 @@
             </div>
 
             <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.prenom, {'attr':
+                <div class="col-12 col-sm-8 col-md-4">
+                    {{ form_row(form.firstName, {'attr':
                         {'placeholder': 'Votre prénom...'}}) }}
                 </div>
-                <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.nom, {'attr':
+                <div class="col-12 col-sm-8 col-md-4">
+                    {{ form_row(form.lastName, {'attr':
                         {'placeholder': 'Votre nom...'}}) }}
+                </div>
+                <div class="col-12 col-sm-8 col-md-4">
+                    {{ form_row(form.email, {'attr':
+                        {'placeholder': 'Votre email...'}}) }}
                 </div>
             </div>
             <div class="row align-items-center justify-content-center">
                 <div class="col-12 col-sm-8">
-            {{ form_row(form.email, {'attr':
-                {'placeholder': 'Votre email...'}}) }}
+                    {{ form_row(form.email, {'attr':
+                        {'placeholder': 'Votre email...'}}) }}
                 </div>
             </div>
             <div class="row align-items-center justify-content-center">
@@ -49,22 +53,26 @@
                 </div>
             </div>
             <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.telephone, {'attr':
+                <div class="col-12 col-sm-8 col-md-4">
+                    {{ form_row(form.phone, {'attr':
                         {'placeholder': 'Votre téléphone...'}}) }}
                 </div>
-                <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.ville, {'attr':
+                <div class="col-12 col-sm-8 col-md-4">
+                    {{ form_row(form.city, {'attr':
                         {'placeholder': 'Votre ville...'}}) }}
+                </div>
+                <div class="col-12 col-sm-8 col-md-4">
+                    {{ form_row(form.postalCode, {'attr':
+                        {'placeholder': 'Votre code postal...'}}) }}
                 </div>
             </div>
             <div class="row align-items-center justify-content-center">
                 <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.specialite, {'attr':
+                    {{ form_row(form.speciality, {'attr':
                         {'placeholder': 'Votre profession...'}}) }}
                 </div>
                 <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.enPoste, {'attr':
+                    {{ form_row(form.currentJob, {'attr':
                         {'placeholder': 'Société, freelance, ...'}}) }}
                 </div>
             </div>
@@ -82,7 +90,7 @@
                     {{ form_row(form.experience) }}
                 </div>
                 <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(form.recherchePoste) }}
+                    {{ form_row(form.lookingForJob) }}
                 </div>
             </div>
             {{ form_row(form.valider, {'attr':

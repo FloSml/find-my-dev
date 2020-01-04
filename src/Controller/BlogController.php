@@ -11,12 +11,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ * Class BlogController
+ * @package App\Controller
  * @Route("/blog")
  */
+// On étend la classe AbstractController pour bénéficier des méthodes et propriétés
+// de cette classe dans notre contrôleur
 class BlogController extends AbstractController
 {
     /**
      * @Route("/blog", name="blog", methods={"GET"})
+     * @param BlogRepository $blogRepository
+     * @return Response
      */
     public function index(BlogRepository $blogRepository): Response
     {
@@ -27,6 +33,8 @@ class BlogController extends AbstractController
 
     /**
      * @Route("/new", name="blog_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +58,8 @@ class BlogController extends AbstractController
 
     /**
      * @Route("/{id}", name="blog_show", methods={"GET"})
+     * @param Blog $blog
+     * @return Response
      */
     public function show(Blog $blog): Response
     {
@@ -60,6 +70,9 @@ class BlogController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="blog_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Blog $blog
+     * @return Response
      */
     public function edit(Request $request, Blog $blog): Response
     {
@@ -80,6 +93,9 @@ class BlogController extends AbstractController
 
     /**
      * @Route("/{id}", name="blog_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Blog $blog
+     * @return Response
      */
     public function delete(Request $request, Blog $blog): Response
     {

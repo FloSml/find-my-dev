@@ -45,6 +45,7 @@
                         <li class="nav-item">
                             <a class="nav-link {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}" href="{{ path('contact') }}">Contact</a>
                         </li>
+                        {# En Twig l'objet User est disponible via la variable app.user grâce à la variable globale Twig #}
                         {% if not app.user %}
                             <li class="nav-item">
                                 <a href="{{ path('security_login') }}" class="nav-link"><i class="fas fa-lock"></i> Connexion</a>

@@ -10,6 +10,9 @@
             <h1 class="text-center">Les membres de<br>Pimp My Dev</h1>
         </div>
         <div class="wave wave-title"></div>
+        <div class="breadcrumb">
+            <a class="breadcrumb-link" href="{{ path('index') }}">Accueil</a> > <p class="breadcrumb-link {% if current_menu is defined and current_menu == 'members' %}active{% endif %}">Les membres</p>
+        </div>
 
         <!-- ALL MEMBERS SECTION -->
 
@@ -62,7 +65,7 @@
                 {% endif %}
             </div>
             <div class="container-fluid">
-                <div class="row all-members m-0 p-2 justify-content-around">
+                <div class="row all-members m-0 p-2 justify-content-center">
                     {% for user in users %}
                         <article class="member m-1">
                             <p class="name">{% include 'common/_random_adjectives.html.twig' %}<br>
@@ -74,10 +77,6 @@
                             <a href="{{ path('member',{'id': user.id}) }}" class="btn-fiche" role="button">Voir son profil</a>
                         </article>
                     {% endfor %}
-                </div>
-                <div class="row btn-members">
-                    <img src="{{ asset('assets/img/avatar/avatar6.png') }}" alt="Avatar 5">
-                    <a href="#" class="btn-fiche" role="button">Charger plus</a>
                 </div>
             </div>
         </section>

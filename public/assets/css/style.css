@@ -148,6 +148,22 @@ main {
   position: relative;
 }
 
+.breadcrumb {
+  background: #fff;
+  padding: 2rem 2rem 0;
+  margin: 0;
+  border-radius: 0;
+  font-size: 14px;
+}
+.breadcrumb .breadcrumb-link {
+  color: #555;
+  display: block;
+  padding: 0 10px;
+}
+.breadcrumb .active {
+  color: #000;
+}
+
 /* 1-5 COOKIES */
 #cookies {
   color: #333;
@@ -255,20 +271,20 @@ footer li a:hover {
 .wave {
   position: absolute;
   width: 100%;
-  height: 60px;
+  height: 30px;
   bottom: -1px;
   left: 0;
-  background: url(../img/wavy2.png);
+  background: url(../img/wavy3.png);
   animation: wavy 45s linear infinite;
 }
 .wave::before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 60px;
+  height: 30px;
   bottom: -1px;
   left: 0;
-  background: url(../img/wavy2.png);
+  background: url(../img/wavy3.png);
   opacity: 0.4;
   animation: wavy-reverse 30s linear infinite;
 }
@@ -473,7 +489,7 @@ section {
 }
 
 .btn-members {
-  margin-top: 40px;
+  margin-top: 10px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -565,17 +581,18 @@ section {
 
 /* 2-3 PAGE MEMBRES */
 .search-length {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.2;
 }
 .search-length span {
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-weight: bold;
   color: #5a398e;
 }
 
 .search-bar {
-  margin: 10px 0 20px;
-  padding: 20px 0;
+  margin: 0 0 20px;
+  padding: 0 0 20px;
 }
 .search-bar .row {
   padding: 5px 0;

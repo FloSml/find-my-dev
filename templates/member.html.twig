@@ -11,6 +11,9 @@
                 {{ user.firstName }} {{ user.lastName }}</h1>
         </div>
         <div class="wave wave-title"></div>
+        <div class="breadcrumb">
+            <a class="breadcrumb-link" href="{{ path('index') }}">Accueil</a> > <a class="breadcrumb-link" href="{{ path('members') }}">Les membres</a> > <p class="breadcrumb-link {% if current_menu is defined and current_menu == 'member' %}active{% endif %}">{{ user.firstName }} {{ user.lastName }}</p>
+        </div>
 
         <!-- MEMBER SECTION -->
 

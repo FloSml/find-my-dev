@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+// On étend la classe AbstractController pour bénéficier des méthodes et propriétés
+// de cette classe dans notre contrôleur
 class UserController extends AbstractController
 {
     /**
@@ -115,7 +117,7 @@ class UserController extends AbstractController
      * @param $id
      * @return Response
      */
-    public function memberUpdate(UserRepository $userRepository, $id)
+    public function memberUpdate(UserRepository $userRepository, $id): Response
     {
         $user = $userRepository->find($id);
 
@@ -135,6 +137,7 @@ class UserController extends AbstractController
         $user = $userRepository->find($id);
 
         return $this->render('member.html.twig', [
+            'current_menu' => 'member',
             'user' => $user,
         ]);
     }
