@@ -359,4 +359,5 @@ class User implements UserInterface
     {
         $this->article = $article;
     }
+
 }

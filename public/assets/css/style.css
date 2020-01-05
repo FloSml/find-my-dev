@@ -730,7 +730,10 @@ section {
 }
 
 .admin-container h2 {
-  margin-top: 30px;
+  margin-top: 40px;
+}
+.admin-container .table th {
+  border-top: 0;
 }
 .admin-container tbody tr:nth-of-type(odd) {
   background: #f9f9f9;
@@ -753,6 +756,37 @@ section {
 .alert-success p {
   margin: 0;
   padding: 10px 0;
+}
+
+.tip {
+  position: relative;
+}
+.tip span {
+  display: none;
+}
+.tip:hover span {
+  padding: 5px;
+  display: block;
+  z-index: 100;
+  background: #5a398e;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  right: -16px;
+  margin: 10px;
+  width: 90px;
+  position: absolute;
+  top: -55px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+.tip:hover span::after {
+  content: url(../img/fleche_violette.png);
+  width: 16px;
+  height: 13px;
+  position: absolute;
+  right: 12px;
+  top: 29px;
 }
 
 /* III - ANIMATIONS */

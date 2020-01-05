@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<main id="member">
+
+    <!-- TITLE SECTION -->
+
+    <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative text-center">
+        <h1>Find My Dev<br>Le blog</h1>
+    </div>
+    <div class="wave wave-title"></div>
+    <div class="breadcrumb">
+        <a class="breadcrumb-link" href="{{ path('index') }}">Accueil</a> > <p class="breadcrumb-link {% if current_menu is defined and current_menu == 'blog' %}active{% endif %}">Blog</p>
+    </div>
+
+    <!-- ARTICLES SECTION -->
+
+    <section class="container-fluid">
+        <div class="row my-5">
+        {% for article in articles %}
+            <article class="col-12 col-md-6 d-flex align-items-center justify-content-center flex-column">
+                <h2 class="m-0">{{ article.title }}</h2>
+                <p class="blog_author">{{ article.author }}</p>
+                <p class="blog_description">{{ article.description|raw }}</p>
+                <div class="btn-container d-flex justify-content-center align-items-center">
+                    <a class="btn-fiche" href="{{ path('article_show', {'id': article.id}) }}">Voir l'article</a>
+                </div>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="btn-container d-flex justify-content-center align-items-center">
+                        <a href="{{ path('admin_article_update', {'id': article.id}) }}" class="btn-admin-pannel"><i class="fas fa-edit"></i></a>
+                        <a href="{{ path('admin_article_delete', {'id': article.id}) }}" class="btn-admin-pannel btn-delete"><i class="fas fa-times"></i></a>
+                    </div>
+                {% endif %}
+            </article>
+        {% endfor %}
+        </div>
+    </section>
+
+</main>
+{% endblock %}

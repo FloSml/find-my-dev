@@ -10,6 +10,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Article
 {
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
+
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -21,6 +28,11 @@ class Article
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $shortDescription;
 
     /**
      * @ORM\Column(type="text")
@@ -73,6 +85,18 @@ class Article
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getShortDescription(): ?string
+    {
+        return $this->shortDescription;
+    }
+
+    public function setShortDescription(string $shortDescription): self
+    {
+        $this->shortDescription = $shortDescription;
 
         return $this;
     }

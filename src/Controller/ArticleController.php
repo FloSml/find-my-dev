@@ -22,7 +22,8 @@ class ArticleController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository): Response
     {
-        return $this->render('blog/admin_blog_index.html.twig', [
+        return $this->render('blog/blog.html.twig', [
+            'current_menu' => 'blog',
             'articles' => $articleRepository->findAll(),
         ]);
     }
@@ -34,7 +35,8 @@ class ArticleController extends AbstractController
      */
     public function show(Article $article): Response
     {
-        return $this->render('article_show.html.twig', [
+        return $this->render('blog/article_show.html.twig', [
+            'current_menu' => 'article',
             'article' => $article,
         ]);
     }
@@ -91,12 +93,14 @@ class ArticleController extends AbstractController
      * @param ArticleRepository $articleRepository
      * @param Request $request
      * @param EntityManagerInterface $entityManager
+     * @param UserRepository $userRepository
      * @param $id
      * @return Response
      */
-    public function articleUpdate(ArticleRepository $articleRepository, Request $request, EntityManagerInterface $entityManager, $id)
+    public function articleUpdate(ArticleRepository $articleRepository, Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository, $id)
     {
         $article = $articleRepository->find($id);
+
         $message= "";
 
         // permet de générer un livre avec toutes ses infos préenregistrées

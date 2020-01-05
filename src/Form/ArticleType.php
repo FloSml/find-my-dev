@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Article;
 use App\Entity\User;
+use App\Repository\UserRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -26,12 +27,8 @@ class ArticleType extends AbstractType
             ->add('description', CKEditorType::class, [
                 'label' => "Contenu de l'article"
             ])
-            ->add('createdAt', DateTimeType::class, [
-                'data' => new \DateTime(),
-                'label' => "Date de création"
-            ])
             ->add('user', EntityType::class, [
-                // je sélectionne l'entité User car ma relation fait référence aux utilisateurs
+                // je sélectionne l'entité User car ma relation fait référence aux membres
                 'class' => User::class,
                 'choice_label' => function(User $user){
                     return $user->getFirstname().' '.$user->getLastName();
@@ -44,7 +41,11 @@ class ArticleType extends AbstractType
                 'required' => false,
                 'label' => "Catégories"
             ])
-            ->add('valider', SubmitType::class)
+            ->add('valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn-fiche'
+                ]
+            ])
         ;
     }
 

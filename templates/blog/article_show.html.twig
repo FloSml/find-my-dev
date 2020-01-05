@@ -1,34 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Blog{% endblock %}
+{% block content %}
+<main id="member">
 
-{% block body %}
-    <h1>Blog</h1>
+    <!-- TITLE SECTION -->
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ blog.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ blog.Titre }}</td>
-            </tr>
-            <tr>
-                <th>Auteur</th>
-                <td>{{ blog.Auteur }}</td>
-            </tr>
-            <tr>
-                <th>DateAjout</th>
-                <td>{{ blog.DateAjout ? blog.DateAjout|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative text-center">
+        <h1>{{ article.title }}</h1>
+    </div>
+    <div class="wave wave-title"></div>
+    <div class="breadcrumb">
+        <a class="breadcrumb-link" href="{{ path('index') }}">Accueil</a> > <a class="breadcrumb-link" href="{{ path('blog') }}">Blog</a> > <p class="breadcrumb-link {% if current_menu is defined and current_menu == 'article' %}active{% endif %}">{{ article.title }}</p>
+    </div>
 
-    <a href="{{ path('blog_index') }}">back to list</a>
+    <h1>Titre</h1>
 
-    <a href="{{ path('blog_edit', {'id': blog.id}) }}">edit</a>
 
-    {{ include('blog/_delete_form.html.twig') }}
+    <a href="{{ path('blog') }}">back to list</a>
+
+    <a href="{{ path('admin_article_update', {'id': article.id}) }}">edit</a>
+
+</main>
 {% endblock %}
