@@ -74,7 +74,7 @@
                             <th>Id</th>
                             <th>Titre</th>
                             <th class="mobile-hidden">Auteur</th>
-                            <th>Description</th>
+                            <th>Résumé</th>
                             <th class="mobile-hidden">Date d'ajout</th>
                             <th>Actions</th>
                         </tr>
@@ -85,7 +85,7 @@
                                 <td>{{ article.id }}</td>
                                 <td>{{ article.title }}</td>
                                 <td class="mobile-hidden">{{ article.user.firstName }} {{ article.user.lastName }}</td>
-                                <td>{{ article.description|slice(0, 30) }} [...]</td>
+                                <td>{{ article.shortDescription|slice(0, 30) }} [...]</td>
                                 <td class="mobile-hidden">{{ article.createdAt|date('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ path('article_show', {'id': article.id}) }}" class="btn-admin-pannel tip"><i class="far fa-eye"></i><span>Voir</span></a>

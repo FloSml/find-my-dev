@@ -24,6 +24,9 @@ class ArticleType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => "Titre de l'article"
             ])
+            ->add('shortDescription', TextType::class, [
+                'label' => "Résumé de l'article"
+            ])
             ->add('description', CKEditorType::class, [
                 'label' => "Contenu de l'article"
             ])
