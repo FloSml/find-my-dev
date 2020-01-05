@@ -47,9 +47,12 @@ easy_admin:
             new:
               title: "Ajouter un membre"
 
-        Blog:
-            class: App\Entity\Blog
+        Article:
+            class: App\Entity\Article
             label: 'Articles'
+            form:
+              fields:
+                - { property: 'description', type: 'fos_ckeditor' }
 
 
     site_name: 'PIMP MY ADMIN'

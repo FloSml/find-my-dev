@@ -43,6 +43,13 @@
             max-width: 47%;
         }
     }
+    .aside-admin{
+        display: none;
+    }
+    .admin-container{
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
 }
 
 @media (max-width: 768px){
@@ -78,6 +85,9 @@
         background: url(../img/visuel-team-home-sm.jpg) no-repeat bottom center;
     }
     #members .member:nth-child(3){
+        display: none;
+    }
+    .mobile-hidden{
         display: none;
     }
 }

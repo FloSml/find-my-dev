@@ -16,9 +16,11 @@ I - STRUCTURE SITE
 II - PAGES SITE
   2-1 HOME
   2-2 CONNEXION
-  2-3 MEMBRES
-  2-4 MEMBRE
-  2-5 CONTACT
+  2-3 INSCRIPTION
+  2-4 MEMBRES
+  2-5 MEMBRE
+  2-6 CONTACT
+  2-7 ADMIN
 
 III - ANIMATIONS
 
@@ -78,6 +80,9 @@ nav .navbar-collapse {
 .nav-item {
   margin: 0 10px;
   font-size: 14px;
+}
+.nav-item .active {
+  color: #000;
 }
 .nav-item .account-links {
   color: rgba(0, 0, 0, 0.5);
@@ -579,7 +584,7 @@ section {
   margin-top: 20px;
 }
 
-/* 2-3 PAGE MEMBRES */
+/* 2-4 PAGE MEMBRES */
 .search-length {
   font-size: 1.2rem;
   line-height: 1.2;
@@ -622,7 +627,7 @@ section {
   width: 100%;
 }
 
-/* 2-4 PAGE MEMBRE */
+/* 2-5 PAGE MEMBRE */
 #member h1 span {
   font-size: 0.5em;
 }
@@ -673,7 +678,7 @@ section {
   width: 90%;
 }
 
-/* 2-5 PAGE CONTACT */
+/* 2-6 PAGE CONTACT */
 .bandeau-contact {
   background: url(../img/team-header-home.jpg) no-repeat bottom center;
 }
@@ -684,6 +689,70 @@ section {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+/* 2-7 PAGE ADMIN */
+.aside-admin {
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.aside-admin h3 {
+  margin: 30px 0 0;
+  font-size: 1.5rem;
+}
+.aside-admin .line {
+  width: 80%;
+  padding: 20px 0 0;
+  margin-bottom: 20px;
+  border-bottom: solid 1px #999;
+}
+.aside-admin h4 {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #5a398e;
+}
+
+.btn-admin-aside {
+  font-size: 14px;
+}
+
+.btn-admin-pannel {
+  font-size: 18px;
+  padding: 0 3px;
+  color: #5a398e;
+}
+
+.btn-delete {
+  color: #c20808;
+}
+
+.admin-container h2 {
+  margin-top: 30px;
+}
+.admin-container tbody tr:nth-of-type(odd) {
+  background: #f9f9f9;
+}
+
+.alert {
+  border-radius: 0;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.alert-success {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1b8d36;
+  border-color: #1b8d36;
+}
+.alert-success p {
+  margin: 0;
+  padding: 10px 0;
 }
 
 /* III - ANIMATIONS */

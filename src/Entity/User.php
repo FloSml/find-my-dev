@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -111,6 +112,16 @@ class User implements UserInterface
      * @ORM\Column(type="text", nullable=true)
      */
     private $resume;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="user")
+     */
+    private $article;
+
+    public function __construct()
+    {
+        $this->article = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -334,5 +345,18 @@ class User implements UserInterface
         $this->resume = $resume;
 
         return $this;
+    }
+
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param ArrayCollection $article
+     */
+    public function setArticle(ArrayCollection $article): void
+    {
+        $this->article = $article;
     }
 }

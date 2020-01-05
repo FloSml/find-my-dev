@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <main>
+
+        <!-- TITLE SECTION -->
+
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative">
+            <h1>Panneau d'administration</h1>
+        </div>
+
+        <div class="container-fluid d-flex p-0">
+            <div class="row w-100 m-0">
+                <aside class="aside-admin col-12 col-md-2">
+                    <h3>Navigation</h3>
+                    <div class="line"></div>
+                    <h4>Membres</h4>
+                        <a href="#" class="btn-fiche btn-admin-aside">Voir tous les membres</a>
+                        <a href="#" class="btn-fiche btn-admin-aside">Ajouter un membre</a>
+                    <h4>Articles</h4>
+                        <a href="#" class="btn-fiche btn-admin-aside">Voir tous les articles</a>
+                        <a href="{{ path('admin_article_new') }}" class="btn-fiche btn-admin-aside">Ajouter un article</a>
+                </aside>
+
+                <div class="admin-container col-12 col-md-10">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            <p>{{ message }}</p>
+                        </div>
+                    {% endfor %}
+                    <h2>Gestion des membres</h2>
+                    <table class="table table-users">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th class="mobile-hidden">Spécialité</th>
+                            <th class="mobile-hidden">Expérience</th>
+                            <th class="mobile-hidden">Cherche job</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.firstName }}</td>
+                                <td>{{ user.lastName }}</td>
+                                <td class="mobile-hidden">{{ user.speciality }}</td>
+                                <td class="mobile-hidden">{{ user.experience }}</td>
+                                <td class="mobile-hidden">
+                                    {% if user.lookingForJob == 'true' %}
+                                        <i class="fas fa-check btn-admin-pannel"></i>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ path('member', {'id': user.id}) }}" class="btn-admin-pannel" title="Voir le membre"><i class="far fa-eye"></i></a>
+                                    <a href="#" class="btn-admin-pannel" title="Modifier le membre"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn-admin-pannel btn-delete" title="Supprimer le membre"><i class="fas fa-times"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="admin-btn-container d-flex justify-content-center">
+                        <a href="#" class="btn-fiche btn-admin-aside">Ajouter un membre</a>
+                    </div>
+                    <h2>Gestion des articles</h2>
+                    <table class="table table-articles">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Titre</th>
+                            <th class="mobile-hidden">Auteur</th>
+                            <th>Description</th>
+                            <th class="mobile-hidden">Date d'ajout</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for article in articles %}
+                            <tr>
+                                <td>{{ article.id }}</td>
+                                <td>{{ article.title }}</td>
+                                <td class="mobile-hidden">{{ article.user.firstName }} {{ article.user.lastName }}</td>
+                                <td>{{ article.description|slice(0, 30) }} [...]</td>
+                                <td class="mobile-hidden">{{ article.createdAt|date('d-m-Y H:m:s') }}</td>
+                                <td>
+                                    <a href="{{ path('article_show', {'id': article.id}) }}" class="btn-admin-pannel"><i class="far fa-eye"></i></a>
+                                    <a href="{{ path('admin_article_update', {'id': article.id}) }}" class="btn-admin-pannel"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ path('admin_article_delete', {'id': article.id}) }}" class="btn-admin-pannel btn-delete"><i class="fas fa-times"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="admin-btn-container d-flex justify-content-center mb-3">
+                        <a href="{{ path('admin_article_new') }}" class="btn-fiche btn-admin-aside">Ajouter un article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+{% endblock %}

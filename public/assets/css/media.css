@@ -44,6 +44,15 @@
     flex: 0 0 47%;
     max-width: 47%;
   }
+
+  .aside-admin {
+    display: none;
+  }
+
+  .admin-container {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
 }
 @media (max-width: 768px) {
   #title-home h2 {
@@ -80,6 +89,10 @@
   }
 
   #members .member:nth-child(3) {
+    display: none;
+  }
+
+  .mobile-hidden {
     display: none;
   }
 }
