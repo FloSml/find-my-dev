@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -14,6 +16,7 @@ class Article
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime());
+        $this->tags = new ArrayCollection();
     }
 
 
@@ -50,15 +53,15 @@ class Article
     private $author;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $slug;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="article")
      * @Assert\NotNull(message="Choisissez un auteur.")
      */
     private $user;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="properties")
+     */
+    private $tags;
 
     public function getId(): ?int
     {
@@ -125,18 +128,6 @@ class Article
         return $this;
     }
 
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(?string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
     /**
      * @return mixed
      */
@@ -151,5 +142,33 @@ class Article
     public function setUser($user): void
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+            $tag->addProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+            $tag->removeProperty($this);
+        }
+
+        return $this;
     }
 }

@@ -81,7 +81,7 @@ h3{
     pointer-events: none;
 }
 
-nav{
+.top-nav{
     z-index: 999;
     position: fixed !important;
     top: 0;
@@ -648,6 +648,7 @@ section{
 .search-length{
     font-size: 1.2rem;
     line-height: 1.2;
+
     span{
         font-size: 1.5em;
         font-weight: bold;
@@ -692,6 +693,48 @@ section{
     justify-content: space-around;
     flex-wrap: initial;
     width: 100%;
+}
+
+.pagination{
+
+    .active{
+
+        .page-link{
+            color: #fff !important;
+        }
+    }
+
+    .page-item{
+        margin: 0 5px;
+
+        &:first-of-type, &:last-of-type{
+
+            .page-link{
+                border: none;
+                border-radius: 3px;
+            }
+        }
+
+        .page-link{
+            color: #5a398e;
+            border: solid 1px #dee2e6;
+            border-radius: 3px;
+
+            &:hover, &:active {
+                color: #fff;
+                text-decoration: none;
+                background-color: #5a398e;
+                border-color: #5a398e;
+            }
+        }
+    }
+    .page-item.active{
+
+        .page-link{
+            background-color: #5a398e;
+            border-color: #5a398e;
+        }
+    }
 }
 
     /* 2-5 PAGE MEMBRE */

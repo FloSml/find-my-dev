@@ -26,4 +26,9 @@ class ContactType extends AbstractType
             'data_class' => Contact::class,
         ]);
     }
+
+    public function getBlockPrefix()
+    {
+        return '';
+    }
 }

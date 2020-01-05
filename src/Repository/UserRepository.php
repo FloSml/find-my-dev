@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -68,14 +70,28 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      * @param string $search
      * @return array
      */
-    public function findMember($search = '')
+    public function findMember($search = ''): Query
     {
         return $this->createQueryBuilder('u')
-            ->Where('u.city LIKE :search OR u.speciality LIKE :search OR u.resume LIKE :search')
-            ->setParameter('search', '%'.$search.'%')
+            ->Where('u.city LIKE :city')
+            ->setParameter('city', '%'.$search.'%')
+            ->orWhere('u.speciality LIKE :speciality')
+            ->setParameter('speciality', '%'.$search.'%')
+            ->orWhere('u.resume LIKE :resume')
+            ->setParameter('resume', '%'.$search.'%')
             ->getQuery()
-            ->getResult()
             ;
+    }
+
+    public function findAllMembersQuery(): Query
+    {
+        return $this->findAllMembers()
+            ->getQuery();
+    }
+
+    private function findAllMembers(): QueryBuilder
+    {
+        return $this->createQueryBuilder('a');
     }
 
 }

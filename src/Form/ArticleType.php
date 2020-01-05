@@ -40,7 +40,7 @@ class ArticleType extends AbstractType
                 'placeholder' => 'Choisissez un auteur',
                 'required' => false
             ])
-            ->add('slug', ChoiceType::class, [
+            ->add('tags', EntityType::class, [
                 'required' => false,
                 'label' => "Catégories"
             ])
@@ -57,5 +57,10 @@ class ArticleType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Article::class,
         ]);
+    }
+
+    public function getBlockPrefix()
+    {
+        return '';
     }
 }

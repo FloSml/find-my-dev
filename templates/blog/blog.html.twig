@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '../base.html.twig' %}
 
 {% block content %}
 <main id="member">
@@ -15,26 +15,37 @@
 
     <!-- ARTICLES SECTION -->
 
-    <section class="container-fluid">
-        <div class="row my-5">
-        {% for article in articles %}
-            <article class="col-12 col-md-6 d-flex align-items-center justify-content-center flex-column">
-                <h2 class="m-0">{{ article.title }}</h2>
-                <p class="blog_author">{{ article.author }}</p>
-                <p class="blog_description">{{ article.shortDescription|slice(0, 200) }}</p>
-                <div class="btn-container d-flex justify-content-center align-items-center">
-                    <a class="btn-fiche" href="{{ path('article_show', {'id': article.id}) }}">Voir l'article</a>
-                </div>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <div class="btn-container d-flex justify-content-center align-items-center">
-                        <a href="{{ path('admin_article_update', {'id': article.id}) }}" class="btn-admin-pannel"><i class="fas fa-edit"></i></a>
-                        <a href="{{ path('admin_article_delete', {'id': article.id}) }}" class="btn-admin-pannel btn-delete"><i class="fas fa-times"></i></a>
-                    </div>
-                {% endif %}
-            </article>
-        {% endfor %}
+    <div class="container-fluid d-flex p-0">
+        <div class="row w-100 m-0">
+            <aside class="aside-admin col-12 col-md-2">
+                <h3>Le blog</h3>
+                <div class="line"></div>
+                <h4>Membres</h4>
+                <a href="#" class="btn-fiche btn-admin-aside">Voir tous les membres</a>
+                <a href="#" class="btn-fiche btn-admin-aside">Ajouter un membre</a>
+                <h4>Articles</h4>
+                <a href="#" class="btn-fiche btn-admin-aside">Voir tous les articles</a>
+                <a href="{{ path('admin_article_new') }}" class="btn-fiche btn-admin-aside">Ajouter un article</a>
+            </aside>
+            <section class="row col-12 col-md-10 align-items-start">
+                {% for article in articles | sort | reverse %}
+                    <article class="col-12 col-md-6 d-flex align-items-center justify-content-center flex-column p-4 text-center">
+                        <h2 class="m-0">{{ article.title }}</h2>
+                        <p class="blog_date">Publié le {{ article.createdAt | date('d/m/Y') }}<br>par {{ article.user.firstName }} {{ article.user.lastName }}</p>
+                        <p class="blog_description">{{ article.shortDescription | slice(0, 200) }}</p>
+                        <div class="btn-container d-flex justify-content-center align-items-center">
+                            <a class="btn-fiche" href="{{ path('article_show', {'id': article.id}) }}">Voir l'article</a>
+                        </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="btn-container d-flex justify-content-center align-items-center">
+                                <a href="{{ path('admin_article_update', {'id': article.id}) }}" class="btn-admin-pannel"><i class="fas fa-edit"></i></a>
+                                <a href="{{ path('admin_article_delete', {'id': article.id}) }}" class="btn-admin-pannel btn-delete"><i class="fas fa-times"></i></a>
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            </section>
         </div>
-    </section>
-
+    </div>
 </main>
 {% endblock %}

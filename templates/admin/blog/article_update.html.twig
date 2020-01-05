@@ -4,7 +4,7 @@
 
     <div class="container-fluid" id="article-form-container">
         <div class="row flex-column text-center align-items-center justify-content-center pt-5">
-            <h1 class="mt-4">Créer un article</h1>
+            <h1 class="mt-4">Modifier l'article</h1>
             {{ form_start(articleFormView, {'attr':
                 {'class': 'registration-form p-3'}}) }}
 
@@ -22,8 +22,14 @@
                         {'placeholder': 'Auteur...'}}) }}
                 </div>
                 <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(articleFormView.slug, {'attr':
+                    {{ form_row(articleFormView.tag, {'attr':
                         {'placeholder': 'Catégories...'}}) }}
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12">
+                    {{ form_row(articleFormView.shortDescription, {'attr':
+                        {'placeholder': 'Résumé de l\'article...'}}) }}
                 </div>
             </div>
             <div class="row align-items-center justify-content-center">
@@ -32,10 +38,10 @@
                         {'placeholder': 'Contenu de l\'article...'}}) }}
                 </div>
             </div>
-
             {{ form_end(articleFormView) }}
+            <a href="{{ path('admin') }}" class="btn-fiche mb-4">Retour à l'admin</a>
         </div>
     </div>
 
-    <a href="{{ path('blog') }}">back to list</a>
+
 {% endblock %}

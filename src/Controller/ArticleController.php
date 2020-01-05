@@ -82,7 +82,7 @@ class ArticleController extends AbstractController
 
         // à partir de mon gabarit, je crée la vue de mon formulaire
         $articleFormView = $articleForm->createView();
-        return $this->render('blog/article_new.html.twig', [
+        return $this->render('admin/blog/article_new.html.twig', [
             'articles' => $article,
             'articleFormView' => $articleFormView,
         ]);
@@ -100,10 +100,7 @@ class ArticleController extends AbstractController
     public function articleUpdate(ArticleRepository $articleRepository, Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository, $id)
     {
         $article = $articleRepository->find($id);
-
         $message= "";
-
-        // permet de générer un livre avec toutes ses infos préenregistrées
         $articleForm = $this->createForm(ArticleType::class, $article);
 
         if ($request->isMethod('Post')) {
@@ -117,7 +114,7 @@ class ArticleController extends AbstractController
             return $this->redirectToRoute('admin');
         }
         $articleFormView = $articleForm->createView();
-        return $this->render('blog/article_update.html.twig', [
+        return $this->render('admin/blog/article_update.html.twig', [
             'articleFormView' => $articleFormView,
             'message' => $message,
         ]);
@@ -149,5 +146,4 @@ class ArticleController extends AbstractController
             'message' => $message,
         ]);
     }
-
 }

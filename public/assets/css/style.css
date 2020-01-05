@@ -66,14 +66,14 @@ h3 {
   pointer-events: none;
 }
 
-nav {
+.top-nav {
   z-index: 999;
   position: fixed !important;
   top: 0;
   width: 100%;
   box-shadow: 0px -15px 26px #555;
 }
-nav .navbar-collapse {
+.top-nav .navbar-collapse {
   flex-grow: initial;
 }
 
@@ -625,6 +625,32 @@ section {
   justify-content: space-around;
   flex-wrap: initial;
   width: 100%;
+}
+
+.pagination .active .page-link {
+  color: #fff !important;
+}
+.pagination .page-item {
+  margin: 0 5px;
+}
+.pagination .page-item:first-of-type .page-link, .pagination .page-item:last-of-type .page-link {
+  border: none;
+  border-radius: 3px;
+}
+.pagination .page-item .page-link {
+  color: #5a398e;
+  border: solid 1px #dee2e6;
+  border-radius: 3px;
+}
+.pagination .page-item .page-link:hover, .pagination .page-item .page-link:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #5a398e;
+  border-color: #5a398e;
+}
+.pagination .page-item.active .page-link {
+  background-color: #5a398e;
+  border-color: #5a398e;
 }
 
 /* 2-5 PAGE MEMBRE */

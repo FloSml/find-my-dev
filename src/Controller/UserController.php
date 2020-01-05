@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 // de cette classe dans notre contrôleur
 class UserController extends AbstractController
 {
+    private $UserRepository;
+
     /**
      * @Route("/", name="index")
      * @param UserRepository $userRepository
@@ -36,11 +39,17 @@ class UserController extends AbstractController
     /**
      * @Route("/members", name="members")
      * @param UserRepository $userRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Response
      */
-    public function members(UserRepository $userRepository)
+    public function members(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $user = $userRepository->findAll();
+        $user = $paginator->paginate(
+            $userRepository->findAllMembersQuery(),
+            $request->query->getInt('page', 1),
+            12
+        );
 
         return $this->render('members.html.twig', [
             'current_menu' => 'members',
@@ -94,16 +103,22 @@ class UserController extends AbstractController
      * @Route("/members/search/", name="members_search")
      * @param UserRepository $userRepository
      * @param Request $request
+     * @param PaginatorInterface $paginator
      * @return Response
      *
      * Affiche les membres qui correspondent aux données transmises via le formulaire de recherche (en GET)
      */
-    public function membersByCity(UserRepository $userRepository, Request $request)
+    public function membersByCity(UserRepository $userRepository, Request $request, PaginatorInterface $paginator)
     {
         $get = [];
         $search = $request->query->get('search-member');
         $get['search-member'] = $search;
-        $user = $userRepository->findMember($search);
+
+        $user = $paginator->paginate(
+            $userRepository->findMember($search),
+            $request->query->getInt('page', 1),
+            12
+        );
 
         return $this->render('members.html.twig', [
             'users' => $user,

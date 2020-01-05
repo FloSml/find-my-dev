@@ -57,7 +57,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ path('member', {'id': user.id}) }}" class="btn-admin-pannel tip" title="Voir le membre"><i class="far fa-eye"></i><span>Voir</span></a>
-                                    <a href="#" class="btn-admin-pannel tip" title="Modifier le membre"><i class="fas fa-edit"></i><span>Modifier</span></a>
+                                    <a href="{{ path('update_member', {'id': user.id}) }}" class="btn-admin-pannel tip" title="Modifier le membre"><i class="fas fa-edit"></i><span>Modifier</span></a>
                                     <a href="#" class="btn-admin-pannel btn-delete tip" title="Supprimer le membre"><i class="fas fa-times"></i><span>Supprimer</span></a>
                                 </td>
                             </tr>
@@ -85,7 +85,7 @@
                                 <td>{{ article.id }}</td>
                                 <td>{{ article.title }}</td>
                                 <td class="mobile-hidden">{{ article.user.firstName }} {{ article.user.lastName }}</td>
-                                <td>{{ article.shortDescription|slice(0, 30) }} [...]</td>
+                                <td>{{ article.shortDescription | slice(0, 30) }} [...]</td>
                                 <td class="mobile-hidden">{{ article.createdAt|date('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ path('article_show', {'id': article.id}) }}" class="btn-admin-pannel tip"><i class="far fa-eye"></i><span>Voir</span></a>
