@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="container-fluid" id="article-form-container">
+        <div class="row flex-column text-center align-items-center justify-content-center pt-5">
+            <h1 class="mt-4">Liste des catégories</h1>
+
+            <table class="table table-users">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td>
+                            <a href="{{ path('admin_category_update', {'id': category.id}) }}" class="btn-admin-pannel tip" title="Modifier la catégorie"><i class="fas fa-edit"></i><span>Modifier</span></a>
+                            <a href="{{ path('admin_category_delete', {'id': category.id}) }}" class="btn-admin-pannel btn-delete tip" title="Supprimer la catégorie"><i class="fas fa-times"></i><span>Supprimer</span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="admin-btn-container d-flex justify-content-center">
+                <a href="{{ path('admin_category_new') }}" class="btn-fiche btn-admin-aside">Ajouter une catégorie</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

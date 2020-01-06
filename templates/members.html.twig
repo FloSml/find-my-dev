@@ -40,6 +40,7 @@
                         <a href="{{ path('members_job') }}" class="btn-fiche">Cherche un job</a>
                         <a href="{{ path('members_experience_desc') }}" class="btn-fiche">Peu d'expérience</a>
                         <a href="{{ path('members_experience_asc') }}" class="btn-fiche">Plus d'expérience</a>
+                        {{ knp_pagination_sortable(users, 'Experience', 'u.experience') }}
                     </div>
                 </div>
             </div>
@@ -61,7 +62,7 @@
                         {% if get is defined %}
                             {% for get in get %}"{{ get }}"{% endfor %}
                         {% endif %}
-                        compte <br><span>{{ users | length }} membres</span></p>
+                        compte <br><span>{{ users.getTotalItemCount }} membres</span></p>
                 {% endif %}
             </div>
             <div class="container-fluid">

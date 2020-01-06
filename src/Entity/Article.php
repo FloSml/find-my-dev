@@ -16,9 +16,8 @@ class Article
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime());
-        $this->tags = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
-
 
     /**
      * @ORM\Id()
@@ -59,9 +58,9 @@ class Article
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="properties")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", mappedBy="properties")
      */
-    private $tags;
+    private $categories;
 
     public function getId(): ?int
     {
@@ -145,28 +144,28 @@ class Article
     }
 
     /**
-     * @return Collection|Tag[]
+     * @return Collection|Category[]
      */
-    public function getTags(): Collection
+    public function getCategories(): Collection
     {
-        return $this->tags;
+        return $this->categories;
     }
 
-    public function addTag(Tag $tag): self
+    public function addCategory(Category $category): self
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-            $tag->addProperty($this);
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->addProperty($this);
         }
 
         return $this;
     }
 
-    public function removeTag(Tag $tag): self
+    public function removeCategory(Category $category): self
     {
-        if ($this->tags->contains($tag)) {
-            $this->tags->removeElement($tag);
-            $tag->removeProperty($this);
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+            $category->removeProperty($this);
         }
 
         return $this;

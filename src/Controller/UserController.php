@@ -10,8 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// On étend la classe AbstractController pour bénéficier des méthodes et propriétés
-// de cette classe dans notre contrôleur
+// J'étends la classe AbstractController pour bénéficier des méthodes et propriétés
+// de cette classe dans mon contrôleur
 class UserController extends AbstractController
 {
     private $UserRepository;
@@ -60,13 +60,20 @@ class UserController extends AbstractController
     /**
      * @Route("/members/job", name="members_job")
      * @param UserRepository $userRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Response
      */
-    public function membersLookingForJob(UserRepository $userRepository)
+    public function membersLookingForJob(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $user = $userRepository->findAllLookingForJob();
+        $user = $paginator->paginate(
+            $userRepository->findAllLookingForJob(),
+            $request->query->getInt('page', 1),
+            12
+        );
 
         return $this->render('members.html.twig', [
+            'current_menu' => 'members',
             'users' => $user,
         ]);
     }
@@ -74,13 +81,20 @@ class UserController extends AbstractController
     /**
      * @Route("/members/experience/asc", name="members_experience_asc")
      * @param UserRepository $userRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Response
      */
-    public function membersExperienceAsc(UserRepository $userRepository)
+    public function membersExperienceAsc(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $user = $userRepository->findAllExperienceAsc();
+        $user = $paginator->paginate(
+            $userRepository->findAllExperienceAsc(),
+            $request->query->getInt('page', 1),
+            12
+        );
 
         return $this->render('members.html.twig', [
+            'current_menu' => 'members',
             'users' => $user,
         ]);
     }
@@ -88,13 +102,20 @@ class UserController extends AbstractController
     /**
      * @Route("/members/experience/desc", name="members_experience_desc")
      * @param UserRepository $userRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Response
      */
-    public function membersExperienceDesc(UserRepository $userRepository)
+    public function membersExperienceDesc(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $user = $userRepository->findAllExperienceDesc();
+        $user = $paginator->paginate(
+            $userRepository->findAllExperienceDesc(),
+            $request->query->getInt('page', 1),
+            12
+        );
 
         return $this->render('members.html.twig', [
+            'current_menu' => 'members',
             'users' => $user,
         ]);
     }
@@ -121,6 +142,7 @@ class UserController extends AbstractController
         );
 
         return $this->render('members.html.twig', [
+            'current_menu' => 'members',
             'users' => $user,
             'get' => $get
         ]);

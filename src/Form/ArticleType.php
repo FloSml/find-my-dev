@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -40,7 +41,10 @@ class ArticleType extends AbstractType
                 'placeholder' => 'Choisissez un auteur',
                 'required' => false
             ])
-            ->add('tags', EntityType::class, [
+            ->add('categories', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name',
+                'multiple' => 'true',
                 'required' => false,
                 'label' => "Catégories"
             ])

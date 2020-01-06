@@ -15,12 +15,24 @@
                 <aside class="aside-admin col-12 col-md-2">
                     <h3>Navigation</h3>
                     <div class="line"></div>
-                    <h4>Membres</h4>
-                        <a href="#" class="btn-fiche btn-admin-aside">Voir tous les membres</a>
-                        <a href="#" class="btn-fiche btn-admin-aside">Ajouter un membre</a>
-                    <h4>Articles</h4>
-                        <a href="#" class="btn-fiche btn-admin-aside">Voir tous les articles</a>
-                        <a href="{{ path('admin_article_new') }}" class="btn-fiche btn-admin-aside">Ajouter un article</a>
+                    <h4>Blog</h4>
+                    <h5 class="pl-3">Articles</h5>
+                    <div class="btn-admin-pannel-container pl-3">
+                        <a href="#" class="btn-admin-pannel d-inline-block"><i class="far fa-eye"></i></a>
+                        <a href="{{ path('admin_article_new') }}" class="btn-admin-pannel d-inline-block"><i class="fas fa-plus"></i></a>
+                    </div>
+                    <h5 class="pl-3">Catégories</h5>
+                    <div class="btn-admin-pannel-container pl-3">
+                        <a href="{{ path('admin_category_show') }}" class="btn-admin-pannel d-inline-block"><i class="far fa-eye"></i></a>
+                        <a href="{{ path('admin_category_new') }}" class="btn-admin-pannel d-inline-block"><i class="fas fa-plus"></i></a>
+                    </div>
+                    <div class="line"></div>
+                    <h4>Utilisateurs</h4>
+                    <h5 class="pl-3">Membres</h5>
+                    <div class="btn-admin-pannel-container pl-3">
+                        <a href="#" class="btn-admin-pannel d-inline-block"><i class="far fa-eye"></i></a>
+                        <a href="#" class="btn-admin-pannel d-inline-block"><i class="fas fa-plus"></i></a>
+                    </div>
                 </aside>
 
                 <div class="admin-container col-12 col-md-10">
@@ -29,6 +41,75 @@
                             <p>{{ message }}</p>
                         </div>
                     {% endfor %}
+
+                    <!-- ARTICLES SECTION-->
+
+                    <h2>Gestion des articles</h2>
+                    <table class="table table-articles">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Titre</th>
+                            <th class="mobile-hidden">Auteur</th>
+                            <th>Résumé</th>
+                            <th class="mobile-hidden">Date d'ajout</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for article in articles %}
+                            <tr>
+                                <td>{{ article.id }}</td>
+                                <td>{{ article.title }}</td>
+                                <td class="mobile-hidden">{{ article.user.firstName }} {{ article.user.lastName }}</td>
+                                <td>{{ article.shortDescription | slice(0, 30) }} [...]</td>
+                                <td class="mobile-hidden">{{ article.createdAt|date('d-m-Y') }}</td>
+                                <td>
+                                    <a href="{{ path('article_show', {'id': article.id}) }}" class="btn-admin-pannel tip"><i class="far fa-eye"></i><span>Voir</span></a>
+                                    <a href="{{ path('admin_article_update', {'id': article.id}) }}" class="btn-admin-pannel tip"><i class="fas fa-edit"></i><span>Modifier</span></a>
+                                    <a href="{{ path('admin_article_delete', {'id': article.id}) }}" class="btn-admin-pannel btn-delete tip"><i class="fas fa-times"></i><span>Supprimer</span></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="admin-btn-container d-flex justify-content-center mb-3">
+                        <a href="{{ path('blog') }}" class="btn-fiche btn-admin-aside">Voir les articles</a>
+                        <a href="{{ path('admin_article_new') }}" class="btn-fiche btn-admin-aside">Ajouter un article</a>
+                    </div>
+
+                    <!-- CATEGORIES SECTION-->
+
+                    <h2>Gestion des catégories</h2>
+                    <table class="table table-catgories">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <td>{{ category.id }}</td>
+                                <td>{{ category.name }}</td>
+                                <td>
+                                    <a href="{{ path('admin_category_show', {'id': category.id}) }}" class="btn-admin-pannel tip"><i class="far fa-eye"></i><span>Voir</span></a>
+                                    <a href="{{ path('admin_category_update', {'id': category.id}) }}" class="btn-admin-pannel tip"><i class="fas fa-edit"></i><span>Modifier</span></a>
+                                    <a href="{{ path('admin_category_delete', {'id': category.id}) }}" class="btn-admin-pannel btn-delete tip"><i class="fas fa-times"></i><span>Supprimer</span></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="admin-btn-container d-flex justify-content-center mb-3">
+                        <a href="{{ path('admin_category_show') }}" class="btn-fiche btn-admin-aside">Voir les catégories</a>
+                        <a href="{{ path('admin_category_new') }}" class="btn-fiche btn-admin-aside">Ajouter une catégorie</a>
+                    </div>
+
+                    <!-- MEMBERS SECTION-->
+
                     <h2>Gestion des membres</h2>
                     <table class="table table-users">
                         <thead>
@@ -65,39 +146,8 @@
                         </tbody>
                     </table>
                     <div class="admin-btn-container d-flex justify-content-center">
+                        <a href="#" class="btn-fiche btn-admin-aside">Voir les membres</a>
                         <a href="#" class="btn-fiche btn-admin-aside">Ajouter un membre</a>
-                    </div>
-                    <h2>Gestion des articles</h2>
-                    <table class="table table-articles">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Titre</th>
-                            <th class="mobile-hidden">Auteur</th>
-                            <th>Résumé</th>
-                            <th class="mobile-hidden">Date d'ajout</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for article in articles %}
-                            <tr>
-                                <td>{{ article.id }}</td>
-                                <td>{{ article.title }}</td>
-                                <td class="mobile-hidden">{{ article.user.firstName }} {{ article.user.lastName }}</td>
-                                <td>{{ article.shortDescription | slice(0, 30) }} [...]</td>
-                                <td class="mobile-hidden">{{ article.createdAt|date('d-m-Y') }}</td>
-                                <td>
-                                    <a href="{{ path('article_show', {'id': article.id}) }}" class="btn-admin-pannel tip"><i class="far fa-eye"></i><span>Voir</span></a>
-                                    <a href="{{ path('admin_article_update', {'id': article.id}) }}" class="btn-admin-pannel tip"><i class="fas fa-edit"></i><span>Modifier</span></a>
-                                    <a href="{{ path('admin_article_delete', {'id': article.id}) }}" class="btn-admin-pannel btn-delete tip"><i class="fas fa-times"></i><span>Supprimer</span></a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                    <div class="admin-btn-container d-flex justify-content-center mb-3">
-                        <a href="{{ path('admin_article_new') }}" class="btn-fiche btn-admin-aside">Ajouter un article</a>
                     </div>
                 </div>
             </div>

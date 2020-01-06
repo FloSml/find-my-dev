@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\TagRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
  */
-class Tag
+class Category
 {
     /**
      * @ORM\Id()
@@ -24,7 +24,7 @@ class Tag
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Article", inversedBy="tags")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Article", inversedBy="categories")
      */
     private $properties;
 
@@ -75,4 +75,5 @@ class Tag
 
         return $this;
     }
+
 }

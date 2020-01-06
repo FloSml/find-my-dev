@@ -91,7 +91,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     private function findAllMembers(): QueryBuilder
     {
-        return $this->createQueryBuilder('a');
+        return $this->createQueryBuilder('u');
     }
 
 }
