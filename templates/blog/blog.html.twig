@@ -20,14 +20,18 @@
             <aside class="aside-admin col-12 col-md-2">
                 <h3>Le blog</h3>
                 <div class="line"></div>
-                <h4>Membres</h4>
-                <a href="#" class="btn-fiche btn-admin-aside">Voir tous les membres</a>
-                <a href="#" class="btn-fiche btn-admin-aside">Ajouter un membre</a>
                 <h4>Articles</h4>
-                <a href="#" class="btn-fiche btn-admin-aside">Voir tous les articles</a>
-                <a href="{{ path('admin_article_new') }}" class="btn-fiche btn-admin-aside">Ajouter un article</a>
+                {% for category in categories %}
+                    <h5 class="pl-3">{{ category.name }}</h5>
+                {% endfor %}
+                <div class="btn-admin-pannel-container pl-3">
+                    <a href="{{ path('articles_newest') }}" class="d-inline-block btn-fiche m-1"><i class="fas fa-sort-amount-up-alt pr-1"></i> Articles + récents</a>
+                    <a href="{{ path('articles_oldest') }}" class="d-inline-block btn-fiche m-1"><i class="fas fa-sort-amount-down-alt pr-1"></i> Articles + anciens</a>
+                </div>
+
             </aside>
-            <section class="row col-12 col-md-10 align-items-start px-4">
+            <section class="d-flex col-12 col-md-10 align-items-start px-4 justify-content-center flex-column">
+                <div class="row w-100">
                 {% for article in articles | sort | reverse %}
                     <article class="col-12 col-md-6 d-flex align-items-center justify-content-center flex-column p-4 text-center">
                         <h2 class="m-0">{{ article.title }}</h2>
@@ -44,6 +48,10 @@
                         {% endif %}
                     </article>
                 {% endfor %}
+                </div>
+                <div class="row w-100 pagination justify-content-center pt-4">
+                    {{ knp_pagination_render(articles) }}
+                </div>
             </section>
         </div>
     </div>

@@ -66,7 +66,7 @@ class RegistrationType extends AbstractType
             ])
             ->add('experience', ChoiceType::class, [
                 'choices' => [
-                    'Pas encore d\'expérience' => 'Pas encore',
+                    'Pas encore d\'expérience' => '< 1 an',
                     '1 an' => '1 an',
                     '2 ans' => '2 ans',
                     '3 ans' => '3 ans',

@@ -74,8 +74,8 @@
                         </tbody>
                     </table>
                     <div class="admin-btn-container d-flex justify-content-center mb-3">
-                        <a href="{{ path('blog') }}" class="btn-fiche btn-admin-aside">Voir les articles</a>
-                        <a href="{{ path('admin_article_new') }}" class="btn-fiche btn-admin-aside">Ajouter un article</a>
+                        <a href="{{ path('blog') }}" class="btn-fiche btn-admin-aside"><i class="far fa-eye pr-1"></i> Voir les articles</a>
+                        <a href="{{ path('admin_article_new') }}" class="btn-fiche btn-admin-aside"><i class="fas fa-plus pr-1"></i> Ajouter un article</a>
                     </div>
 
                     <!-- CATEGORIES SECTION-->
@@ -104,8 +104,8 @@
                         </tbody>
                     </table>
                     <div class="admin-btn-container d-flex justify-content-center mb-3">
-                        <a href="{{ path('admin_category_show') }}" class="btn-fiche btn-admin-aside">Voir les catégories</a>
-                        <a href="{{ path('admin_category_new') }}" class="btn-fiche btn-admin-aside">Ajouter une catégorie</a>
+                        <a href="{{ path('admin_category_show') }}" class="btn-fiche btn-admin-aside"><i class="far fa-eye pr-1"></i> Voir les catégories</a>
+                        <a href="{{ path('admin_category_new') }}" class="btn-fiche btn-admin-aside"><i class="fas fa-plus pr-1"></i> Ajouter une catégorie</a>
                     </div>
 
                     <!-- MEMBERS SECTION-->
@@ -145,9 +145,8 @@
                         {% endfor %}
                         </tbody>
                     </table>
-                    <div class="admin-btn-container d-flex justify-content-center">
-                        <a href="#" class="btn-fiche btn-admin-aside">Voir les membres</a>
-                        <a href="#" class="btn-fiche btn-admin-aside">Ajouter un membre</a>
+                    <div class="row pagination justify-content-center pt-4">
+                        {{ knp_pagination_render(users) }}
                     </div>
                 </div>
             </div>
