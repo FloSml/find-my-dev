@@ -63,7 +63,7 @@
                                 <td>{{ article.title }}</td>
                                 <td class="mobile-hidden">{{ article.user.firstName }} {{ article.user.lastName }}</td>
                                 <td>{{ article.shortDescription | slice(0, 30) }} [...]</td>
-                                <td class="mobile-hidden">{{ article.createdAt|date('d-m-Y') }}</td>
+                                <td class="mobile-hidden">{{ article.createdAt|date('d/m/Y H') }}h{{ article.createdAt|date('i') }}</td>
                                 <td>
                                     <a href="{{ path('article_show', {'id': article.id}) }}" class="btn-admin-pannel tip"><i class="far fa-eye"></i><span>Voir</span></a>
                                     <a href="{{ path('admin_article_update', {'id': article.id}) }}" class="btn-admin-pannel tip"><i class="fas fa-edit"></i><span>Modifier</span></a>

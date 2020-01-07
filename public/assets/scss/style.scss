@@ -658,24 +658,26 @@ section{
 }
 
 .search-bar{
-    margin: 0 0 20px;
-    padding: 0 0 20px;
 
     .row{
         padding: 5px 0;
     }
 
-    p{
-        margin: 0 5px;
-    }
-
     .btn-fiche{
         padding: 5px 10px;
         margin: 0 5px;
+
+        i{
+            font-size: 1.2rem;
+        }
     }
 
     #search-member{
         min-width: 300px;
+    }
+
+    .line{
+
     }
 }
 
@@ -734,6 +736,34 @@ section{
         .page-link{
             background-color: #5a398e;
             border-color: #5a398e;
+        }
+    }
+}
+
+.more-filters{
+
+    a{
+        padding: 5px 10px;
+        margin: 0 5px;
+        border-radius: 5px;
+        background-color: #5a398e;
+        border: solid 2px #5a398e;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        outline: 0;
+        text-decoration: none;
+        color: #fff;
+        position: relative;
+
+        &:hover{
+            text-decoration: none;
+            color: #5a398e;
+            border: solid 2px #5a398e;
+            background-color: transparent;
         }
     }
 }

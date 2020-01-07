@@ -121,6 +121,48 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/members/newest-members", name="members_newest")
+     * @param UserRepository $userRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
+     */
+    public function membersNewest(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
+    {
+        $user = $paginator->paginate(
+            $userRepository->findByNewMembers(),
+            $request->query->getInt('page', 1),
+            12
+        );
+
+        return $this->render('members.html.twig', [
+            'current_menu' => 'members',
+            'users' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/members/oldest-members", name="members_oldest")
+     * @param UserRepository $userRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
+     */
+    public function membersOldest(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
+    {
+        $user = $paginator->paginate(
+            $userRepository->findByOldMembers(),
+            $request->query->getInt('page', 1),
+            12
+        );
+
+        return $this->render('members.html.twig', [
+            'current_menu' => 'members',
+            'users' => $user,
+        ]);
+    }
+
+    /**
      * @Route("/members/search/", name="members_search")
      * @param UserRepository $userRepository
      * @param Request $request
