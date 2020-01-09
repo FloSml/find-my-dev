@@ -343,7 +343,7 @@ footer{
     transition: all 0.5s;
     margin: 5px;
     outline: 0;
-    
+
     a, &:hover{
         color: #fff;
     }
@@ -374,7 +374,7 @@ footer{
             opacity: 1;
             right: 0;
         }
-    }    
+    }
 }
 
 .btn-slider-1{
@@ -641,10 +641,22 @@ section{
         .btn-fiche{
             margin-top: 20px;
         }
+
+        .hidden-row{
+            display: none;
+        }
     }
 }
 
     /* 2-4 PAGE MEMBRES */
+
+#div_chart{
+    padding-top: 35px;
+}
+
+#div_piechart{
+    padding-top: 10px;
+}
 
 .search-length{
     font-size: 1.2rem;

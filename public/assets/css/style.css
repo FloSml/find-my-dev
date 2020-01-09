@@ -584,8 +584,19 @@ section {
 #registration-form-container .registration-form .btn-fiche {
   margin-top: 20px;
 }
+#registration-form-container .registration-form .hidden-row {
+  display: none;
+}
 
 /* 2-4 PAGE MEMBRES */
+#div_chart {
+  padding-top: 35px;
+}
+
+#div_piechart {
+  padding-top: 10px;
+}
+
 .search-length {
   font-size: 1.2rem;
   line-height: 1.2;

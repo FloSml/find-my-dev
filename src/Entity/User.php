@@ -42,7 +42,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @Assert\EqualTo(propertyPath="confirm_password", message="Votre mot de passe ne doit pas être différent")
+     * @Assert\EqualTo(propertyPath="password", message="Votre mot de passe ne doit pas être différent")
      */
     private $confirm_password;
 
@@ -79,7 +79,8 @@ class User implements UserInterface
     private $city;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Length(max=5, maxMessage="Merci de rentrer un code postal valide")
      */
     private $postalCode;
 
@@ -89,7 +90,7 @@ class User implements UserInterface
     private $speciality;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $lookingForJob;
 
@@ -104,7 +105,7 @@ class User implements UserInterface
     private $currentJob;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $experience;
 
@@ -117,6 +118,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="user")
      */
     private $article;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $gender;
 
     public function __construct()
     {
@@ -358,6 +364,18 @@ class User implements UserInterface
     public function setArticle(ArrayCollection $article): void
     {
         $this->article = $article;
+    }
+
+    public function getGender(): ?bool
+    {
+        return $this->gender;
+    }
+
+    public function setGender(?bool $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
     }
 
 }

@@ -52,6 +52,12 @@
     }
 }
 
+@media (max-width: 840px) {
+    .piechart-container, .chart-container{
+        display: none;
+    }
+}
+
 @media (max-width: 768px){
     #title-home h2{
         top: 35%;
@@ -76,11 +82,11 @@
     }
     .btn-slider-1{
         display: none;
-        }
-        .btn-slider-2{
+    }
+    .btn-slider-2{
         left: 50%;
-        }
-        #title-home{
+    }
+    #title-home{
         height: 400px;
         background: url(../img/visuel-team-home-sm.jpg) no-repeat bottom center;
     }

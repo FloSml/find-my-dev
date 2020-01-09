@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="App\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/behat/transliterator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cmen/google-charts-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/cache" />
@@ -124,5 +125,6 @@
     <orderEntry type="library" name="anime" level="application" />
     <orderEntry type="library" name="185d975189" level="application" />
     <orderEntry type="library" name="5a8737d22f" level="application" />
+    <orderEntry type="library" name="loader" level="application" />
   </component>
 </module>

@@ -82,6 +82,148 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->getResult();
     }
 
+    public function findMen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.gender = false')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findWomen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.gender = true')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findNoExperienceMen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 0')
+            ->andWhere('u.gender = false')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findNoExperienceWomen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 0')
+            ->andWhere('u.gender = true')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findOneExperienceMen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 1')
+            ->andWhere('u.gender = false')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findOneExperienceWomen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 1')
+            ->andWhere('u.gender = true')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findTwoExperienceMen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 2')
+            ->andWhere('u.gender = false')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findTwoExperienceWomen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 2')
+            ->andWhere('u.gender = true')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findThreeExperienceMen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 3')
+            ->andWhere('u.gender = false')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findThreeExperienceWomen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 3')
+            ->andWhere('u.gender = true')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFourExperienceMen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 4')
+            ->andWhere('u.gender = false')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFourExperienceWomen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 4')
+            ->andWhere('u.gender = true')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFiveExperienceMen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 5')
+            ->andWhere('u.gender = false')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFiveExperienceWomen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 5')
+            ->andWhere('u.gender = true')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findMaxExperienceMen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 6')
+            ->andWhere('u.gender = false')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findMaxExperienceWomen()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.experience = 6')
+            ->andWhere('u.gender = true')
+            ->getQuery()
+            ->getResult();
+    }
+
     /**
      * @param string $search
      * @return Query

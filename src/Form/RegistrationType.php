@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -46,7 +47,7 @@ class RegistrationType extends AbstractType
                 'label' => "Code postal*",
             ])
             ->add('speciality', TextType::class, [
-                'label' => "Profession*",
+                'label' => "Profession*"
             ])
             ->add('lookingForJob', CheckboxType::class, [
                 'label' => "Vous recherchez un job ?",
@@ -66,19 +67,26 @@ class RegistrationType extends AbstractType
             ])
             ->add('experience', ChoiceType::class, [
                 'choices' => [
-                    'Pas encore d\'expérience' => '< 1 an',
+                    '< 1 an' => '< 1 an',
                     '1 an' => '1 an',
                     '2 ans' => '2 ans',
                     '3 ans' => '3 ans',
                     '4 ans' => '4 ans',
                     '5 ans' => '5 ans',
-                    '+5 ans' => '+5 ans',
+                    '+5 ans' => '+5 ans'
                 ],
-                'placeholder' => 'Votre expérience',
-                'label' =>  "Expérience",
-                'required' => false
+                'placeholder' => 'Votre expérience à ce poste',
+                'label' =>  "Expérience*",
             ])
-            ->add('valider', SubmitType::class)
+            ->add('gender', ChoiceType::class, [
+                'choices' => [
+                    'Homme' => 'Homme',
+                    'Femme' => 'Femme'
+                ],
+                'placeholder' => 'Sexe',
+                'label' =>  "Sexe*",
+                'required' => true
+            ])
         ;
     }
 

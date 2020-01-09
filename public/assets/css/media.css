@@ -54,6 +54,11 @@
     flex: 0 0 100%;
   }
 }
+@media (max-width: 840px) {
+  .piechart-container, .chart-container {
+    display: none;
+  }
+}
 @media (max-width: 768px) {
   #title-home h2 {
     top: 35%;
