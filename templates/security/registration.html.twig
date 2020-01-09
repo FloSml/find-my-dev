@@ -74,22 +74,10 @@
                     {{ form_row(form.experience) }}
                 </div>
             </div>
-            <div class="row align-items-center justify-content-center hidden-row">
+            <div class="row align-items-center justify-content-center">
                 <div class="col-12 col-sm-8">
-                    {{ form_row(form.resume, {'attr':
-                        {'placeholder': 'Dites-en un peu plus sur vous...'}}) }}
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center hidden-row">
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(form.avatar) }}
-                </div>
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(form.currentJob, {'attr':
-                        {'placeholder': 'Société, freelance, ...'}}) }}
-                </div>
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(form.lookingForJob) }}
+                    {{ form_row(form.imageFile, {'attr':
+                        {'placeholder': 'Ajoutez votre photo'}}) }}
                 </div>
             </div>
             <button class="btn-fiche">Je m'inscris !</button>

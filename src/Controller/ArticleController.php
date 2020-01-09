@@ -123,10 +123,9 @@ class ArticleController extends AbstractController
             // (que les types rentrés dans les inputs sont bons,
             // que tous les champs obligatoires sont remplis)
             if ($articleForm->isSubmitted() && $articleForm->isValid()) {
-                $message = "L'auteur a bien été ajouté/modifié !";
-                // J'enregistre en BDD ma variable $author
-                // qui n'est plus vide, car elle a été remplie
-                // avec les données du formulaire
+                $message = "L'article a bien été ajouté/modifié !";
+                // J'enregistre en BDD ma variable $article
+                // qui est remplie avec les données du formulaire
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($article);
                 $entityManager->flush();

@@ -2,9 +2,19 @@ vich_uploader:
     db_driver: orm
 
     mappings:
-        avatar:
+        profile_image:
             uri_prefix: assets/img/avatar
             upload_destination: '%kernel.project_dir%/public/assets/img/avatar'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        blog:
+            uri_prefix: assets/img/blog
+            upload_destination: '%kernel.project_dir%/public/assets/img/blog'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
 
             inject_on_load: false
             delete_on_update: true

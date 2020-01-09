@@ -3,8 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Form\RegistrationType;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,8 +58,11 @@ class UserController extends AbstractController
             12
         );
 
+        $variable = rand(1,4);
+
         return $this->render('members.html.twig', [
             'current_menu' => 'members',
+            'variable' => $variable,
             'users' => $user,
         ]);
     }
@@ -192,17 +202,37 @@ class UserController extends AbstractController
 
     /**
      * @Route("/member/update/{id}", name="update_member")
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
      * @param UserRepository $userRepository
      * @param $id
      * @return Response
      */
-    public function memberUpdate(UserRepository $userRepository, $id): Response
+    public function memberUpdate(Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository, $id): Response
     {
-        $user = $userRepository->find($id);
 
-        return $this->render('member.html.twig', [
-            'user' => $user,
+        $message= "";
+        $user = $userRepository->find($id);
+        $userForm = $this->createForm(UserType::class, $user);
+
+        if ($request->isMethod('Post')) {
+
+            $userForm->handleRequest($request);
+            if ($userForm->isValid()) {
+                $entityManager->persist($user);
+                $entityManager->flush();
+            }
+
+            $this->addFlash('success', 'Votre profil a bien été modifié');
+            return $this->redirectToRoute('members');
+        }
+        $userFormView = $userForm->createView();
+        return $this->render('security/member_update_profile.html.twig', [
+            'userFormView' => $userFormView,
+            'users' => $user,
+            'message' => $message,
         ]);
+
     }
 
     /**

@@ -8,25 +8,18 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RegistrationType extends AbstractType
+class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('email', EmailType::class, [
                 'label' => "Email*",
-            ])
-            ->add('password', PasswordType::class, [
-                'label' => "Mot de passe*",
-            ])
-            ->add('confirm_password', PasswordType::class, [
-                'label' => "Confirmation du mot de passe*",
             ])
             ->add('lastName', TextType::class, [
                 'label' => "Nom*",
@@ -49,8 +42,7 @@ class RegistrationType extends AbstractType
             ])
             ->add('lookingForJob', CheckboxType::class, [
                 'label' => "Vous recherchez un job ?",
-                'required' => false,
-                'mapped' => false
+                'required' => false
             ])
             ->add('resume', TextareaType::class, [
                 'label' => "Présentez-vous en quelques lignes.",
@@ -80,6 +72,7 @@ class RegistrationType extends AbstractType
                 ],
                 'placeholder' => 'Sexe',
                 'label' =>  "Sexe*",
+                'expanded' => false,
                 'required' => true
             ])
             ->add('imageFile', FileType::class, [

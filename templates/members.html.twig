@@ -79,7 +79,14 @@
                         <article class="member m-1">
                             <p class="name">{% include 'common/_random_adjectives.html.twig' %}<br>
                                 <span>{{ user.firstName }} {{ user.lastName }}</span></p>
-                            <img src="{{ asset('assets/img/avatar/avatar1.png') }}" alt="Avatar 1">
+                            <div class="avatar">
+                                {% if not user.imageName %}
+                                    <img src="{{ asset('assets/img/avatar/avatar' ~ variable ~ '.png') }}" alt="Avatar Find My Dev">
+                                {% endif %}
+                                {% if user.imageName %}
+                                    <img src="{{ vich_uploader_asset(user, 'imageFile') | imagine_filter('avatar') }}" alt="Photo de profil {{ user.firstName }} {{ user.lastName }}">
+                                {% endif %}
+                            </div>
                             <p class="metier">{{ user.speciality }}<br>
                                 <span>{{ user.experience }} d'expérience</span><br>
                                 <span>{{ user.city }}</span></p>

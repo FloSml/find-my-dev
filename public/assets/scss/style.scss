@@ -5,12 +5,14 @@ Date : octobre 2019
 Version : 1.0
 
 I - STRUCTURE SITE
-  1-1 RESET
-  1-2 FONTS & TITLES
-  1-3 NAV
-  1-4 MAIN
-  1-5 COOKIES
-  1-6 FOOTER
+  1-1 VARIABLES
+  1-2 RESET
+  1-3 FONTS & TITLES
+  1-4 BUTTONS
+  1-5 NAV
+  1-6 MAIN
+  1-7 COOKIES
+  1-8 FOOTER
 
 II - PAGES SITE
   2-1 HOME
@@ -46,7 +48,7 @@ $gris: #333;
     box-sizing: border-box;
 }
 
-/* 1-2 FONTS & TITLES */
+/* 1-3 FONTS & TITLES */
 
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&display=swap');
 
@@ -71,7 +73,45 @@ h3{
     font-size: 1.2em;
 }
 
-/* 1-3 NAV */
+/* 1-4 BUTTONS */
+
+.btn-fiche{
+    border-radius: 5px;
+    background-color: #5a398e;
+    border: solid 2px #5a398e;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 20px;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    margin: 5px;
+    outline: 0;
+    text-decoration: none;
+    color: #fff;
+
+    &:hover {
+        text-decoration: none;
+        color: #5a398e;
+        border: solid 2px #5a398e;
+        background-color: transparent;
+    }
+}
+
+.btn-members{
+    margin-top: 10px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+    a{
+        margin-top: 0;
+    }
+}
+
+/* 1-5 NAV */
 
 .dropdown:hover > .dropdown-menu{
     display: block;
@@ -153,7 +193,7 @@ h3{
     }
 }
 
-/* 1-4 MAIN */
+/* 1-6 MAIN */
 
 main{
     display: -webkit-box;
@@ -191,7 +231,7 @@ main{
     }
 }
 
-/* 1-5 COOKIES */
+/* 1-7 COOKIES */
 
 #cookies{
     color: $gris;
@@ -200,7 +240,6 @@ main{
     bottom: 0;
     left: 0;
     z-index: 9999;
-    width: 100%;
     padding: 0;
     opacity: 0;
     -webkit-animation: anim-cookies .5s linear forwards;
@@ -248,7 +287,7 @@ main{
     }
 }
 
-/* 1-6 FOOTER */
+/* 1-8 FOOTER */
 
 footer{
     background-color: $gris;
@@ -469,85 +508,64 @@ section{
 }
 
 .member{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 20px 0 40px 0;
+    padding: 20px 0;
     background: #f7f7f7;
     border-radius: 10px;
     -webkit-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
     transition: all .3s ease-out;
-}
 
-.member:hover{
-    background: #f1f1f1;
-    -webkit-box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
-    box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
-}
-
-.name{
-    font-size: 1em;
-    font-weight: 700;
-    line-height: 1.2;
-
-    span {
-        font-size: 1.3em;
-        font-weight: 300;
+    &:hover{
+        background: #f1f1f1;
+        -webkit-box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
+        box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
     }
-}
 
-.metier{
-    font-size: 1em;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-top: .5rem;
+    .name{
+        font-size: 1em;
+        font-weight: 700;
+        line-height: 1.2;
 
-    span {
-        font-size: .8em;
-        font-weight: 400;
+        span {
+            font-size: 1.3em;
+            font-weight: 300;
+        }
+    }
 
-        &:last-child {
-            font-weight: 700;
+    .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        -webkit-box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
+        box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .metier{
+        font-size: 1em;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 1rem 0 .5rem;
+
+        span {
+            font-size: .8em;
+            font-weight: 400;
+
+            &:last-child {
+                font-weight: 700;
+            }
         }
     }
 }
-
-.btn-fiche{
-    border-radius: 5px;
-    background-color: #5a398e;
-    border: solid 2px #5a398e;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 10px 20px;
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
-    margin: 5px;
-    outline: 0;
-    text-decoration: none;
-    color: #fff;
-
-    &:hover {
-        text-decoration: none;
-        color: #5a398e;
-        border: solid 2px #5a398e;
-        background-color: transparent;
-    }
-}
-
-.btn-members{
-    margin-top: 10px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-
-    a{
-        margin-top: 0;
-    }
-}
-
-
 
     /* SECTION NEWSLETTER */
 
