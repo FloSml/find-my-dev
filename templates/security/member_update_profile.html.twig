@@ -68,11 +68,10 @@
                 <div class="col-2 col-sm-2">
                     {% for user in users %}
                         <div class="avatar">
-                            {% if not user.imageName %}
-                                <img src="{{ asset('assets/img/avatar/avatar' ~ variable ~ '.png') }}" alt="Avatar Find My Dev">
-                            {% endif %}
                             {% if user.imageName %}
                                 <img src="{{ vich_uploader_asset(user, 'imageFile') | imagine_filter('avatar') }}" alt="Photo de profil {{ user.firstName }} {{ user.lastName }}">
+                            {% else %}
+                                <img src="{{ asset('assets/img/avatar/avatar' ~ variable ~ '.png') }}" alt="Avatar Find My Dev">
                             {% endif %}
                         </div>
                     {% endfor %}

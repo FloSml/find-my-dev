@@ -80,7 +80,6 @@ class RegistrationType extends AbstractType
                 ],
                 'placeholder' => 'Sexe',
                 'label' =>  "Sexe*",
-                'required' => true
             ])
             ->add('imageFile', FileType::class, [
                 'label' =>  "Ajoutez votre photo",

@@ -43,18 +43,25 @@
                     {% endfor %}
 
                     <!-- GOOGLE CHARTS -->
-                    <div class="row">
-                        <div class="col-12 col-md-6 piechart-container">
-                            <div id="div_piechart"></div>
+                    <div id="stats">
+                        <div class="admin-container-title d-flex w-100 justify-content-center">
+                            <h2>Analyses statistiques</h2>
                         </div>
-                        <div class="col-12 col-md-6 chart-container">
-                            <div id="div_chart"></div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 piechart-container">
+                                <div id="div_piechart"></div>
+                            </div>
+                            <div class="col-12 col-md-6 chart-container">
+                                <div id="div_chart"></div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- MEMBERS SECTION-->
 
-                    <h2>Gestion des membres</h2>
+                    <div class="admin-container-title d-flex w-100 justify-content-center">
+                        <h2>Gestion des membres<span class="count">{{ users.getTotalItemCount }}</span></h2>
+                    </div>
                     <table class="table table-users">
                         <thead>
                         <tr>
@@ -95,7 +102,9 @@
 
                     <!-- ARTICLES SECTION-->
 
-                    <h2>Gestion des articles</h2>
+                    <div class="admin-container-title d-flex w-100 justify-content-center">
+                        <h2>Gestion des articles<span class="count">{{ articles | length }}</span></h2>
+                    </div>
                     <table class="table table-articles">
                         <thead>
                         <tr>
@@ -131,7 +140,9 @@
 
                     <!-- CATEGORIES SECTION-->
 
-                    <h2>Gestion des catégories</h2>
+                    <div class="admin-container-title d-flex w-100 justify-content-center">
+                        <h2>Gestion des catégories<span class="count">{{ categories | length }}</span></h2>
+                    </div>
                     <table class="table table-catgories">
                         <thead>
                         <tr>

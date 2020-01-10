@@ -55,7 +55,7 @@
   }
 }
 @media (max-width: 840px) {
-  .piechart-container, .chart-container {
+  #stats {
     display: none;
   }
 }

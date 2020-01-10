@@ -85,7 +85,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function findMen()
     {
         return $this->createQueryBuilder('u')
-            ->Where('u.gender = false')
+            ->Where('u.gender LIKE :gender')
+            ->setParameter('gender', 'Homme')
             ->getQuery()
             ->getResult();
     }
@@ -93,7 +94,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function findWomen()
     {
         return $this->createQueryBuilder('u')
-            ->Where('u.gender = true')
+            ->Where('u.gender LIKE :gender')
+            ->setParameter('gender', 'Femme')
             ->getQuery()
             ->getResult();
     }
@@ -102,7 +104,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 0')
-            ->andWhere('u.gender = false')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Homme')
             ->getQuery()
             ->getResult();
     }
@@ -111,7 +114,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 0')
-            ->andWhere('u.gender = true')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Femme')
             ->getQuery()
             ->getResult();
     }
@@ -120,7 +124,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 1')
-            ->andWhere('u.gender = false')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Homme')
             ->getQuery()
             ->getResult();
     }
@@ -129,7 +134,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 1')
-            ->andWhere('u.gender = true')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Femme')
             ->getQuery()
             ->getResult();
     }
@@ -138,7 +144,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 2')
-            ->andWhere('u.gender = false')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Homme')
             ->getQuery()
             ->getResult();
     }
@@ -147,7 +154,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 2')
-            ->andWhere('u.gender = true')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Femme')
             ->getQuery()
             ->getResult();
     }
@@ -156,7 +164,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 3')
-            ->andWhere('u.gender = false')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Homme')
             ->getQuery()
             ->getResult();
     }
@@ -165,7 +174,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 3')
-            ->andWhere('u.gender = true')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Femme')
             ->getQuery()
             ->getResult();
     }
@@ -174,7 +184,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 4')
-            ->andWhere('u.gender = false')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Homme')
             ->getQuery()
             ->getResult();
     }
@@ -183,7 +194,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 4')
-            ->andWhere('u.gender = true')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Femme')
             ->getQuery()
             ->getResult();
     }
@@ -192,7 +204,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 5')
-            ->andWhere('u.gender = false')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Homme')
             ->getQuery()
             ->getResult();
     }
@@ -201,7 +214,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 5')
-            ->andWhere('u.gender = true')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Femme')
             ->getQuery()
             ->getResult();
     }
@@ -210,7 +224,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 6')
-            ->andWhere('u.gender = false')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Homme')
             ->getQuery()
             ->getResult();
     }
@@ -219,7 +234,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         return $this->createQueryBuilder('u')
             ->Where('u.experience = 6')
-            ->andWhere('u.gender = true')
+            ->andWhere('u.gender LIKE :gender')
+            ->setParameter('gender', 'Femme')
             ->getQuery()
             ->getResult();
     }

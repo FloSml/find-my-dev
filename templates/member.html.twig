@@ -18,11 +18,16 @@
         <!-- MEMBER SECTION -->
 
         <section class="members">
-            <article class="container member-cv mt-4">
+            <article class="container member-card mt-4">
                 <div class="row">
                     <aside class="col-3 d-flex justify-content-start align-items-center flex-column">
-                        <div class="member-avatar my-3">
-                            <img src="{{ asset('assets/img/avatar/avatar3.png') }}" alt="Avatar 1">
+                        <div class="avatar member-avatar my-3">
+                            {% if not user.imageName %}
+                                <img src="{{ asset('assets/img/avatar/avatar' ~ variable ~ '.png') }}" alt="Avatar Find My Dev">
+                            {% endif %}
+                            {% if user.imageName %}
+                                <img src="{{ vich_uploader_asset(user, 'imageFile') | imagine_filter('avatar') }}" alt="Photo de profil {{ user.firstName }} {{ user.lastName }}">
+                            {% endif %}
                         </div>
                         <p class="member-subtitle">Infos</p>
                         <p>{{ user.experience }} d'expérience</p>

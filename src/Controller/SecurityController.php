@@ -24,6 +24,7 @@ class SecurityController extends AbstractController
      * @return Response
      */
     public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder) {
+        $message = "";
         $user = new User();
 
         $form = $this->createForm(RegistrationType::class, $user);
@@ -44,8 +45,8 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             // J'envoie en BDD
             $entityManager->flush();
-
-            return $this->redirectToRoute('index');
+            $this->addFlash('success', 'Votre profil a bien été créé, connectez-vous à votre compte.');
+            return $this->redirectToRoute('security_login');
         }
 
         return $this->render('security/registration.html.twig', [

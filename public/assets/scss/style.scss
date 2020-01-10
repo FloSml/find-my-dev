@@ -809,9 +809,10 @@ section{
         }
     }
 
-    .member-cv {
+    .member-card {
         -webkit-box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
         box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
+        margin-bottom: 20px;
 
         aside{
             background-color: #f7f7f7;
@@ -821,11 +822,11 @@ section{
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            border: solid 5px #5a398e;
             -webkit-box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
             box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
             animation: bounce 2s;
             animation-delay: 1s;
+            overflow: hidden;
 
             img {
                 width: 100%;
@@ -928,9 +929,27 @@ section{
 }
 
 .admin-container{
-    h2{
-        margin-top: 40px;
-        color: #5a398e;
+
+    .admin-container-title{
+        position: relative;
+
+        h2{
+            margin: 40px 0 50px;
+            color: #5a398e;
+
+            .count{
+                background: #5a398e;
+                color: #fff;
+                padding: 7px 7px 5px;
+                border-radius: 5px;
+                font-size: 0.4em;
+                font-weight: 700;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
     }
 
     .table th{

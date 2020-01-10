@@ -82,8 +82,11 @@ class UserController extends AbstractController
             12
         );
 
+        $variable = rand(1,4);
+
         return $this->render('members.html.twig', [
             'current_menu' => 'members',
+            'variable' => $variable,
             'users' => $user,
         ]);
     }
@@ -103,8 +106,11 @@ class UserController extends AbstractController
             12
         );
 
+        $variable = rand(1,4);
+
         return $this->render('members.html.twig', [
             'current_menu' => 'members',
+            'variable' => $variable,
             'users' => $user,
         ]);
     }
@@ -124,8 +130,11 @@ class UserController extends AbstractController
             12
         );
 
+        $variable = rand(1,4);
+
         return $this->render('members.html.twig', [
             'current_menu' => 'members',
+            'variable' => $variable,
             'users' => $user,
         ]);
     }
@@ -145,8 +154,11 @@ class UserController extends AbstractController
             12
         );
 
+        $variable = rand(1,4);
+
         return $this->render('members.html.twig', [
             'current_menu' => 'members',
+            'variable' => $variable,
             'users' => $user,
         ]);
     }
@@ -166,8 +178,11 @@ class UserController extends AbstractController
             12
         );
 
+        $variable = rand(1,4);
+
         return $this->render('members.html.twig', [
             'current_menu' => 'members',
+            'variable' => $variable,
             'users' => $user,
         ]);
     }
@@ -193,8 +208,11 @@ class UserController extends AbstractController
             12
         );
 
+        $variable = rand(1,4);
+
         return $this->render('members.html.twig', [
             'current_menu' => 'members',
+            'variable' => $variable,
             'users' => $user,
             'get' => $get
         ]);
@@ -210,8 +228,7 @@ class UserController extends AbstractController
      */
     public function memberUpdate(Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository, $id): Response
     {
-
-        $message= "";
+        $message = "";
         $user = $userRepository->find($id);
         $userForm = $this->createForm(UserType::class, $user);
 
@@ -219,11 +236,11 @@ class UserController extends AbstractController
 
             $userForm->handleRequest($request);
             if ($userForm->isValid()) {
+                $message = "Votre profil a bien été modifié !";
                 $entityManager->persist($user);
                 $entityManager->flush();
             }
 
-            $this->addFlash('success', 'Votre profil a bien été modifié');
             return $this->redirectToRoute('members');
         }
         $userFormView = $userForm->createView();
@@ -244,10 +261,29 @@ class UserController extends AbstractController
     public function member(UserRepository $userRepository, $id)
     {
         $user = $userRepository->find($id);
+        $variable = rand(1,4);
 
         return $this->render('member.html.twig', [
+            'current_menu' => 'member',
+            'variable' => $variable,
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/profile/{id}", name="member_profile")
+     * @param UserRepository $userRepository
+     * @param $id
+     * @return Response
+     */
+    public function profile(UserRepository $userRepository, $id)
+    {
+        $user = $userRepository->find($id);
+
+        return $this->render('member_profile.html.twig', [
             'current_menu' => 'member',
             'user' => $user,
         ]);
     }
+
 }

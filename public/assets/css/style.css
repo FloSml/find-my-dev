@@ -702,50 +702,51 @@ section {
 #member h1 span {
   font-size: 0.5em;
 }
-#member .member-cv {
+#member .member-card {
   -webkit-box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
 }
-#member .member-cv aside {
+#member .member-card aside {
   background-color: #f7f7f7;
 }
-#member .member-cv .member-avatar {
+#member .member-card .member-avatar {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: solid 5px #5a398e;
   -webkit-box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 0.3);
   animation: bounce 2s;
   animation-delay: 1s;
+  overflow: hidden;
 }
-#member .member-cv .member-avatar img {
+#member .member-card .member-avatar img {
   width: 100%;
   height: auto;
 }
-#member .member-cv .member-title {
+#member .member-card .member-title {
   background: #f0f0f0;
 }
-#member .member-cv .member-title .member-name {
+#member .member-card .member-title .member-name {
   font-size: 1.5rem;
   font-weight: 300;
 }
-#member .member-cv .member-title .member-job {
+#member .member-card .member-title .member-job {
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1;
 }
-#member .member-cv .member-title .member-search {
+#member .member-card .member-title .member-search {
   color: #333;
   margin: 0;
 }
-#member .member-cv .member-subtitle {
+#member .member-card .member-subtitle {
   font-size: 1.2rem;
   font-weight: bold;
   color: #5a398e;
   text-decoration: underline;
 }
-#member .member-cv .member-resume {
+#member .member-card .member-resume {
   width: 90%;
 }
 
@@ -806,9 +807,24 @@ section {
   color: #c20808;
 }
 
-.admin-container h2 {
-  margin-top: 40px;
+.admin-container .admin-container-title {
+  position: relative;
+}
+.admin-container .admin-container-title h2 {
+  margin: 40px 0 50px;
   color: #5a398e;
+}
+.admin-container .admin-container-title h2 .count {
+  background: #5a398e;
+  color: #fff;
+  padding: 7px 7px 5px;
+  border-radius: 5px;
+  font-size: 0.4em;
+  font-weight: 700;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .admin-container .table th {
   border-top: 0;

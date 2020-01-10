@@ -134,7 +134,7 @@ class User implements UserInterface
     private $article;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string")
      */
     private $gender;
 
@@ -374,12 +374,12 @@ class User implements UserInterface
         $this->article = $article;
     }
 
-    public function getGender(): ?bool
+    public function getGender(): ?string
     {
         return $this->gender;
     }
 
-    public function setGender(?bool $gender): self
+    public function setGender(string $gender): self
     {
         $this->gender = $gender;
 

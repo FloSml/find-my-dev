@@ -72,7 +72,6 @@ class UserType extends AbstractType
                 ],
                 'placeholder' => 'Sexe',
                 'label' =>  "Sexe*",
-                'expanded' => false,
                 'required' => true
             ])
             ->add('imageFile', FileType::class, [
