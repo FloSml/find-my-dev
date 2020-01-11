@@ -102,10 +102,29 @@
         <div class="wave-gris"></div>
         <section id="newsletter" class="container-fluid">
             <h2>Abonnez-vous aux dernières news</h2>
-            <form action="POST">
-                <input type="email" name="email">
-                <input type="submit" name="valider">
-            </form>
+
+            {{ form_start(newsletterFormView, {'attr':
+                {'class': 'registration-form p-3'}}) }}
+            {{ form_errors(newsletterFormView) }}
+            <div class="row align-items-center justify-content-center flex-row">
+                <div class="col-12 col-sm-8 col-md-3">
+                    {{ form_row(newsletterFormView.firstName, {'attr':
+                        {'placeholder': 'Votre prénom'}}) }}
+                </div>
+                <div class="col-12 col-sm-8 col-md-3">
+                    {{ form_row(newsletterFormView.email, {'attr':
+                        {'placeholder': 'Votre email'}}) }}
+                </div>
+                <div class="col-12 col-sm-8 col-md-3">
+                    <button class="btn-fiche">Je m'abonne !</button>
+                </div>
+            </div>
+            {{ form_end(newsletterFormView) }}
+            {% for message in app.flashes('news-success') %}
+                <div class="alert alert-success alert-news">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
         </section>
 
     </main>

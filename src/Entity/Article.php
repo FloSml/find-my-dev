@@ -16,7 +16,6 @@ class Article
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime());
-        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -58,9 +57,9 @@ class Article
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Category", mappedBy="properties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="articles")
      */
-    private $categories;
+    private $category;
 
     public function getId(): ?int
     {
@@ -143,31 +142,16 @@ class Article
         $this->user = $user;
     }
 
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategories(): Collection
+    public function getCategory(): ?Category
     {
-        return $this->categories;
+        return $this->category;
     }
 
-    public function addCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-            $category->addProperty($this);
-        }
+        $this->category = $category;
 
         return $this;
     }
 
-    public function removeCategory(Category $category): self
-    {
-        if ($this->categories->contains($category)) {
-            $this->categories->removeElement($category);
-            $category->removeProperty($this);
-        }
-
-        return $this;
-    }
 }

@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -24,14 +29,9 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Article", inversedBy="categories")
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
      */
-    private $properties;
-
-    public function __construct()
-    {
-        $this->properties = new ArrayCollection();
-    }
+    private $articles;
 
     public function getId(): ?int
     {
@@ -53,24 +53,29 @@ class Category
     /**
      * @return Collection|Article[]
      */
-    public function getProperties(): Collection
+    public function getArticles(): Collection
     {
-        return $this->properties;
+        return $this->articles;
     }
 
-    public function addProperty(Article $property): self
+    public function addArticle(Article $article): self
     {
-        if (!$this->properties->contains($property)) {
-            $this->properties[] = $property;
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeProperty(Article $property): self
+    public function removeArticle(Article $article): self
     {
-        if ($this->properties->contains($property)) {
-            $this->properties->removeElement($property);
+        if ($this->articles->contains($article)) {
+            $this->articles->removeElement($article);
+            // set the owning side to null (unless already changed)
+            if ($article->getCategory() === $this) {
+                $article->setCategory(null);
+            }
         }
 
         return $this;

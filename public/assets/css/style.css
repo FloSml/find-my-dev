@@ -698,6 +698,10 @@ section {
   background-color: transparent;
 }
 
+.not-found {
+  background-color: #f7f7f7;
+}
+
 /* 2-5 PAGE MEMBRE */
 #member h1 span {
   font-size: 0.5em;
@@ -850,6 +854,14 @@ section {
 .alert-success p {
   margin: 0;
   padding: 10px 0;
+}
+
+.alert-news {
+  background-color: transparent;
+  border-color: transparent;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #5a398e;
 }
 
 .tip {

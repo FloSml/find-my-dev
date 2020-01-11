@@ -798,6 +798,10 @@ section{
     }
 }
 
+.not-found{
+    background-color: #f7f7f7;
+}
+
     /* 2-5 PAGE MEMBRE */
 
 #member{
@@ -981,6 +985,14 @@ section{
         margin: 0;
         padding: 10px 0;
     }
+}
+
+.alert-news{
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #5a398e;
 }
 
 .tip{
