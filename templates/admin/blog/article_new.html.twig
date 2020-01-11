@@ -1,41 +1,52 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/admin_base.html.twig' %}
 
 {% block content %}
 
-    <div class="container-fluid" id="article-form-container">
-        <div class="row flex-column text-center align-items-center justify-content-center pt-5">
-            <h1 class="mt-4">Créer un article</h1>
-            {{ form_start(articleFormView, {'attr':
-                {'class': 'registration-form p-3'}}) }}
+    <main>
 
-            <div class="form-errors row align-items-center justify-content-center">
-                {{ form_errors(articleFormView) }}
-            </div>
+        <!-- TITLE SECTION -->
 
-            <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(articleFormView.title, {'attr':
-                        {'placeholder': 'Votre titre...'}}) }}
-                </div>
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(articleFormView.user, {'attr':
-                        {'placeholder': 'Auteur...'}}) }}
-                </div>
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(articleFormView.categories, {'attr':
-                        {'placeholder': 'Catégories...'}}) }}
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center">
-                <div class="col-12">
-                    {{ form_row(articleFormView.description, {'attr':
-                        {'placeholder': 'Contenu de l\'article...'}}) }}
-                </div>
-            </div>
-
-            {{ form_end(articleFormView) }}
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative">
+            <h1>Création d'un article</h1>
         </div>
-    </div>
+        <div class="wave wave-title"></div>
 
-    <a href="{{ path('blog') }}">back to list</a>
+        <!-- FORM -->
+
+        <div class="container-fluid" id="article-form-container">
+            <div class="row flex-column text-center align-items-center justify-content-center pt-5">
+                {{ form_start(articleFormView, {'attr':
+                    {'class': 'registration-form p-3'}}) }}
+
+                <div class="form-errors row align-items-center justify-content-center">
+                    {{ form_errors(articleFormView) }}
+                </div>
+
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-sm-8 col-md-4">
+                        {{ form_row(articleFormView.title, {'attr':
+                            {'placeholder': 'Votre titre...'}}) }}
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-4">
+                        {{ form_row(articleFormView.user, {'attr':
+                            {'placeholder': 'Auteur...'}}) }}
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-4">
+                        {{ form_row(articleFormView.category, {'attr':
+                            {'placeholder': 'Catégorie...'}}) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12">
+                        {{ form_row(articleFormView.description, {'attr':
+                            {'placeholder': 'Contenu de l\'article...'}}) }}
+                    </div>
+                </div>
+
+                {{ form_end(articleFormView) }}
+            </div>
+        </div>
+
+    </main>
+
 {% endblock %}

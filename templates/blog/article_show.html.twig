@@ -1,24 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<main id="member">
 
-    <!-- TITLE SECTION -->
+    <main id="member">
 
-    <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative text-center">
-        <h1>{{ article.title }}</h1>
-    </div>
-    <div class="wave wave-title"></div>
-    <div class="breadcrumb">
-        <a class="breadcrumb-link" href="{{ path('index') }}">Accueil</a> > <a class="breadcrumb-link" href="{{ path('blog') }}">Blog</a> > <p class="breadcrumb-link {% if current_menu is defined and current_menu == 'article' %}active{% endif %}">{{ article.title }}</p>
-    </div>
+        <!-- TITLE SECTION -->
 
-    <h1>Titre</h1>
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative text-center">
+            <h1>{{ article.title }}</h1>
+        </div>
+        <div class="wave wave-title"></div>
+        <div class="breadcrumb">
+            <a class="breadcrumb-link" href="{{ path('index') }}">Accueil</a> > <a class="breadcrumb-link" href="{{ path('blog') }}">Blog</a> > <p class="breadcrumb-link {% if current_menu is defined and current_menu == 'article' %}active{% endif %}">{{ article.title }}</p>
+        </div>
+
+        <h1>Titre</h1>
 
 
-    <a href="{{ path('blog') }}">back to list</a>
+        <a href="{{ path('blog') }}">back to list</a>
 
-    <a href="{{ path('admin_article_update', {'id': article.id}) }}">edit</a>
+        <a href="{{ path('admin_article_update', {'id': article.id}) }}">edit</a>
 
-</main>
+    </main>
+
 {% endblock %}

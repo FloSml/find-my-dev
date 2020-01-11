@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="author" content="Florian Soumaille">
+        <meta name="description" content="Find My Dev est une plateforme qui permet aux développeurs junior de monter en compétence.">
+        <meta name="keywords" content="développeur, dev, compétence">
+
+        <title>Find My Dev | Trouvez le développeur junior qui vous ressemble</title>
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicon/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/favicon/favicon-16x16.png') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/media.css') }}">
+    </head>
+    <body>
+        <header>
+            <nav class="top-nav navbar navbar-expand-lg navbar-light bg-light">
+                <a class="logo" href="{{ path('index') }}">
+                    <img src="{{ asset('assets/img/loupe.png') }}" alt="Find My Dev">Find My Dev
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link {% if current_menu is defined and current_menu == 'users' %}active{% endif %} dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">Infos</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">A propos</a>
+                                <a class="dropdown-item" href="#">FAQ</a>
+                                <a class="nav-link {% if current_menu is defined and current_menu == 'members' %}active{% endif %}" href="{{ path('members') }}">Les membres</a>
+                                <a class="nav-link {% if current_menu is defined and current_menu == 'blog' %}active{% endif %}" href="{{ path('blog') }}">Le blog</a>
+                                <a class="nav-link {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}" href="{{ path('contact') }}">Contact</a>
+                            </div>
+                        </li>
+                        {# En Twig l'objet User est disponible via la variable app.user grâce à la variable globale Twig #}
+                        {% if not app.user %}
+                            <li class="nav-item">
+                                <a href="{{ path('security_login') }}" class="nav-link"><i class="fas fa-lock"></i> Connexion</a>
+                            </li>
+                        {% endif %}
+                        {% if app.user %}
+                            <li class="nav-item">
+                                <span class="account-links">Bonjour {{ app.user.firstName }} ! <a class="account {% if current_menu is defined and current_menu == 'account' %}active{% endif %}" href="{{ app.user.id }}">Mon compte</a> | <a href="{{ path('security_logout') }}" class="d-inline-block" id="open-connexion"><i class="fas fa-lock"></i> Me déconnecter</a></span>
+                            </li>
+                        {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if current_menu is defined and current_menu == 'admin' %}active{% endif %}" href="{{ path('admin') }}">Administration</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Cookies
+
+        <div id="cookies" class="container-fluid justify-content-center slide-from-left">
+            <div class="row contain-cookies justify-content-center align-items-center">
+                <a href="#" class="closebtn close-cookies"><i class="fas fa-times"></i></a>
+                <div class="offset-1 col-7 d-flex align-items-center">
+                    <img src="{{ asset('assets/img/cookies.png') }}" alt="" class="img-cookies">
+                    <p>Ce site utilise des cookies, en poursuivant votre navigation sur ce site vous acceptez l'utilisation de cookies.</p>
+                </div>
+                <div class="col-4">
+                    <a href="#" class="cookies-ok button btn-fiche">J'ai compris</a> <a href="mentions-legales#cookies" class="legal-cookies">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+
+        -->
+
+        {% block content %}{% endblock %}
+
+        <footer class="container-fluid">
+            <div class="row py-4">
+                <div class="col-12 col-sm-4 d-flex align-items-center flex-column">
+                    <p>nav</p>
+                    <ul>
+                        <li>
+                          <a href="{{ path('index') }}">Accueil</a>
+                        </li>
+                        <li>
+                          <a href="{{ path('members') }}">Les membres</a>
+                        </li>
+                        <li>
+                          <a href="{{ path('contact') }}">Contact</a>
+                        </li>
+                        <li>
+                          <a href="#">Mentions légales</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-4 d-flex align-items-center flex-column">
+                    <p>nav</p>
+                    <ul>
+                        <li>
+                            <a href="{{ path('index') }}">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('members') }}">Les membres</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contact') }}">Contact</a>
+                        </li>
+                        <li>
+                            <a href="#">Mentions légales</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-4 d-flex align-items-center flex-column">
+                    <p>nav</p>
+                    <ul>
+                        <li>
+                            <a href="{{ path('index') }}">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('members') }}">Les membres</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contact') }}">Contact</a>
+                        </li>
+                        <li>
+                            <a href="#">Mentions légales</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/5a8737d22f.js" crossorigin="anonymous"></script>
+        <!-- Anim text -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <!-- Mes Scripts -->
+        <script src="{{ asset('assets/js/script.js') }}"></script>
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

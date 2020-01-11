@@ -2,9 +2,18 @@
 
 {% block content %}
 
-    <div class="container-fluid" id="article-form-container">
-        <div class="row flex-column text-center align-items-center justify-content-center pt-5">
-            <h1 class="mt-4">Liste des catégories</h1>
+    <main>
+
+        <!-- TITLE SECTION -->
+
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative">
+            <h1>Liste des catégories</h1>
+        </div>
+        <div class="wave wave-title"></div>
+
+        <!-- FORM -->
+
+        <div class="container-fluid" id="article-form-container">
 
             <table class="table table-users">
                 <thead>
@@ -27,10 +36,13 @@
                 {% endfor %}
                 </tbody>
             </table>
+
             <div class="admin-btn-container d-flex justify-content-center">
                 <a href="{{ path('admin_category_new') }}" class="btn-fiche btn-admin-aside">Ajouter une catégorie</a>
             </div>
+
         </div>
-    </div>
+
+    </main>
 
 {% endblock %}

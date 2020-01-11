@@ -1,59 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<main id="member">
+    <main id="member">
 
-    <!-- TITLE SECTION -->
+        <!-- TITLE SECTION -->
 
-    <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative text-center">
-        <h1>Find My Dev<br>Le blog</h1>
-    </div>
-    <div class="wave wave-title"></div>
-    <div class="breadcrumb">
-        <a class="breadcrumb-link" href="{{ path('index') }}">Accueil</a> > <p class="breadcrumb-link {% if current_menu is defined and current_menu == 'blog' %}active{% endif %}">Blog</p>
-    </div>
-
-    <!-- ARTICLES SECTION -->
-
-    <div class="container-fluid d-flex p-0">
-        <div class="row w-100 m-0">
-            <aside class="aside-admin col-12 col-md-2">
-                <h3>Le blog</h3>
-                <div class="line"></div>
-                <h4>Articles</h4>
-                {% for category in categories %}
-                    <h5 class="pl-3">{{ category.name }}</h5>
-                {% endfor %}
-                <div class="btn-admin-pannel-container pl-3">
-                    <a href="{{ path('articles_newest') }}" class="d-inline-block btn-fiche m-1"><i class="fas fa-sort-amount-up-alt pr-1"></i> Articles + récents</a>
-                    <a href="{{ path('articles_oldest') }}" class="d-inline-block btn-fiche m-1"><i class="fas fa-sort-amount-down-alt pr-1"></i> Articles + anciens</a>
-                </div>
-
-            </aside>
-            <section class="d-flex col-12 col-md-10 align-items-start px-4 justify-content-center flex-column">
-                <div class="row w-100">
-                {% for article in articles | sort | reverse %}
-                    <article class="col-12 col-md-6 d-flex align-items-center justify-content-center flex-column p-4 text-center">
-                        <h2 class="m-0">{{ article.title }}</h2>
-                        <p class="blog_date">Publié le {{ article.createdAt | date('d/m/Y') }}<br>par {{ article.user.firstName }} {{ article.user.lastName }}</p>
-                        <p class="blog_description">{{ article.shortDescription | slice(0, 200) }}</p>
-                        <div class="btn-container d-flex justify-content-center align-items-center">
-                            <a class="btn-fiche" href="{{ path('article_show', {'id': article.id}) }}">Voir l'article</a>
-                        </div>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <div class="btn-container d-flex justify-content-center align-items-center">
-                                <a href="{{ path('admin_article_update', {'id': article.id}) }}" class="btn-admin-pannel"><i class="fas fa-edit"></i></a>
-                                <a href="{{ path('admin_article_delete', {'id': article.id}) }}" class="btn-admin-pannel btn-delete"><i class="fas fa-times"></i></a>
-                            </div>
-                        {% endif %}
-                    </article>
-                {% endfor %}
-                </div>
-                <div class="row w-100 pagination justify-content-center pt-4">
-                    {{ knp_pagination_render(articles) }}
-                </div>
-            </section>
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative text-center">
+            <h1>Find My Dev<br>Le blog</h1>
         </div>
-    </div>
-</main>
+        <div class="wave wave-title"></div>
+        <div class="breadcrumb">
+            <a class="breadcrumb-link" href="{{ path('index') }}">Accueil</a> > <p class="breadcrumb-link {% if current_menu is defined and current_menu == 'blog' %}active{% endif %}">Blog</p>
+        </div>
+
+        <!-- ARTICLES SECTION -->
+
+        <div class="container-fluid d-flex p-0">
+            <div class="row w-100 m-0">
+                <aside class="aside-admin col-12 col-md-2">
+                    <h3>Le blog</h3>
+                    <div class="line"></div>
+                    <h4>Articles</h4>
+                    {% for category in categories %}
+                        <h5 class="pl-3">{{ category.name }}</h5>
+                    {% endfor %}
+                    <div class="btn-admin-pannel-container pl-3">
+                        <a href="{{ path('articles_newest') }}" class="d-inline-block btn-fiche m-1"><i class="fas fa-sort-amount-up-alt pr-1"></i> Articles + récents</a>
+                        <a href="{{ path('articles_oldest') }}" class="d-inline-block btn-fiche m-1"><i class="fas fa-sort-amount-down-alt pr-1"></i> Articles + anciens</a>
+                    </div>
+
+                </aside>
+                <section class="d-flex col-12 col-md-10 align-items-start px-4 justify-content-center flex-column">
+                    <div class="row w-100">
+                    {% for article in articles | sort | reverse %}
+                        <article class="col-12 col-md-6 d-flex align-items-center justify-content-center flex-column p-4 text-center">
+                            <h2 class="m-0">{{ article.title }}</h2>
+                            <p class="blog_date">Publié le {{ article.createdAt | date('d/m/Y') }}<br>par {{ article.user.firstName }} {{ article.user.lastName }}</p>
+                            <p class="blog_description">{{ article.shortDescription | slice(0, 200) }}</p>
+                            <div class="btn-container d-flex justify-content-center align-items-center">
+                                <a class="btn-fiche" href="{{ path('article_show', {'id': article.id}) }}">Voir l'article</a>
+                            </div>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <div class="btn-container d-flex justify-content-center align-items-center">
+                                    <a href="{{ path('admin_article_update', {'id': article.id}) }}" class="btn-admin-pannel"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ path('admin_article_delete', {'id': article.id}) }}" class="btn-admin-pannel btn-delete"><i class="fas fa-times"></i></a>
+                                </div>
+                            {% endif %}
+                        </article>
+                    {% endfor %}
+                    </div>
+                    <div class="row w-100 pagination justify-content-center pt-4">
+                        {{ knp_pagination_render(articles) }}
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </main>
+
 {% endblock %}

@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,7 +33,8 @@ class CategoryController extends AbstractController
             $entityManager->persist($category);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_category_show');
+            $this->addFlash('success', 'La catégorie a bien été créée');
+            return $this->redirectToRoute('admin');
         }
 
         return $this->render('admin/category/category_new.html.twig', [
@@ -54,7 +57,8 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_category_show');
+            $this->addFlash('success', 'La catégorie a bien été modifiée');
+            return $this->redirectToRoute('admin');
         }
 
         return $this->render('admin/category/category_update.html.twig', [
@@ -64,19 +68,19 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="admin_category_delete", methods={"DELETE"})
-     * @param Request $request
-     * @param Category $category
-     * @return Response
+     * @Route("/delete/{id}", name="admin_category_delete", methods={"GET","POST"})
+     * @param CategoryRepository $categoryRepository
+     * @param EntityManagerInterface $entityManager
+     * @param $id
+     * @return RedirectResponse
      */
-    public function categoryDelete(Request $request, Category $category): Response
+    public function categoryDelete(CategoryRepository $categoryRepository, EntityManagerInterface $entityManager, $id)
     {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($category);
-            $entityManager->flush();
-        }
+        $category = $categoryRepository->find($id);
+        $entityManager->remove($category);
+        $entityManager->flush();
 
+        $this->addFlash('success', 'La catégorie a bien été supprimée');
         return $this->redirectToRoute('admin');
     }
 

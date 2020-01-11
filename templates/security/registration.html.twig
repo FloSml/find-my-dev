@@ -4,84 +4,87 @@
 
     <main>
 
-    <!-- TITLE SECTION -->
+        <!-- TITLE SECTION -->
 
-    <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative">
-        <h1>Inscrivez-vous à Find My Dev</h1>
-    </div>
-    <div class="wave wave-title"></div>
-
-    <!-- FORM SECTION -->
-    <div class="container-fluid" id="registration-form-container">
-        <div class="row flex-column text-center align-items-center justify-content-center pt-5">
-            <p>Complétez les informations ci-dessous<br>Vous pourrez les consulter et les modifier à tout moment</p>
-            {{ form_start(form, {'attr':
-                {'class': 'registration-form p-3'}}) }}
-
-            <div class="form-errors row align-items-center justify-content-center">
-                {{ form_errors(form) }}
-            </div>
-
-            <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(form.firstName, {'attr':
-                        {'placeholder': 'Votre prénom...'}}) }}
-                </div>
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(form.lastName, {'attr':
-                        {'placeholder': 'Votre nom...'}}) }}
-                </div>
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(form.gender) }}
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-sm-8">
-                    {{ form_row(form.email, {'attr':
-                        {'placeholder': 'Votre email...'}}) }}
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.password, {'attr':
-                        {'placeholder': 'Mot de passe'}}) }}
-                </div>
-                <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.confirm_password, {'attr':
-                        {'placeholder': 'Confirmez votre mot de passe'}}) }}
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(form.phone, {'attr':
-                        {'placeholder': 'Votre téléphone...'}}) }}
-                </div>
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(form.city, {'attr':
-                        {'placeholder': 'Votre ville...'}}) }}
-                </div>
-                <div class="col-12 col-sm-8 col-md-4">
-                    {{ form_row(form.postalCode, {'attr':
-                        {'placeholder': 'Votre code postal...'}}) }}
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.speciality, {'attr':
-                        {'placeholder': 'Poste actuel ou recherché...'}}) }}
-                </div>
-                <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.experience) }}
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-sm-8">
-                    {{ form_row(form.imageFile, {'attr':
-                        {'placeholder': 'Ajoutez votre photo'}}) }}
-                </div>
-            </div>
-            <button class="btn-fiche">Je m'inscris !</button>
-            {{ form_end(form) }}
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative">
+            <h1>Inscrivez-vous à Find My Dev</h1>
         </div>
-    </div>
+        <div class="wave wave-title"></div>
+
+        <!-- FORM SECTION -->
+        <div class="container-fluid" id="registration-form-container">
+            <div class="row flex-column text-center align-items-center justify-content-center pt-5">
+                <p>Complétez les informations ci-dessous<br>Vous pourrez les consulter et les modifier à tout moment</p>
+                {{ form_start(form, {'attr':
+                    {'class': 'registration-form p-3'}}) }}
+
+                <div class="form-errors row align-items-center justify-content-center">
+                    {{ form_errors(form) }}
+                </div>
+
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-sm-8 col-md-4">
+                        {{ form_row(form.firstName, {'attr':
+                            {'placeholder': 'Votre prénom...'}}) }}
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-4">
+                        {{ form_row(form.lastName, {'attr':
+                            {'placeholder': 'Votre nom...'}}) }}
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-4">
+                        {{ form_row(form.gender) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-sm-8">
+                        {{ form_row(form.email, {'attr':
+                            {'placeholder': 'Votre email...'}}) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-sm-8 col-md-6">
+                        {{ form_row(form.password, {'attr':
+                            {'placeholder': 'Mot de passe'}}) }}
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-6">
+                        {{ form_row(form.confirm_password, {'attr':
+                            {'placeholder': 'Confirmez votre mot de passe'}}) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-sm-8 col-md-4">
+                        {{ form_row(form.phone, {'attr':
+                            {'placeholder': 'Votre téléphone...'}}) }}
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-4">
+                        {{ form_row(form.city, {'attr':
+                            {'placeholder': 'Votre ville...'}}) }}
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-4">
+                        {{ form_row(form.postalCode, {'attr':
+                            {'placeholder': 'Votre code postal...'}}) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-sm-8 col-md-6">
+                        {{ form_row(form.speciality, {'attr':
+                            {'placeholder': 'Poste actuel ou recherché...'}}) }}
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-6">
+                        {{ form_row(form.experience) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-sm-8">
+                        {{ form_row(form.imageFile, {'attr':
+                            {'placeholder': 'Ajoutez votre photo'}}) }}
+                    </div>
+                </div>
+                <button class="btn-fiche">Je m'inscris !</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+    </main>
+
 {% endblock %}

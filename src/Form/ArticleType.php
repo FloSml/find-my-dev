@@ -41,12 +41,11 @@ class ArticleType extends AbstractType
                 'placeholder' => 'Choisissez un auteur',
                 'required' => false
             ])
-            ->add('categories', EntityType::class, [
+            ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'multiple' => 'true',
-                'required' => false,
-                'label' => "Catégories"
+                'label' => "Catégorie",
+                'placeholder' => 'Choisissez une catégorie',
             ])
             ->add('valider', SubmitType::class, [
                 'attr' => [

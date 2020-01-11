@@ -111,7 +111,7 @@
                             <th>Id</th>
                             <th>Titre</th>
                             <th class="mobile-hidden">Auteur</th>
-                            <th>Résumé</th>
+                            <th>Catégorie</th>
                             <th class="mobile-hidden">Date d'ajout</th>
                             <th>Actions</th>
                         </tr>
@@ -122,7 +122,7 @@
                                 <td>{{ article.id }}</td>
                                 <td>{{ article.title }}</td>
                                 <td class="mobile-hidden">{{ article.user.firstName }} {{ article.user.lastName }}</td>
-                                <td>{{ article.shortDescription | slice(0, 30) }} [...]</td>
+                                <td>{{ article.category.name }}</td>
                                 <td class="mobile-hidden">{{ article.createdAt|date('d/m/Y H') }}h{{ article.createdAt|date('i') }}</td>
                                 <td>
                                     <a href="{{ path('article_show', {'id': article.id}) }}" class="btn-admin-pannel tip"><i class="far fa-eye"></i><span>Voir</span></a>
@@ -157,7 +157,6 @@
                                 <td>{{ category.id }}</td>
                                 <td>{{ category.name }}</td>
                                 <td>
-                                    <a href="{{ path('admin_category_show', {'id': category.id}) }}" class="btn-admin-pannel tip"><i class="far fa-eye"></i><span>Voir</span></a>
                                     <a href="{{ path('admin_category_update', {'id': category.id}) }}" class="btn-admin-pannel tip"><i class="fas fa-edit"></i><span>Modifier</span></a>
                                     <a href="{{ path('admin_category_delete', {'id': category.id}) }}" class="btn-admin-pannel btn-delete tip"><i class="fas fa-times"></i><span>Supprimer</span></a>
                                 </td>

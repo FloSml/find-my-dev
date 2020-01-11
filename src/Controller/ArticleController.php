@@ -187,8 +187,6 @@ class ArticleController extends AbstractController
         // $article = Entité Article
         $article = $articleRepository->find($id);
 
-        $message = "";
-
         // J'utilise l'entityManager avec la méthode remove pour enregistrer la suppression du user
         $entityManager->remove($article);
         // Je valide la suppression en BDD avec la méthode flush()
@@ -196,8 +194,6 @@ class ArticleController extends AbstractController
 
         $this->addFlash('success', 'L\'article a bien été supprimé');
 
-        return $this->redirectToRoute('admin', [
-            'message' => $message,
-        ]);
+        return $this->redirectToRoute('admin');
     }
 }

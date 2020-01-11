@@ -2,25 +2,37 @@
 
 {% block content %}
 
-    <div class="container-fluid" id="article-form-container">
-        <div class="row flex-column text-center align-items-center justify-content-center pt-5">
-            <h1 class="mt-4">Ajouter une catégorie</h1>
-            {{ form_start(form, {'attr':
-                {'class': 'registration-form p-3'}}) }}
+    <main>
 
-            <div class="form-errors row align-items-center justify-content-center">
-                {{ form_errors(form) }}
-            </div>
+        <!-- TITLE SECTION -->
 
-            <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-sm-8 col-md-6">
-                    {{ form_row(form.name, {'attr':
-                        {'placeholder': 'Votre titre...'}}) }}
-                </div>
-                <button class="btn-fiche">Valider</button>
-            </div>
-            {{ form_end(form) }}
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative">
+            <h1>Création d'une catégorie</h1>
         </div>
-    </div>
+        <div class="wave wave-title"></div>
+
+        <!-- FORM -->
+
+        <div class="container-fluid" id="article-form-container">
+            <div class="row flex-column text-center align-items-center justify-content-center pt-5">
+                {{ form_start(form, {'attr':
+                    {'class': 'registration-form p-3'}}) }}
+
+                <div class="form-errors row align-items-center justify-content-center">
+                    {{ form_errors(form) }}
+                </div>
+
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12">
+                        {{ form_row(form.name, {'attr':
+                            {'placeholder': 'Votre titre...'}}) }}
+                    </div>
+                    <button class="btn-fiche">Valider</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+    </main>
 
 {% endblock %}
