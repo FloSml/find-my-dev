@@ -53,7 +53,7 @@
                         {% endif %}
                         {% if app.user %}
                             <li class="nav-item">
-                                <span class="account-links">Bonjour {{ app.user.firstName }} ! <a class="account {% if current_menu is defined and current_menu == 'account' %}active{% endif %}" href="{{ app.user.id }}">Mon compte</a> | <a href="{{ path('security_logout') }}" class="d-inline-block" id="open-connexion"><i class="fas fa-lock"></i> Me déconnecter</a></span>
+                                <span class="account-links">Bonjour {{ app.user.firstName }} ! <a class="account {% if current_menu is defined and current_menu == 'account' %}active{% endif %}" href="{{ path('member_profile') }}">Mon compte</a> | <a href="{{ path('security_logout') }}" class="d-inline-block" id="open-connexion"><i class="fas fa-lock"></i> Me déconnecter</a></span>
                             </li>
                         {% endif %}
                         {% if is_granted('ROLE_ADMIN') %}
@@ -137,6 +137,11 @@
                             <a href="#">Mentions légales</a>
                         </li>
                     </ul>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <p>Find My Dev {{ "now"|date("Y") }} - Tous droits réservés </p>
                 </div>
             </div>
         </footer>

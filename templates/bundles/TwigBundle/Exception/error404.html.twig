@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <main>
+
+        <!-- TITLE SECTION -->
+
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative text-center">
+            <h1>Oups... On dirait que vous êtes perdu(e) !</h1>
+        </div>
+        <div class="wave wave-title"></div>
+
+        <!-- CONTENT SECTION -->
+
+        <section class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p>Il semblerait que la pge que vous essayez d'atteindre n'existe pas ou plus...</p>
+                        <a href="{{ path('home') }}" class="btn-fiche" role="button">Retour à l'accueil</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+{% endblock %}

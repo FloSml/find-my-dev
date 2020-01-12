@@ -2,19 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Newsletter;
-use App\Entity\User;
-use App\Form\NewsletterType;
 use App\Form\UserType;
-use App\Repository\NewsletterRepository;
 use App\Repository\UserRepository;
-use App\Form\RegistrationType;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,50 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     private $UserRepository;
-
-    /**
-     * @Route("/", name="index")
-     * @param UserRepository $userRepository
-     * @param Request $request
-     * @param EntityManagerInterface $entityManager
-     * @return Response
-     */
-    public function index(UserRepository $userRepository, Request $request, EntityManagerInterface $entityManager): Response
-    {
-        // J'utilise le repository de User pour sélectionner tous les éléments de ma table user
-        // Les repositories permettent de faire les requêtes SELECT dans les tables de la BDD
-        $user = $userRepository->findAll();
-        $newsletter = new Newsletter();
-        $newsletterForm = $this->createForm(NewsletterType::class, $newsletter);
-
-        if ($request->isMethod('Post')) {
-            // Je récupère les données de la requête (POST)
-            // et je les associe à mon formulaire
-            $newsletterForm->handleRequest($request);
-            // Si les données de mon formulaire sont valides
-            // (que les types rentrés dans les inputs sont bons,
-            // que tous les champs obligatoires sont remplis)
-            if ($newsletterForm->isSubmitted() && $newsletterForm->isValid()) {
-                $this->addFlash('news-success', 'Vous êtes bien abonné(e), vous recevrez bientôt de nos nouvelles !');
-                // J'enregistre en BDD ma variable $article
-                // qui est remplie avec les données du formulaire
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($newsletter);
-                $entityManager->flush();
-            }
-            return $this->redirectToRoute('index', ['_fragment' => 'newsletter']);
-        }
-
-            $variable = rand(1,4);
-            $newsletterFormView = $newsletterForm->createView();
-
-        return $this->render('index.html.twig', [
-            'newsletterFormView' => $newsletterFormView,
-            'current_menu' => 'index',
-            'variable' => $variable,
-            'users' => $user
-        ]);
-    }
 
     /**
      * @Route("/members", name="members")
@@ -246,17 +193,21 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/member/update/{id}", name="update_member")
+     * @Route("/member/update", name="update_member")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
-     * @param UserRepository $userRepository
-     * @param $id
      * @return Response
      */
-    public function memberUpdate(Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository, $id): Response
+    public function memberUpdate(Request $request, EntityManagerInterface $entityManager): Response
     {
         $message = "";
-        $user = $userRepository->find($id);
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->json([
+                'code' => 403,
+                'message' => "Unauthorized"
+            ], 403);
+        }
         $userForm = $this->createForm(UserType::class, $user);
 
         if ($request->isMethod('Post')) {
@@ -298,19 +249,58 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/profile/{id}", name="member_profile")
-     * @param UserRepository $userRepository
-     * @param $id
+     * @Route("/profile", name="member_profile")
      * @return Response
      */
-    public function profile(UserRepository $userRepository, $id)
+    public function profile(): Response
     {
-        $user = $userRepository->find($id);
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->json([
+                'code' => 403,
+                'message' => "Unauthorized"
+            ], 403);
+        }
 
-        return $this->render('member_profile.html.twig', [
+        return $this->render('security/member_profile.html.twig', [
             'current_menu' => 'member',
             'user' => $user,
         ]);
+    }
+
+    /**
+     * @Route("/profile/update", name="update_profile")
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     */
+    public function profileUpdate(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->json([
+                'code' => 403,
+                'message' => "Unauthorized"
+            ], 403);
+        }
+        $userForm = $this->createForm(UserType::class, $user);
+
+        if ($request->isMethod('Post')) {
+
+            $userForm->handleRequest($request);
+            if ($userForm->isValid()) {
+                $entityManager->persist($user);
+                $entityManager->flush();
+            }
+            $this->addFlash('success', 'Votre profil a bien été mis à jour');
+            return $this->redirectToRoute('members');
+        }
+        $userFormView = $userForm->createView();
+        return $this->render('security/member_update_profile.html.twig', [
+            'userFormView' => $userFormView,
+            'users' => $user,
+        ]);
+
     }
 
 }

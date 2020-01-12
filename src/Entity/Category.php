@@ -11,11 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
-    public function __construct()
-    {
-        $this->articles = new ArrayCollection();
-    }
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -32,6 +27,11 @@ class Category
      * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
      */
     private $articles;
+
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {

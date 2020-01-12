@@ -1,14 +1,5 @@
 $(document).ready(function() {
 
-    // Connexion menu
-
-    $('#open-connexion').on('click', function() {
-        $('#connexion').css("display", "block");
-    });
-    $('#close-connexion').on('click', function() {
-        $('#connexion').css("display", "none");
-    });
-
     // Cookies
 
     setTimeout(function () {
@@ -31,14 +22,18 @@ $(document).ready(function() {
     // Anim text home
 
     let textWrapper = document.querySelector('.text-apparition');
+    // Utilisation de la regex /\s/g qui remplace la valeur de chacune de mes lettres par mon span, $& fait référence à la valeur de chaque lettre
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
     anime.timeline({loop: false})
     .add({
         targets: '.text-apparition .letter',
         opacity: [0,1],
+        // Courbe d'accélération douce non linéaire
         easing: "easeInOutQuad",
+        // Durée de l'animation
         duration: 500,
+        // Délai de 50ms entre chaque apparition de lettre (i+1)
         delay: (el, i) => 50 * (i+1)
     });
 });

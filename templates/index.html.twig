@@ -14,13 +14,17 @@
             </hgroup>
             <a href="#dev" class="button btn-slider btn-slider-1 scrollTo"><span>Je suis développeur !</span></a>
             <a href="#recruiter" class="button btn-slider btn-slider-2 scrollTo"><span>Je suis recruteur !</span></a>
+            <a href="#dev" class="button btn-slider btn-slider-3 scrollTo"><span>En savoir plus</span></a>
         </section>
 
         <!-- Dev section -->
 
-        <section id="dev" class="container-fluid">
+        <section id="dev" class="container-fluid text-center">
             <h2>Je suis développeur(euse) junior,<br>c'est quoi le principe ?</h2>
-            <div class="container">
+            <div class="container-img-fluid">
+                <img src="{{ asset('assets/img/developpeurs-brainstorming-find-my-dev.png') }}" alt="Developpeurs Find My Dev">
+            </div>
+            <div class="container mt-4">
                 <div class="row">
                     <div class="col-12">
                         <p class="explication">Vous êtes développeur junior ?<br>
@@ -43,9 +47,12 @@
         <!-- Recruiter section -->
 
         <div class="wave-gris"></div>
-        <section id="recruiter" class="container-fluid">
+        <section id="recruiter" class="container-fluid text-center">
             <h2>Je suis recruteur(euse),<br>c'est quoi le principe ?</h2>
-            <div class="container">
+            <div class="container-img-fluid">
+                <img src="{{ asset('assets/img/recruteurs-brainstorming-find-my-dev.png') }}" alt="Recruteurs Find My Dev">
+            </div>
+            <div class="container mt-4">
                 <div class="row">
                     <div class="col-12">
                         <p class="explication">Vous êtes à la recherche d'un développeur junior ?<br>
@@ -91,7 +98,7 @@
                     {% endfor %}
                 </div>
                 <div class="row btn-members">
-                    <img src="{{ asset('assets/img/avatar/avatar6.png') }}" alt="Avatar 5">
+                    <img src="{{ asset('assets/img/avatar/avatar6.png') }}" alt="Avatar Find My Dev">
                     <a href="{{ path('members') }}" class="btn-fiche" role="button">Voir les {{ users | length }} membres</a>
                 </div>
             </div>
@@ -106,16 +113,18 @@
             {{ form_start(newsletterFormView, {'attr':
                 {'class': 'registration-form p-3'}}) }}
             {{ form_errors(newsletterFormView) }}
-            <div class="row align-items-center justify-content-center flex-row">
-                <div class="col-12 col-sm-8 col-md-3">
+            <div class="row align-items-center justify-content-center flex-row text-center">
+                <div class="col-12 col-sm-8 col-md-4 col-lg-3">
                     {{ form_row(newsletterFormView.firstName, {'attr':
                         {'placeholder': 'Votre prénom'}}) }}
                 </div>
-                <div class="col-12 col-sm-8 col-md-3">
+                <div class="col-12 col-sm-8 col-md-4 col-lg-3">
                     {{ form_row(newsletterFormView.email, {'attr':
                         {'placeholder': 'Votre email'}}) }}
                 </div>
-                <div class="col-12 col-sm-8 col-md-3">
+            </div>
+            <div class="row align-items-center justify-content-center text-center">
+                <div class="col-12">
                     <button class="btn-fiche">Je m'abonne !</button>
                 </div>
             </div>

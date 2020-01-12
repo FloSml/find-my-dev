@@ -11,7 +11,7 @@ I - STRUCTURE SITE
   1-3 FONTS & TITLES
   1-4 BUTTONS
   1-5 NAV
-  1-6 MAIN
+  1-6 COMMON
   1-7 COOKIES
   1-8 FOOTER
 
@@ -171,7 +171,7 @@ h3 {
   margin-right: 5px;
 }
 
-/* 1-6 MAIN */
+/* 1-6 COMMON */
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -204,6 +204,10 @@ main {
 }
 .breadcrumb .active {
   color: #000;
+}
+
+.hidden-row {
+  display: none;
 }
 
 /* 1-7 COOKIES */
@@ -340,7 +344,7 @@ footer li a:hover {
   border-radius: 5px;
   background-color: #5a398e;
   border: none;
-  color: #FFFFFF;
+  color: #fff;
   text-align: center;
   font-size: 16px;
   font-weight: 700;
@@ -350,6 +354,13 @@ footer li a:hover {
   transition: all 0.5s;
   margin: 5px;
   outline: 0;
+  opacity: 0;
+  -webkit-animation: fadeIn 1s ease;
+  animation: fadeIn 1s ease;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 .btn-slider a, .btn-slider:hover {
   color: #fff;
@@ -381,24 +392,15 @@ footer li a:hover {
 
 .btn-slider-1 {
   left: 40%;
-  opacity: 0;
-  -webkit-animation: fadeIn 1s ease;
-  animation: fadeIn 1s ease;
-  -webkit-animation-delay: 1.5s;
-  animation-delay: 1.5s;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
 }
 
 .btn-slider-2 {
   left: 60%;
-  opacity: 0;
-  -webkit-animation: fadeIn 1s ease;
-  animation: fadeIn 1s ease;
-  -webkit-animation-delay: 1.8s;
-  animation-delay: 1.8s;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+}
+
+.btn-slider-3 {
+  display: none;
+  left: 50%;
 }
 
 section {
@@ -410,18 +412,15 @@ section {
 #dev h2 {
   margin-top: 20px;
 }
-
 #dev h3 {
   margin-bottom: 20px;
 }
-
-.explication {
+#dev .explication {
   text-align: center;
   margin-bottom: 40px;
   font-size: 1.2rem;
 }
-
-.container-dev {
+#dev .container-dev {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -430,8 +429,17 @@ section {
   -ms-flex-direction: column;
   flex-direction: column;
 }
-.container-dev .btn-fiche {
+#dev .container-dev .btn-fiche {
   margin: 0 auto 20px;
+}
+
+.container-img-fluid {
+  width: 40%;
+  margin: 0 auto;
+}
+.container-img-fluid img {
+  width: 100%;
+  height: auto;
 }
 
 /* RECRUITER SECTION */
@@ -457,7 +465,6 @@ section {
   padding: 30px 0;
   margin: 0;
 }
-
 #members .row {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -589,17 +596,16 @@ section {
 #registration-form-container .registration-form #registration_resume {
   height: 100px;
 }
-#registration-form-container .registration-form #registration_recherchePoste {
-  position: relative;
+#registration-form-container .registration-form .looking-for-job .form-check-input {
+  margin-top: 1.6rem;
+  margin-right: 0.6rem;
+  padding-right: 20px;
 }
 #registration-form-container .registration-form .custom-file-label {
   margin: 0;
 }
 #registration-form-container .registration-form .btn-fiche {
   margin-top: 20px;
-}
-#registration-form-container .registration-form .hidden-row {
-  display: none;
 }
 
 /* 2-4 PAGE MEMBRES */
@@ -706,15 +712,16 @@ section {
 #member h1 span {
   font-size: 0.5em;
 }
-#member .member-card {
+
+.member-card {
   -webkit-box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
 }
-#member .member-card aside {
+.member-card aside {
   background-color: #f7f7f7;
 }
-#member .member-card .member-avatar {
+.member-card .member-avatar {
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -724,33 +731,33 @@ section {
   animation-delay: 1s;
   overflow: hidden;
 }
-#member .member-card .member-avatar img {
+.member-card .member-avatar img {
   width: 100%;
   height: auto;
 }
-#member .member-card .member-title {
+.member-card .member-title {
   background: #f0f0f0;
 }
-#member .member-card .member-title .member-name {
+.member-card .member-title .member-name {
   font-size: 1.5rem;
   font-weight: 300;
 }
-#member .member-card .member-title .member-job {
+.member-card .member-title .member-job {
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1;
 }
-#member .member-card .member-title .member-search {
+.member-card .member-title .member-search {
   color: #333;
   margin: 0;
 }
-#member .member-card .member-subtitle {
+.member-card .member-subtitle {
   font-size: 1.2rem;
   font-weight: bold;
   color: #5a398e;
   text-decoration: underline;
 }
-#member .member-card .member-resume {
+.member-card .member-resume {
   width: 90%;
 }
 
@@ -830,6 +837,10 @@ section {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.admin-container text {
+  font-family: "Comfortaa", Arial, sans-serif !important;
+  font-size: 14.5px !important;
+}
 .admin-container .table th {
   border-top: 0;
 }
@@ -856,7 +867,7 @@ section {
   padding: 10px 0;
 }
 
-.alert-news {
+.alert-news, .alert-contact {
   background-color: transparent;
   border-color: transparent;
   font-weight: 700;

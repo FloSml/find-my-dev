@@ -14,11 +14,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Newsletter
 {
-    public function __construct()
-    {
-        $this->setCreatedAt(new \DateTime());
-    }
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -45,6 +40,11 @@ class Newsletter
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
 
     /**
      * @return mixed

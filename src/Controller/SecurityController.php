@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use App\Entity\User;
-use App\Form\RegistrationType;
+use App\Form\UserType;
 
 class SecurityController extends AbstractController
 {
@@ -27,7 +27,7 @@ class SecurityController extends AbstractController
         $message = "";
         $user = new User();
 
-        $form = $this->createForm(RegistrationType::class, $user);
+        $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
 

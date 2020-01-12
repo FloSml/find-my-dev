@@ -12,12 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Article
 {
-
-    public function __construct()
-    {
-        $this->setCreatedAt(new \DateTime());
-    }
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -60,6 +54,11 @@ class Article
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="articles")
      */
     private $category;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
 
     public function getId(): ?int
     {

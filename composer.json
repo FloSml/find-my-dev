@@ -11,6 +11,7 @@
         "knplabs/knp-paginator-bundle": "^5.0",
         "liip/imagine-bundle": "^2.3",
         "sensio/framework-extra-bundle": "^5.1",
+        "sensiolabs/security-checker": "^6.0",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "4.4.*",
         "symfony/console": "4.4.*",
@@ -27,6 +28,7 @@
         "symfony/process": "4.4.*",
         "symfony/security-bundle": "4.4.*",
         "symfony/serializer-pack": "*",
+        "symfony/swiftmailer-bundle": "^3.4",
         "symfony/translation": "4.4.*",
         "symfony/twig-pack": "*",
         "symfony/validator": "4.4.*",
@@ -67,7 +69,8 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "security-checker security:check": "script"
         },
         "post-install-cmd": [
             "@auto-scripts"

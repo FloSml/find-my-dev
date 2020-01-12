@@ -10,7 +10,7 @@ I - STRUCTURE SITE
   1-3 FONTS & TITLES
   1-4 BUTTONS
   1-5 NAV
-  1-6 MAIN
+  1-6 COMMON
   1-7 COOKIES
   1-8 FOOTER
 
@@ -193,7 +193,7 @@ h3{
     }
 }
 
-/* 1-6 MAIN */
+/* 1-6 COMMON */
 
 main{
     display: -webkit-box;
@@ -229,6 +229,10 @@ main{
     .active{
         color: #000;
     }
+}
+
+.hidden-row{
+    display: none;
 }
 
 /* 1-7 COOKIES */
@@ -372,7 +376,7 @@ footer{
     border-radius: 5px;
     background-color: #5a398e;
     border: none;
-    color: #FFFFFF;
+    color: #fff;
     text-align: center;
     font-size: 16px;
     font-weight: 700;
@@ -382,6 +386,13 @@ footer{
     transition: all 0.5s;
     margin: 5px;
     outline: 0;
+    opacity: 0;
+    -webkit-animation: fadeIn 1s ease;
+    animation: fadeIn 1s ease;
+    -webkit-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 
     a, &:hover{
         color: #fff;
@@ -418,24 +429,15 @@ footer{
 
 .btn-slider-1{
     left: 40%;
-    opacity: 0;
-    -webkit-animation: fadeIn 1s ease;
-    animation: fadeIn 1s ease;
-    -webkit-animation-delay: 1.5s;
-    animation-delay: 1.5s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
 }
 
 .btn-slider-2{
     left: 60%;
-    opacity: 0;
-    -webkit-animation: fadeIn 1s ease;
-    animation: fadeIn 1s ease;
-    -webkit-animation-delay: 1.8s;
-    animation-delay: 1.8s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+}
+
+.btn-slider-3{
+    display: none;
+    left: 50%;
 }
 
 section{
@@ -445,33 +447,46 @@ section{
 
     /* DEV SECTION */
 
-#dev h2{
-    margin-top: 20px;
-}
+#dev{
+    h2{
+        margin-top: 20px;
+    }
 
-#dev h3{
-    margin-bottom: 20px;
-}
+    h3{
+        margin-bottom: 20px;
+    }
 
-.explication{
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 1.2rem;
-}
+    .explication{
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 1.2rem;
+    }
 
-.container-dev{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+    .container-dev{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
 
-    .btn-fiche{
-        margin: 0 auto 20px;
+        .btn-fiche{
+            margin: 0 auto 20px;
+        }
     }
 }
+
+.container-img-fluid{
+    width: 40%;
+    margin: 0 auto;
+
+    img{
+        width: 100%;
+        height: auto;
+    }
+}
+
     /* RECRUITER SECTION */
 
 #recruiter{
@@ -493,18 +508,18 @@ section{
 
     /* SECTION NOUVEAUX */
 
-#members{
+#members {
     padding: 30px 0;
     margin: 0;
-}
 
-#members .row{
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: initial;
-    width: 100%;
+    .row {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: initial;
+        width: 100%;
+    }
 }
 
 .member{
@@ -648,8 +663,13 @@ section{
             height: 100px;
         }
 
-        #registration_recherchePoste{
-            position: relative;
+        .looking-for-job {
+
+            .form-check-input {
+                margin-top: 1.6rem;
+                margin-right: .6rem;
+                padding-right: 20px;
+            }
         }
 
         .custom-file-label{
@@ -658,10 +678,6 @@ section{
 
         .btn-fiche{
             margin-top: 20px;
-        }
-
-        .hidden-row{
-            display: none;
         }
     }
 }
@@ -804,70 +820,70 @@ section{
 
     /* 2-5 PAGE MEMBRE */
 
-#member{
+#member {
 
-    h1{
+    h1 {
 
-        span{
+        span {
             font-size: .5em;
         }
     }
+}
 
-    .member-card {
+.member-card {
+    -webkit-box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
+    box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+
+    aside{
+        background-color: #f7f7f7;
+    }
+
+    .member-avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
         -webkit-box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
         box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
-        margin-bottom: 20px;
+        animation: bounce 2s;
+        animation-delay: 1s;
+        overflow: hidden;
 
-        aside{
-            background-color: #f7f7f7;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .member-title{
+        background: #f0f0f0;
+
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 300;
         }
 
-        .member-avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            -webkit-box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
-            box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
-            animation: bounce 2s;
-            animation-delay: 1s;
-            overflow: hidden;
-
-            img {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        .member-title{
-            background: #f0f0f0;
-
-            .member-name {
-                font-size: 1.5rem;
-                font-weight: 300;
-            }
-
-            .member-job{
-                font-size: 1.3rem;
-                font-weight: bold;
-                line-height: 1;
-            }
-
-            .member-search{
-                color: $gris;
-                margin: 0;
-            }
-        }
-
-        .member-subtitle {
-            font-size: 1.2rem;
+        .member-job{
+            font-size: 1.3rem;
             font-weight: bold;
-            color: #5a398e;
-            text-decoration: underline;
+            line-height: 1;
         }
 
-        .member-resume {
-            width: 90%;
+        .member-search{
+            color: $gris;
+            margin: 0;
         }
+    }
+
+    .member-subtitle {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #5a398e;
+        text-decoration: underline;
+    }
+
+    .member-resume {
+        width: 90%;
     }
 }
 
@@ -956,6 +972,11 @@ section{
         }
     }
 
+    text{
+        font-family: "Comfortaa", Arial, sans-serif !important;
+        font-size: 14.5px !important;
+    }
+
     .table th{
         border-top: 0;
     }
@@ -987,7 +1008,7 @@ section{
     }
 }
 
-.alert-news{
+.alert-news, .alert-contact{
     background-color: transparent;
     border-color: transparent;
     font-weight: 700;
