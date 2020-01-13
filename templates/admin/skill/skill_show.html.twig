@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <main>
+
+        <!-- TITLE SECTION -->
+
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative">
+            <h1>Liste des compétences</h1>
+        </div>
+        <div class="wave wave-title"></div>
+
+        <!-- FORM -->
+
+        <div class="container-fluid" id="article-form-container">
+
+            <table class="table table-users">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for skill in skills %}
+                    <tr>
+                        <td>{{ skill.id }}</td>
+                        <td>{{ skill.name }}</td>
+                        <td>
+                            <a href="{{ path('admin_skill_update', {'id': skill.id}) }}" class="btn-admin-pannel tip" title="Modifier la catégorie"><i class="fas fa-edit"></i><span>Modifier</span></a>
+                            <a href="{{ path('admin_skill_delete', {'id': skill.id}) }}" class="btn-admin-pannel btn-delete tip" title="Supprimer la catégorie"><i class="fas fa-times"></i><span>Supprimer</span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="admin-btn-container d-flex justify-content-center">
+                <a href="{{ path('admin_skill_new') }}" class="btn-fiche btn-admin-aside">Ajouter une compétence</a>
+            </div>
+
+        </div>
+
+    </main>
+
+{% endblock %}

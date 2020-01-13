@@ -65,18 +65,16 @@
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-2 col-sm-2">
-                        {% for user in users %}
-                            <div class="avatar">
-                                {% if user.imageName %}
-                                    <img src="{{ vich_uploader_asset(user, 'imageFile') | imagine_filter('avatar') }}" alt="Photo de profil {{ user.firstName }} {{ user.lastName }}">
+                    <div class="px-4">
+                            <div class="avatar-profile">
+                                {% if app.user.imageName %}
+                                    <img src="{{ vich_uploader_asset(app.user, 'imageFile') | imagine_filter('avatar') }}" alt="Photo de profil {{ app.user.firstName }} {{ app.user.lastName }}">
                                 {% else %}
                                     <img src="{{ asset('assets/img/avatar/avatar' ~ variable ~ '.png') }}" alt="Avatar Find My Dev">
                                 {% endif %}
                             </div>
-                        {% endfor %}
                     </div>
-                    <div class="col-10 col-sm-8">
+                    <div>
                         {{ form_row(userFormView.imageFile, {'attr':
                             {'placeholder': 'Ajoutez votre photo'}}) }}
                     </div>
@@ -88,12 +86,25 @@
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-12 col-sm-8 col-md-6">
+                    <div class="col-12 col-sm-8">
                         {{ form_row(userFormView.currentJob, {'attr':
-                            {'placeholder': 'Société, freelance, ...'}}) }}
+                            {'placeholder': 'Société, freelance, sans emploi...'}}) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-sm-8">
+                        {{ form_row(userFormView.lookingForJob) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <p class="pt-4 pb-3">Afin de confirmer les modifications, veuillez saisir votre mot de passe.</p>
+                    <div class="col-12 col-sm-8 col-md-6">
+                        {{ form_row(userFormView.password, {'attr':
+                            {'placeholder': 'Mot de passe'}}) }}
                     </div>
                     <div class="col-12 col-sm-8 col-md-6">
-                        {{ form_row(userFormView.lookingForJob) }}
+                        {{ form_row(userFormView.confirm_password, {'attr':
+                            {'placeholder': 'Confirmez votre mot de passe'}}) }}
                     </div>
                 </div>
                 <button class="btn-fiche">Enregistrer les modifications</button>

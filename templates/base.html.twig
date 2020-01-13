@@ -87,8 +87,8 @@
 
         <footer class="container-fluid">
             <div class="row py-4">
-                <div class="col-12 col-sm-4 d-flex align-items-center flex-column">
-                    <p>nav</p>
+                <div class="col-12 col-sm-4 d-flex align-items-center flex-column text-center">
+                    <p>NAVIGATION</p>
                     <ul>
                         <li>
                           <a href="{{ path('index') }}">Accueil</a>
@@ -104,44 +104,31 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-12 col-sm-4 d-flex align-items-center flex-column">
-                    <p>nav</p>
-                    <ul>
-                        <li>
-                            <a href="{{ path('index') }}">Accueil</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('members') }}">Les membres</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('contact') }}">Contact</a>
-                        </li>
-                        <li>
-                            <a href="#">Mentions légales</a>
-                        </li>
-                    </ul>
+                <div class="col-12 col-sm-4 d-flex align-items-center justify-content-end flex-column text-center">
+                    <a href="{{ path('index') }}" class="footer-logo">
+                        <img src="{{ asset('assets/img/find-my-dev-logo-blanc.png') }}" alt="Find My Dev">
+                    </a>
+                    <p class="mt-4">Find My Dev {{ "now"|date("Y") }} - Tous droits réservés </p>
                 </div>
                 <div class="col-12 col-sm-4 d-flex align-items-center flex-column">
-                    <p>nav</p>
-                    <ul>
-                        <li>
-                            <a href="{{ path('index') }}">Accueil</a>
+                    <p>SUIVEZ-NOUS</p>
+                    <ul class="d-flex align-items-center social-logo">
+                        <li class="px-1">
+                            <a href="#">
+                                <img src="{{ asset('assets/img/facebook.png') }}" alt="Facebook">
+                            </a>
                         </li>
-                        <li>
-                            <a href="{{ path('members') }}">Les membres</a>
+                        <li class="px-1">
+                            <a href="#">
+                                <img src="{{ asset('assets/img/twitter.png') }}" alt="Twitter">
+                            </a>
                         </li>
-                        <li>
-                            <a href="{{ path('contact') }}">Contact</a>
-                        </li>
-                        <li>
-                            <a href="#">Mentions légales</a>
+                        <li class="px-1">
+                            <a href="#">
+                                <img src="{{ asset('assets/img/linkedin.png') }}" alt="Linkedin">
+                            </a>
                         </li>
                     </ul>
-                </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-12 d-flex align-items-center justify-content-center">
-                    <p>Find My Dev {{ "now"|date("Y") }} - Tous droits réservés </p>
                 </div>
             </div>
         </footer>

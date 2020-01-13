@@ -56,7 +56,7 @@ class UserType extends AbstractType
                 'required' => false
             ])
             ->add('currentJob', TextType::class, [
-                'label' => "Société",
+                'label' => "Poste actuel",
                 'required' => false
             ])
             ->add('experience', ChoiceType::class, [

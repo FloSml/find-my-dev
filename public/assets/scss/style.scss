@@ -22,6 +22,7 @@ II - PAGES SITE
   2-5 MEMBRE
   2-6 CONTACT
   2-7 ADMIN
+  2-8 PROFIL
 
 III - ANIMATIONS
 
@@ -307,6 +308,18 @@ footer{
             &:hover{
                 color: #f7f7f7;
             }
+        }
+    }
+    .footer-logo{
+        width: 120px;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    .social-logo{
+        img{
+            width: 30px;
         }
     }
 }
@@ -1050,9 +1063,29 @@ section{
     }
 }
 
+    /* 2-8 PAGE PROFIL */
+
+.avatar-profile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    -webkit-box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
+    box-shadow: 3px 3px 10px -5px rgba(0,0,0,0.3);
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+#registration-form-container {
+    .form-check-input {
+        margin-top: 1.5rem;
+    }
+}
 
 /* III - ANIMATIONS */
-
 
 @-webkit-keyframes anim-cookies {
     0%{

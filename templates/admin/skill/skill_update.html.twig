@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <main>
+
+        <!-- TITLE SECTION -->
+
+        <div class="container-fluid pt-5 title-section py-3 justify-content-center position-relative">
+            <h1>Modification de la compétence</h1>
+        </div>
+        <div class="wave wave-title"></div>
+
+        <!-- FORM -->
+
+        <div class="container-fluid" id="article-form-container">
+            <div class="row flex-column text-center align-items-center justify-content-center pt-5">
+                {{ form_start(form, {'attr':
+                    {'class': 'registration-form p-3'}}) }}
+
+                <div class="form-errors row align-items-center justify-content-center">
+                    {{ form_errors(form) }}
+                </div>
+
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12">
+                        {{ form_row(form.name, {'attr':
+                            {'placeholder': 'Compétence...'}}) }}
+                    </div>
+                    <button class="btn-fiche">Valider</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+    </main>
+
+{% endblock %}

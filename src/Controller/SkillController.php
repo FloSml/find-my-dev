@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
-use App\Form\CategoryType;
-use App\Repository\CategoryRepository;
+use App\Entity\Skill;
+use App\Form\SkillType;
+use App\Repository\SkillRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -13,32 +13,32 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("admin/category")
+ * @Route("admin/skill")
  */
-class CategoryController extends AbstractController
+class SkillController extends AbstractController
 {
     /**
-     * @Route("/new", name="admin_category_new", methods={"GET","POST"})
+     * @Route("/new", name="admin_skill_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
-    public function new(Request $request): Response
+    public function skillNew(Request $request): Response
     {
-        $category = new Category();
-        $form = $this->createForm(CategoryType::class, $category);
+        $skill = new Skill();
+        $form = $this->createForm(SkillType::class, $skill);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($category);
+            $entityManager->persist($skill);
             $entityManager->flush();
 
             $this->addFlash('success', 'La catégorie a bien été créée');
             return $this->redirectToRoute('admin');
         }
 
-        return $this->render('admin/category/skill_new.html.twig', [
-            'category' => $category,
+        return $this->render('admin/skill/skill_new.html.twig', [
+            'skill' => $skill,
             'form' => $form->createView(),
         ]);
     }
@@ -46,12 +46,12 @@ class CategoryController extends AbstractController
     /**
      * @Route("/update/{id}", name="admin_category_update", methods={"GET","POST"})
      * @param Request $request
-     * @param Category $category
+     * @param Skill $skill
      * @return Response
      */
-    public function categoryUpdate(Request $request, Category $category): Response
+    public function skillUpdate(Request $request, Skill $skill): Response
     {
-        $form = $this->createForm(CategoryType::class, $category);
+        $form = $this->createForm(SkillType::class, $skill);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -61,41 +61,41 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('admin');
         }
 
-        return $this->render('admin/category/skill_update.html.twig', [
-            'category' => $category,
+        return $this->render('admin/skill/skill_update.html.twig', [
+            'skill' => $skill,
             'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/delete/{id}", name="admin_category_delete", methods={"GET","POST"})
-     * @param CategoryRepository $categoryRepository
+     * @param SkillRepository $skillRepository
      * @param EntityManagerInterface $entityManager
      * @param $id
      * @return RedirectResponse
      */
-    public function categoryDelete(CategoryRepository $categoryRepository, EntityManagerInterface $entityManager, $id)
+    public function skillDelete(SkillRepository $skillRepository, EntityManagerInterface $entityManager, $id)
     {
-        $category = $categoryRepository->find($id);
-        $entityManager->remove($category);
+        $skill = $skillRepository->find($id);
+        $entityManager->remove($skill);
         $entityManager->flush();
 
-        $this->addFlash('success', 'La catégorie a bien été supprimée');
+        $this->addFlash('success', 'La compétence a bien été supprimée');
         return $this->redirectToRoute('admin');
     }
 
     /**
-     * @Route("/show", name="admin_category_show", methods={"GET","POST"})
+     * @Route("/show", name="admin_skill_show", methods={"GET","POST"})
      * @param Request $request
-     * @param CategoryRepository $categoryRepository
+     * @param SkillRepository $skillRepository
      * @return Response
      */
-    public function categoryShow(Request $request, CategoryRepository $categoryRepository): Response
+    public function skillShow(Request $request, SkillRepository $skillRepository): Response
     {
-        $category = $categoryRepository->findAll();
+        $skill = $skillRepository->findAll();
 
-        return $this->render('admin/category/skill_show.html.twig', [
-            'categories' => $category,
+        return $this->render('admin/skill/skill_show.html.twig', [
+            'skills' => $skill,
         ]);
     }
 }

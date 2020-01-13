@@ -293,7 +293,7 @@ class UserController extends AbstractController
                 $entityManager->flush();
             }
             $this->addFlash('success', 'Votre profil a bien été mis à jour');
-            return $this->redirectToRoute('members');
+            return $this->redirectToRoute('member_profile');
         }
         $userFormView = $userForm->createView();
         return $this->render('security/member_update_profile.html.twig', [

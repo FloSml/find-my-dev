@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -144,9 +145,15 @@ class User implements UserInterface
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Skill", inversedBy="users")
+     */
+    private $skill;
+
     public function __construct()
     {
         $this->article = new ArrayCollection();
+        $this->skill = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -429,6 +436,32 @@ class User implements UserInterface
             // otherwise the event listeners won't be called and the file is lost
             $this->updated_at = new \DateTime('now');
         }
+    }
+
+    /**
+     * @return Collection|Skill[]
+     */
+    public function getSkill(): Collection
+    {
+        return $this->skill;
+    }
+
+    public function addSkill(Skill $skill): self
+    {
+        if (!$this->skill->contains($skill)) {
+            $this->skill[] = $skill;
+        }
+
+        return $this;
+    }
+
+    public function removeSkill(Skill $skill): self
+    {
+        if ($this->skill->contains($skill)) {
+            $this->skill->removeElement($skill);
+        }
+
+        return $this;
     }
 
 }
