@@ -46,6 +46,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180)
+     * @Assert\Email()
      */
     private $email;
 
@@ -159,6 +160,36 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $school;
+
+    /**
+     * @ORM\Column(type="integer", length=4, nullable=true)
+     */
+    private $degreeYear;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkedin;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $github;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $twitter;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $website;
 
     public function __construct()
     {
@@ -518,6 +549,78 @@ class User implements UserInterface
     public function setSchool(?string $school): self
     {
         $this->school = $school;
+
+        return $this;
+    }
+
+    public function getDegreeYear(): ?int
+    {
+        return $this->degreeYear;
+    }
+
+    public function setDegreeYear(int $degreeYear): self
+    {
+        $this->degreeYear = $degreeYear;
+
+        return $this;
+    }
+
+    public function getLinkedin(): ?string
+    {
+        return $this->linkedin;
+    }
+
+    public function setLinkedin(?string $linkedin): self
+    {
+        $this->linkedin = $linkedin;
+
+        return $this;
+    }
+
+    public function getGithub(): ?string
+    {
+        return $this->github;
+    }
+
+    public function setGithub(?string $github): self
+    {
+        $this->github = $github;
+
+        return $this;
+    }
+
+    public function getTwitter(): ?string
+    {
+        return $this->twitter;
+    }
+
+    public function setTwitter(?string $twitter): self
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    public function getFacebook(): ?string
+    {
+        return $this->facebook;
+    }
+
+    public function setFacebook(?string $facebook): self
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(?string $website): self
+    {
+        $this->website = $website;
 
         return $this;
     }

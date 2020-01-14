@@ -48,7 +48,7 @@ class UserType extends AbstractType
                 'required' => false
             ])
             ->add('resume', CKEditorType::class, [
-                'config_name' => 'my_config',
+                'config_name' => 'member',
                 'label' => "Présentez-vous en quelques lignes.",
                 'required' => false
             ])
@@ -95,6 +95,30 @@ class UserType extends AbstractType
             ])
             ->add('school', TextType::class, [
                 'label' => "Ecole ou organisme",
+                'required' => false
+            ])
+            ->add('degreeYear', TextType::class, [
+                'label' => "Date d'obtention",
+                'required' => false
+            ])
+            ->add('website', TextType::class, [
+                'label' => false,
+                'required' => false
+            ])
+            ->add('linkedin', TextType::class, [
+                'label' => false,
+                'required' => false
+            ])
+            ->add('github', TextType::class, [
+                'label' => false,
+                'required' => false
+            ])
+            ->add('twitter', TextType::class, [
+                'label' => false,
+                'required' => false
+            ])
+            ->add('facebook', TextType::class, [
+                'label' => false,
                 'required' => false
             ])
         ;

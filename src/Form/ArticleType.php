@@ -25,6 +25,7 @@ class ArticleType extends AbstractType
                 'label' => "Résumé de l'article"
             ])
             ->add('description', CKEditorType::class, [
+                'config_name' => 'article',
                 'label' => "Contenu de l'article"
             ])
             ->add('user', EntityType::class, [

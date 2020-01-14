@@ -69,11 +69,15 @@
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-12 col-sm-8 col-md-6">
+                    <div class="col-12 col-sm-8 col-md-4">
                         {{ form_row(userFormView.degree, {'attr':
                             {'placeholder': 'Dernier diplome obtenu...'}}) }}
                     </div>
-                    <div class="col-12 col-sm-8 col-md-6">
+                    <div class="col-12 col-sm-4 col-md-2">
+                        {{ form_row(userFormView.degreeYear, {'attr':
+                            {'placeholder': 'Année'}}) }}
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-4">
                         {{ form_row(userFormView.school, {'attr':
                             {'placeholder': 'Ecole, organisme...'}}) }}
                     </div>
@@ -97,6 +101,33 @@
                     <div class="col-12 col-sm-8">
                         {{ form_row(userFormView.resume, {'attr':
                             {'placeholder': 'Dites-en un peu plus sur vous...'}}) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-6 col-sm-4">
+                        <i class="fas fa-globe"></i>
+                        {{ form_row(userFormView.website, {'attr':
+                        {'placeholder': 'Votre site, portfolio...'}}) }}
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <p><i class="fab fa-linkedin"></i> https://www.linkedin.com/in/</p>
+                        {{ form_row(userFormView.linkedin, {'attr':
+                            {'placeholder': 'Votre identifiant LinkedIn...'}}) }}
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <p><i class="fab fa-github"></i> https://github.com/</p>
+                        {{ form_row(userFormView.github, {'attr':
+                        {'placeholder': 'Votre identifiant GitHub...'}}) }}
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <p><i class="fab fa-twitter-square"></i> https://twitter.com/</p>
+                        {{ form_row(userFormView.twitter, {'attr':
+                        {'placeholder': 'Votre identifiant Twitter...'}}) }}
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <p><i class="fab fa-facebook-square"></i> https://www.facebook.com/</p>
+                        {{ form_row(userFormView.facebook, {'attr':
+                        {'placeholder': 'Votre identifiant Facebook...'}}) }}
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">

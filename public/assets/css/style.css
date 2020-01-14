@@ -940,7 +940,16 @@ section {
   background: #5a398e;
   border-radius: 5px;
   color: #fff;
-  margin: 0 5px;
+  margin: 5px;
+}
+
+.social-member i {
+  font-size: 18px;
+  padding-right: 10px;
+}
+.social-member a {
+  color: #5a398e;
+  word-wrap: break-word;
 }
 
 /* III - ANIMATIONS */

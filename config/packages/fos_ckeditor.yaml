@@ -6,8 +6,10 @@ twig:
 
 fos_ck_editor:
     configs:
-        my_config:
-            toolbar: my_toolbar_1
+        article:
+            toolbar: full
+        member:
+            toolbar: member_profile
     toolbars:
         configs:
-            my_toolbar_1: [ [ "Maximize" ], [ "Save" ] ]
+            member_profile: [ [ "Maximize" ], [ "Save" ] ]
