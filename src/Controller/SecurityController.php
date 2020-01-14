@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\RegistrationType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,10 +25,9 @@ class SecurityController extends AbstractController
      * @return Response
      */
     public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder) {
-        $message = "";
         $user = new User();
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
 

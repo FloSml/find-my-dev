@@ -4,25 +4,32 @@ namespace App\Form;
 
 use App\Entity\Skill;
 use App\Entity\User;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('email', EmailType::class, [
                 'label' => "Email*",
+            ])
+            ->add('password', PasswordType::class, [
+                'label' => "Mot de passe*",
+            ])
+            ->add('confirm_password', PasswordType::class, [
+                'label' => "Confirmation du mot de passe*",
             ])
             ->add('lastName', TextType::class, [
                 'label' => "Nom*",
@@ -45,15 +52,6 @@ class UserType extends AbstractType
             ])
             ->add('lookingForJob', CheckboxType::class, [
                 'label' => "Vous recherchez un job ?",
-                'required' => false
-            ])
-            ->add('resume', CKEditorType::class, [
-                'config_name' => 'my_config',
-                'label' => "Présentez-vous en quelques lignes.",
-                'required' => false
-            ])
-            ->add('currentJob', TextType::class, [
-                'label' => "Poste actuel",
                 'required' => false
             ])
             ->add('experience', ChoiceType::class, [
@@ -80,21 +78,6 @@ class UserType extends AbstractType
             ])
             ->add('imageFile', FileType::class, [
                 'label' =>  "Photo de profil",
-                'required' => false
-            ])
-            ->add('skills', EntityType::class, [
-                'class' => Skill::class,
-                'choice_label' => 'name',
-                'label' => "Compétences",
-                'multiple' => true,
-                'placeholder' => 'Choisissez les compétences que vous maîtrisez',
-            ])
-            ->add('degree', TextType::class, [
-                'label' => "Dernier diplome obtenu",
-                'required' => false
-            ])
-            ->add('school', TextType::class, [
-                'label' => "Ecole ou organisme",
                 'required' => false
             ])
         ;

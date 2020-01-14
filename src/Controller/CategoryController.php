@@ -37,7 +37,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('admin');
         }
 
-        return $this->render('admin/category/skill_new.html.twig', [
+        return $this->render('admin/category/category_new.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
         ]);
@@ -61,9 +61,24 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('admin');
         }
 
-        return $this->render('admin/category/skill_update.html.twig', [
+        return $this->render('admin/category/category_update.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/show", name="admin_category_show", methods={"GET","POST"})
+     * @param Request $request
+     * @param CategoryRepository $categoryRepository
+     * @return Response
+     */
+    public function categoryShow(Request $request, CategoryRepository $categoryRepository): Response
+    {
+        $category = $categoryRepository->findAll();
+
+        return $this->render('admin/category/category_show.html.twig', [
+            'categories' => $category,
         ]);
     }
 
@@ -82,20 +97,5 @@ class CategoryController extends AbstractController
 
         $this->addFlash('success', 'La catégorie a bien été supprimée');
         return $this->redirectToRoute('admin');
-    }
-
-    /**
-     * @Route("/show", name="admin_category_show", methods={"GET","POST"})
-     * @param Request $request
-     * @param CategoryRepository $categoryRepository
-     * @return Response
-     */
-    public function categoryShow(Request $request, CategoryRepository $categoryRepository): Response
-    {
-        $category = $categoryRepository->findAll();
-
-        return $this->render('admin/category/skill_show.html.twig', [
-            'categories' => $category,
-        ]);
     }
 }

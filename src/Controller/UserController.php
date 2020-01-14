@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Skill;
 use App\Form\UserType;
+use App\Repository\SkillRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -10,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 // J'étends la classe AbstractController pour bénéficier des méthodes et propriétés
 // de cette classe dans mon contrôleur
@@ -193,21 +196,17 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/member/update", name="update_member")
+     * @Route("/member/update/{id}", name="update_member")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
+     * @param UserRepository $userRepository
+     * @param $id
      * @return Response
      */
-    public function memberUpdate(Request $request, EntityManagerInterface $entityManager): Response
+    public function memberUpdate(Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository, $id): Response
     {
         $message = "";
-        $user = $this->getUser();
-        if (!$user) {
-            return $this->json([
-                'code' => 403,
-                'message' => "Unauthorized"
-            ], 403);
-        }
+        $user = $userRepository->findBy($id);
         $userForm = $this->createForm(UserType::class, $user);
 
         if ($request->isMethod('Post')) {
@@ -250,10 +249,12 @@ class UserController extends AbstractController
 
     /**
      * @Route("/profile", name="member_profile")
+     * @param SkillRepository $skillRepository
      * @return Response
      */
-    public function profile(): Response
+    public function profile(SkillRepository $skillRepository): Response
     {
+        $variable = rand(1,4);
         $user = $this->getUser();
         if (!$user) {
             return $this->json([
@@ -261,10 +262,13 @@ class UserController extends AbstractController
                 'message' => "Unauthorized"
             ], 403);
         }
+        $skill = $skillRepository->findAll();
 
         return $this->render('security/member_profile.html.twig', [
             'current_menu' => 'member',
             'user' => $user,
+            'skills' => $skill,
+            'variable' => $variable,
         ]);
     }
 
@@ -272,9 +276,10 @@ class UserController extends AbstractController
      * @Route("/profile/update", name="update_profile")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
+     * @param SkillRepository $skillRepository
      * @return Response
      */
-    public function profileUpdate(Request $request, EntityManagerInterface $entityManager): Response
+    public function profileUpdate(Request $request, EntityManagerInterface $entityManager, SkillRepository $skillRepository): Response
     {
         $user = $this->getUser();
         if (!$user) {
@@ -283,6 +288,8 @@ class UserController extends AbstractController
                 'message' => "Unauthorized"
             ], 403);
         }
+        $skill = $skillRepository->findAll();
+        $variable = rand(1,4);
         $userForm = $this->createForm(UserType::class, $user);
 
         if ($request->isMethod('Post')) {
@@ -292,13 +299,15 @@ class UserController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
             }
-            $this->addFlash('success', 'Votre profil a bien été mis à jour');
+            $this->addFlash('profile-success', 'Votre profil a bien été mis à jour');
             return $this->redirectToRoute('member_profile');
         }
         $userFormView = $userForm->createView();
         return $this->render('security/member_update_profile.html.twig', [
             'userFormView' => $userFormView,
             'users' => $user,
+            'skills' => $skill,
+            'variable' => $variable,
         ]);
 
     }

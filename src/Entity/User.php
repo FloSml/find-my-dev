@@ -141,19 +141,41 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="datetime")
-     * @var \DateTime
+     * @var DateTime
      */
     private $updated_at;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Skill", inversedBy="users")
      */
-    private $skill;
+    private $skills;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $degree;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $school;
 
     public function __construct()
     {
         $this->article = new ArrayCollection();
-        $this->skill = new ArrayCollection();
+        $this->setUpdatedAt(new \DateTime());
+        $this->skills = new ArrayCollection();
+    }
+
+    public function serialize()
+    {
+        return serialize($this->id);
+    }
+
+    public function unserialize($serialized)
+    {
+        $this->id = unserialize($serialized);
+
     }
 
     public function getId(): ?int
@@ -434,22 +456,34 @@ class User implements UserInterface
         if ($this->imageFile instanceof UploadedFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
-            $this->updated_at = new \DateTime('now');
+            $this->updated_at = new DateTime('now');
         }
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
     }
 
     /**
      * @return Collection|Skill[]
      */
-    public function getSkill(): Collection
+    public function getSkills(): Collection
     {
-        return $this->skill;
+        return $this->skills;
     }
 
     public function addSkill(Skill $skill): self
     {
-        if (!$this->skill->contains($skill)) {
-            $this->skill[] = $skill;
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
         }
 
         return $this;
@@ -457,11 +491,34 @@ class User implements UserInterface
 
     public function removeSkill(Skill $skill): self
     {
-        if ($this->skill->contains($skill)) {
-            $this->skill->removeElement($skill);
+        if ($this->skills->contains($skill)) {
+            $this->skills->removeElement($skill);
         }
 
         return $this;
     }
 
+    public function getDegree(): ?string
+    {
+        return $this->degree;
+    }
+
+    public function setDegree(?string $degree): self
+    {
+        $this->degree = $degree;
+
+        return $this;
+    }
+
+    public function getSchool(): ?string
+    {
+        return $this->school;
+    }
+
+    public function setSchool(?string $school): self
+    {
+        $this->school = $school;
+
+        return $this;
+    }
 }

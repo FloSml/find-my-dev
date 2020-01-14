@@ -24,7 +24,7 @@ class Skill
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="skill")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="skills")
      */
     private $users;
 

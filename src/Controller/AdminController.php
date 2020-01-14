@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\SkillRepository;
 use App\Repository\UserRepository;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\Material\ColumnChart;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
@@ -20,11 +21,12 @@ class AdminController extends AbstractController
      * @param ArticleRepository $articleRepository
      * @param UserRepository $userRepository
      * @param CategoryRepository $categoryRepository
+     * @param SkillRepository $skillRepository
      * @param PaginatorInterface $paginator
      * @param Request $request
      * @return Response
      */
-    public function index(ArticleRepository $articleRepository, UserRepository $userRepository, CategoryRepository $categoryRepository, PaginatorInterface $paginator, Request $request): Response
+    public function index(ArticleRepository $articleRepository, UserRepository $userRepository, CategoryRepository $categoryRepository, SkillRepository $skillRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $user = $paginator->paginate(
             $userRepository->findAll(),
@@ -33,6 +35,11 @@ class AdminController extends AbstractController
         );
         $article = $articleRepository->findAll();
         $category = $categoryRepository->findAll();
+        $skill = $paginator->paginate(
+            $skillRepository->findAll(),
+            $request->query->getInt('pages', 1),
+            6
+        );
 
         $homme = count($userRepository->findMen());
         $femme = count($userRepository->findWomen());
@@ -101,6 +108,7 @@ class AdminController extends AbstractController
             'users' => $user,
             'articles' => $article,
             'categories' => $category,
+            'skills' => $skill,
             'piechart' => $pieChart,
             'chart' => $chart
         ]);

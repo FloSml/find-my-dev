@@ -18,7 +18,7 @@
                     <h4>Blog</h4>
                     <h5 class="pl-3">Articles</h5>
                     <div class="btn-admin-pannel-container pl-3">
-                        <a href="#" class="btn-admin-pannel d-inline-block"><i class="far fa-eye"></i></a>
+                        <a href="{{ path('blog') }}" class="btn-admin-pannel d-inline-block"><i class="far fa-eye"></i></a>
                         <a href="{{ path('admin_article_new') }}" class="btn-admin-pannel d-inline-block"><i class="fas fa-plus"></i></a>
                     </div>
                     <h5 class="pl-3">Catégories</h5>
@@ -30,8 +30,13 @@
                     <h4>Utilisateurs</h4>
                     <h5 class="pl-3">Membres</h5>
                     <div class="btn-admin-pannel-container pl-3">
-                        <a href="#" class="btn-admin-pannel d-inline-block"><i class="far fa-eye"></i></a>
-                        <a href="#" class="btn-admin-pannel d-inline-block"><i class="fas fa-plus"></i></a>
+                        <a href="{{ path('members') }}" class="btn-admin-pannel d-inline-block"><i class="far fa-eye"></i></a>
+                        <a href="{{ path('security_registration') }}" class="btn-admin-pannel d-inline-block"><i class="fas fa-plus"></i></a>
+                    </div>
+                    <h5 class="pl-3">Compétences</h5>
+                    <div class="btn-admin-pannel-container pl-3">
+                        <a href="{{ path('admin_skill_show') }}" class="btn-admin-pannel d-inline-block"><i class="far fa-eye"></i></a>
+                        <a href="{{ path('admin_skill_new') }}" class="btn-admin-pannel d-inline-block"><i class="fas fa-plus"></i></a>
                     </div>
                 </aside>
 
@@ -167,6 +172,40 @@
                     <div class="admin-btn-container d-flex justify-content-center mb-3">
                         <a href="{{ path('admin_category_show') }}" class="btn-fiche btn-admin-aside"><i class="far fa-eye pr-1"></i> Voir les catégories</a>
                         <a href="{{ path('admin_category_new') }}" class="btn-fiche btn-admin-aside"><i class="fas fa-plus pr-1"></i> Ajouter une catégorie</a>
+                    </div>
+
+                    <!-- SKILLS SECTION-->
+
+                    <div class="admin-container-title d-flex w-100 justify-content-center">
+                        <h2>Gestion des compétences<span class="count">{{ skills | length }}</span></h2>
+                    </div>
+                    <table class="table table-catgories">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for skill in skills %}
+                            <tr>
+                                <td>{{ skill.id }}</td>
+                                <td>{{ skill.name }}</td>
+                                <td>
+                                    <a href="{{ path('admin_skill_update', {'id': skill.id}) }}" class="btn-admin-pannel tip"><i class="fas fa-edit"></i><span>Modifier</span></a>
+                                    <a href="{{ path('admin_skill_delete', {'id': skill.id}) }}" class="btn-admin-pannel btn-delete tip"><i class="fas fa-times"></i><span>Supprimer</span></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="row pagination justify-content-center pt-4">
+                        {{ knp_pagination_render(skills) }}
+                    </div>
+                    <div class="admin-btn-container d-flex justify-content-center mb-3">
+                        <a href="{{ path('admin_skill_show') }}" class="btn-fiche btn-admin-aside"><i class="far fa-eye pr-1"></i> Voir les compétences</a>
+                        <a href="{{ path('admin_skill_new') }}" class="btn-fiche btn-admin-aside"><i class="fas fa-plus pr-1"></i> Ajouter une compétence</a>
                     </div>
                 </div>
             </div>

@@ -850,7 +850,7 @@ section {
 }
 .admin-container text {
   font-family: "Comfortaa", Arial, sans-serif !important;
-  font-size: 14.5px !important;
+  font-size: 13px !important;
 }
 .admin-container .table th {
   border-top: 0;
@@ -933,6 +933,14 @@ section {
 
 #registration-form-container .form-check-input {
   margin-top: 1.5rem;
+}
+
+.member-skill {
+  padding: 5px 10px;
+  background: #5a398e;
+  border-radius: 5px;
+  color: #fff;
+  margin: 0 5px;
 }
 
 /* III - ANIMATIONS */

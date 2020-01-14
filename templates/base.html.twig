@@ -15,6 +15,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicon/apple-touch-icon.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/favicon/favicon-16x16.png') }}">
+        {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/media.css') }}">
     </head>
@@ -141,8 +142,8 @@
         <script src="https://kit.fontawesome.com/5a8737d22f.js" crossorigin="anonymous"></script>
         <!-- Anim text -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        {% block scripts %}{% endblock %}
         <!-- Mes Scripts -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
-        {% block scripts %}{% endblock %}
     </body>
 </html>

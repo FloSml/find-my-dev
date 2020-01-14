@@ -5,10 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use App\Repository\CategoryRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -81,14 +78,12 @@ class ArticleController extends AbstractController
      * @param ArticleRepository $articleRepository
      * @param Request $request
      * @param EntityManagerInterface $entityManager
-     * @param UserRepository $userRepository
      * @param $id
      * @return Response
      */
-    public function articleUpdate(ArticleRepository $articleRepository, Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository, $id)
+    public function articleUpdate(ArticleRepository $articleRepository, Request $request, EntityManagerInterface $entityManager, $id)
     {
         $article = $articleRepository->find($id);
-        $message= "";
         $articleForm = $this->createForm(ArticleType::class, $article);
 
         if ($request->isMethod('Post')) {
@@ -104,7 +99,6 @@ class ArticleController extends AbstractController
         $articleFormView = $articleForm->createView();
         return $this->render('admin/blog/article_update.html.twig', [
             'articleFormView' => $articleFormView,
-            'message' => $message,
         ]);
     }
 
