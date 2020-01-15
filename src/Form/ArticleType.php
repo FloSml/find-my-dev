@@ -5,9 +5,11 @@ namespace App\Form;
 use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\User;
+use App\Repository\UserRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -34,6 +36,9 @@ class ArticleType extends AbstractType
                 'choice_label' => function(User $user){
                     return $user->getFirstname().' '.$user->getLastName();
                 },
+                #'query_builder' => function(UserRepository $repo) {
+                #    return $repo->findByRole();
+                #},
                 'label' => 'Auteur',
                 'placeholder' => 'Choisissez un auteur',
                 'required' => false
@@ -43,6 +48,10 @@ class ArticleType extends AbstractType
                 'choice_label' => 'name',
                 'label' => "Catégorie",
                 'placeholder' => 'Choisissez une catégorie',
+            ])
+            ->add('imageFile', FileType::class, [
+                'label' =>  "Image mise en avant",
+                'required' => false
             ])
             ->add('valider', SubmitType::class, [
                 'attr' => [

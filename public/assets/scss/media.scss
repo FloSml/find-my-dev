@@ -50,6 +50,15 @@
     .container-img-fluid {
         width: 60%;
     }
+    #blog{
+        .aside-blog{
+            display: none;
+        }
+        section{
+            max-width: 100%;
+            flex: 0 0 100%;
+        }
+    }
 }
 
 @media (max-width: 840px) {

@@ -14,13 +14,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
 {
-     /**
+    /**
      * @Route("/article/{id}", name="article_show", methods={"GET"})
-     * @param Article $article
+     * @param ArticleRepository $articleRepository
+     * @param $id
      * @return Response
      */
-    public function show(Article $article): Response
+    public function show(ArticleRepository $articleRepository, $id): Response
     {
+        $article = $articleRepository->find($id);
+
         return $this->render('blog/article_show.html.twig', [
             'current_menu' => 'article',
             'article' => $article,
@@ -62,7 +65,7 @@ class ArticleController extends AbstractController
                 $entityManager->flush();
         }
             $this->addFlash('success', 'L\'article a bien été créé');
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('blog');
         }
 
         // à partir de mon gabarit, je crée la vue de mon formulaire
@@ -94,7 +97,7 @@ class ArticleController extends AbstractController
                 $entityManager->flush();
             }
             $this->addFlash('success', 'L\'article a bien été modifié');
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('blog');
         }
         $articleFormView = $articleForm->createView();
         return $this->render('admin/blog/article_update.html.twig', [
@@ -122,6 +125,6 @@ class ArticleController extends AbstractController
 
         $this->addFlash('success', 'L\'article a bien été supprimé');
 
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('blog');
     }
 }

@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block content %}
 
     <main>
@@ -10,7 +11,7 @@
             <div class="wave"></div>
             <hgroup>
                 <h1><img src="{{ asset('assets/img/find-my-dev-logo.png') }}" alt="Find My Dev"></h1>
-                <h2 class="text-apparition">La plateforme dédiée aux développeurs juniors !</h2>
+                <h2 class="text-apparition">La plateforme dédiée aux développeurs !</h2>
             </hgroup>
             <a href="#dev" class="button btn-slider btn-slider-1 scrollTo"><span>Je suis développeur !</span></a>
             <a href="#recruiter" class="button btn-slider btn-slider-2 scrollTo"><span>Je suis recruteur !</span></a>
@@ -20,24 +21,24 @@
         <!-- Dev section -->
 
         <section id="dev" class="container-fluid text-center">
-            <h2>Je suis développeur(euse) junior,<br>c'est quoi le principe ?</h2>
+            <h2>Je suis développeur(euse),<br>c'est quoi le principe ?</h2>
             <div class="container-img-fluid">
-                <img src="{{ asset('assets/img/developpeurs-brainstorming-find-my-dev.png') }}" alt="Developpeurs Find My Dev">
+                <img src="{{ asset('assets/img/visuels/developpeurs-brainstorming-find-my-dev.png') }}" alt="Developpeurs Find My Dev">
             </div>
             <div class="container mt-4">
                 <div class="row">
                     <div class="col-12">
-                        <p class="explication">Vous êtes développeur junior ?<br>
+                        <p class="explication">Vous êtes développeur ?<br>
                             Vous sortez d'une école ou êtes autodidacte ?<br>
-                            Créez votre profil sur <strong>Find My Dev</strong> pour être visibles par les recruteurs !</p>
+                            Quelle que soit votre expérience,<br>rejoignez <strong>Find My Dev</strong> et profitez d'une grande visibilité auprès des recruteurs !</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="container-dev col-12 text-center">
-                        <h3>Vous cherchez de l'aide pour votre projet ?</h3>
-                        <p>Trouvez parmi nos members les profils qui vous intéressent et contactez-les via la plateforme.</p>
-                        <p><em>Je suis écrivain et je cherche un illustrateur<br>
-                                Je suis game développeur et je cheche un graphiste 2D/3D</em></p>
+                    <div class="d-flex col-12 text-center flex-column presentation-home">
+                        <h3>Vous cherchez de nouvelles opportunités dans votre domaine ?</h3>
+                        <p>Complétez votre profil et devenez membre d'une communauté grandissante.</p>
+                        <p><em class="px-2">" Seulement 10 jours après mon inscription, j'ai été contacté et recruté via la plateforme."<br>
+                                Camille G.</em></p>
                         <a href="{{ path('security_registration') }}" class="btn-fiche" role="button">Je m'inscris !</a>
                     </div>
                 </div>
@@ -50,21 +51,21 @@
         <section id="recruiter" class="container-fluid text-center">
             <h2>Je suis recruteur(euse),<br>c'est quoi le principe ?</h2>
             <div class="container-img-fluid">
-                <img src="{{ asset('assets/img/recruteurs-brainstorming-find-my-dev.png') }}" alt="Recruteurs Find My Dev">
+                <img src="{{ asset('assets/img/visuels/recruteurs-brainstorming-find-my-dev.png') }}" alt="Recruteurs Find My Dev">
             </div>
             <div class="container mt-4">
                 <div class="row">
                     <div class="col-12">
-                        <p class="explication">Vous êtes à la recherche d'un développeur junior ?<br>
-                            Faites votre recherche parmi tous nos membres pour trouver le développeur qui vous correspond !</p>
+                        <p class="explication">Vous êtes à la recherche d'un développeur ?<br>
+                            Faites votre recherche parmi tous nos membres pour trouver le développeur qui vous correspond.</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="container-principe col-12 text-center">
-                        <h3>Vous cherchez de l'aide pour votre projet ?</h3>
-                        <p>Trouvez parmi nos members les profils qui vous intéressent et contactez-les via la plateforme.</p>
-                        <p><em>Je suis écrivain et je cherche un illustrateur<br>
-                                Je suis game développeur et je cheche un graphiste 2D/3D</em></p>
+                    <div class="d-flex col-12 text-center flex-column presentation-home">
+                        <h3>Vous cherchez de l'aide pour votre recrutement ?</h3>
+                        <p>Les experts de <strong>Find My Dev</strong> se chargent de vous trouver la perle rare !</p>
+                        <p><em class="px-2">" Grâce à Find My Dev, nous avons agrandi notre équipe en recrutant 2 développeurs."<br>
+                        Pierre M.</em></p>
                         <a href="{{ path('members') }}" class="btn-fiche" role="button">Voir tous les dev</a>
                     </div>
                 </div>

@@ -23,17 +23,29 @@
                 </div>
 
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-12 col-sm-8 col-md-4">
+                    <div class="col-12 col-sm-8">
                         {{ form_row(articleFormView.title, {'attr':
                             {'placeholder': 'Votre titre...'}}) }}
                     </div>
-                    <div class="col-12 col-sm-8 col-md-4">
+                    <div class="col-12 col-sm-4">
                         {{ form_row(articleFormView.user, {'attr':
                             {'placeholder': 'Auteur...'}}) }}
                     </div>
-                    <div class="col-12 col-sm-8 col-md-4">
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-sm-8 col-md-6">
                         {{ form_row(articleFormView.category, {'attr':
                             {'placeholder': 'Catégorie...'}}) }}
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-6">
+                        {{ form_row(articleFormView.imageFile, {'attr':
+                            {'placeholder': 'Ajoutez votre photo'}}) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12">
+                        {{ form_row(articleFormView.shortDescription, {'attr':
+                            {'placeholder': 'Court résumé de l\'article...'}}) }}
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">

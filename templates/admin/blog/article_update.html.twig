@@ -37,6 +37,12 @@
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
+                    <div>
+                        {{ form_row(articleFormView.imageFile, {'attr':
+                            {'placeholder': 'Ajoutez votre photo'}}) }}
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
                     <div class="col-12">
                         {{ form_row(articleFormView.shortDescription, {'attr':
                             {'placeholder': 'Résumé de l\'article...'}}) }}
@@ -49,7 +55,10 @@
                     </div>
                 </div>
                 {{ form_end(articleFormView) }}
-                <a href="{{ path('admin') }}" class="btn-fiche mb-4">Retour à l'admin</a>
+                <div class="row align-items-center justify-content-center">
+                    <a href="{{ path('blog') }}" class="btn-fiche mb-4">Retour au blog</a>
+                    <a href="{{ path('admin') }}" class="btn-fiche mb-4">Retour à l'admin</a>
+                </div>
             </div>
         </div>
 

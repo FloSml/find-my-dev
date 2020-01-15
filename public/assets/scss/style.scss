@@ -23,6 +23,8 @@ II - PAGES SITE
   2-6 CONTACT
   2-7 ADMIN
   2-8 PROFIL
+  2-9 BLOG
+  2-10 ARTICLE
 
 III - ANIMATIONS
 
@@ -232,6 +234,39 @@ main{
     }
 }
 
+aside{
+    background: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+
+    h3{
+        margin: 30px 0 0;
+        font-size: 1.5rem;
+        color: #5a398e;
+    }
+
+    .line{
+        width: 80%;
+        padding: 20px 0 0;
+        margin-bottom: 20px;
+        border-bottom: solid 1px #999;
+    }
+
+    h4{
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #5a398e;
+    }
+
+    h5{
+        margin-top: 20px;
+        font-size: 1rem;
+        font-weight: 300;
+        color: #5a398e;
+    }
+}
+
 .hidden-row{
     display: none;
 }
@@ -289,6 +324,16 @@ main{
     .legal-cookies{
         margin: 20px 0 0 20px;
         color: $gris;
+    }
+}
+
+.container-img-fluid{
+    width: 40%;
+    margin: 0 auto;
+
+    img{
+        width: 100%;
+        height: auto;
     }
 }
 
@@ -468,36 +513,18 @@ section{
     h3{
         margin-bottom: 20px;
     }
+}
 
-    .explication{
-        text-align: center;
-        margin-bottom: 40px;
-        font-size: 1.2rem;
-    }
-
-    .container-dev{
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-
-        .btn-fiche{
-            margin: 0 auto 20px;
-        }
+.presentation-home{
+    .btn-fiche{
+        margin: 0 auto 20px;
     }
 }
 
-.container-img-fluid{
-    width: 40%;
-    margin: 0 auto;
-
-    img{
-        width: 100%;
-        height: auto;
-    }
+.explication{
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.2rem;
 }
 
     /* RECRUITER SECTION */
@@ -914,39 +941,6 @@ section{
 
     /* 2-7 PAGE ADMIN */
 
-.aside-admin{
-    background: #f7f7f7;
-    display: flex;
-    flex-direction: column;
-
-    h3{
-        margin: 30px 0 0;
-        font-size: 1.5rem;
-        color: #5a398e;
-    }
-
-    .line{
-        width: 80%;
-        padding: 20px 0 0;
-        margin-bottom: 20px;
-        border-bottom: solid 1px #999;
-    }
-
-    h4{
-        margin-top: 20px;
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #5a398e;
-    }
-
-    h5{
-        margin-top: 20px;
-        font-size: 1rem;
-        font-weight: 300;
-        color: #5a398e;
-    }
-}
-
 .btn-admin-aside{
     font-size: 14px;
 }
@@ -1094,15 +1088,64 @@ section{
 }
 
 .social-member{
+
     i{
         font-size: 18px;
         padding-right: 10px;
     }
+
     a{
         color: #5a398e;
         word-wrap: break-word;
     }
 }
+
+/* 2-9 PAGE BLOG */
+
+#blog{
+
+    .aside-blog{
+
+        .aside-article{
+            color: #5a398e;
+        }
+
+        .aside-createdat{
+            font-size: .8rem;
+        }
+    }
+    .articles{
+
+        &:hover .img-fluid{
+            transform: scale(1.2);
+        }
+
+        .img-fluid-container{
+            overflow: hidden;
+
+            .img-fluid{
+                transition: transform 3s;
+            }
+        }
+        h2{
+            color: #5a398e;
+        }
+    }
+}
+
+/* 2-10 PAGE ARTICLE */
+
+#article-show{
+
+    .img-article{
+        width: 50%;
+
+        .img-fluid{
+            width: 100%;
+        }
+    }
+}
+
 
 /* III - ANIMATIONS */
 

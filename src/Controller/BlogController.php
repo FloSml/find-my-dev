@@ -17,18 +17,12 @@ class BlogController extends AbstractController
      * @Route("/blog", name="blog", methods={"GET"})
      * @param ArticleRepository $articleRepository
      * @param CategoryRepository $categoryRepository
-     * @param PaginatorInterface $paginator
-     * @param Request $request
      * @return Response
      */
-    public function index(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, PaginatorInterface $paginator, Request $request): Response
+    public function index(ArticleRepository $articleRepository, CategoryRepository $categoryRepository): Response
     {
         $category = $categoryRepository->findAll();
-        $article = $paginator->paginate(
-            $articleRepository->findAll(),
-            $request->query->getInt('page', 1),
-            6
-        );
+        $article = $articleRepository->findAll();
 
         return $this->render('blog/blog.html.twig', [
             'current_menu' => 'blog',
