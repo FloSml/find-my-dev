@@ -24,6 +24,8 @@ security:
             form_login:
                 login_path: security_login
                 check_path: security_login
+                csrf_token_generator: security.csrf.token_manager
+                default_target_path: index
             logout:
                 path: security_logout
                 target: index
@@ -47,3 +49,5 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/profile, roles: ROLE_USER }
+
+

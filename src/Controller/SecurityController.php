@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Form\RegistrationType;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Swift_Mailer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,13 +22,12 @@ class SecurityController extends AbstractController
      * @param Request $request
      * @param EntityManagerInterface $entityManager
      * @param UserPasswordEncoderInterface $encoder
+     * @param \Swift_Mailer $mailer
      * @return Response
      */
-    public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder) {
+    public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer) {
         $user = new User();
-
         $form = $this->createForm(RegistrationType::class, $user);
-
         $form->handleRequest($request);
 
         // Si les informations sont soumises et valides
@@ -45,6 +44,25 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             // J'envoie en BDD
             $entityManager->flush();
+
+            $firstName = $user->getFirstName();
+            $lastName = $user->getLastName();
+            $email = $user->getEmail();
+
+            $message = (new \Swift_Message('Bienvenue sur Find My Dev !'))
+                ->setFrom('hello.findmydev@gmail.com')
+                ->setTo($email)
+                ->setBody(
+                    $this->renderView(
+                        'emails/email_registration.html.twig', [
+                        'firstName' => $firstName,
+                        'lastName' => $lastName,
+                        'email' => $email,
+                    ]),
+                    'text/html'
+                );
+            $mailer->send($message);
+
             $this->addFlash('success', 'Votre profil a bien été créé, connectez-vous à votre compte.');
             return $this->redirectToRoute('security_login');
         }

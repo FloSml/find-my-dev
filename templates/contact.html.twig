@@ -22,42 +22,42 @@
             </div>
             <div class="row flex-column text-center align-items-center justify-content-center pt-5">
                 <p>Si vous avez des questions, des remarques ou que vous voulez juste nous dire bonjour, envoyez-nous un message !</p>
-                {{ form_start(contactFormView, {'attr':
+                {{ form_start(contactForm, {'attr':
                     {'class': 'p-3'}}) }}
 
                 <div class="form-errors row align-items-center justify-content-center">
-                    {{ form_errors(contactFormView) }}
+                    {{ form_errors(contactForm) }}
                 </div>
 
                 <div class="row align-items-center justify-content-center">
                     <div class="col-12 col-sm-8 col-md-6">
-                        {{ form_row(contactFormView.firstName, {'attr':
+                        {{ form_row(contactForm.firstName, {'attr':
                             {'placeholder': 'Votre prénom...'}}) }}
                     </div>
                     <div class="col-12 col-sm-8 col-md-6">
-                        {{ form_row(contactFormView.lastName, {'attr':
+                        {{ form_row(contactForm.lastName, {'attr':
                             {'placeholder': 'Votre nom...'}}) }}
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-12">
-                        {{ form_row(contactFormView.email, {'attr':
+                        {{ form_row(contactForm.email, {'attr':
                             {'placeholder': 'Votre email...'}}) }}
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-12">
-                        {{ form_row(contactFormView.message, {'attr':
+                        {{ form_row(contactForm.message, {'attr':
                             {'placeholder': 'Votre message...'}}) }}
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center hidden-row">
                     <div class="col-12">
-                        {{ form_row(contactFormView.createdAt) }}
+                        {{ form_row(contactForm.createdAt) }}
                     </div>
                 </div>
                 <button class="btn-fiche">Envoyer</button>
-                {{ form_end(contactFormView) }}
+                {{ form_end(contactForm) }}
             </div>
         </div>
 

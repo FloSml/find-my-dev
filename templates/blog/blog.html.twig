@@ -16,6 +16,11 @@
         <!-- ARTICLES SECTION -->
 
         <div class="container-fluid d-flex p-0">
+            {% for message in app.flashes('article-success') %}
+                <div class="alert alert-success">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
             <div class="row w-100 m-0">
                 <aside class="aside-blog col-12 col-md-2">
                     <h3>Le blog</h3>

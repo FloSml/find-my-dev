@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title></title>
+
+    <style type="text/css">
+    </style>
+</head>
+<body style="margin:0; padding:0; background-color:#F2F2F2;">
+    <center>
+        <table width="640" cellpadding="0" cellspacing="0" border="0" class="wrapper" bgcolor="#F2F2F2">
+            <tbody>
+                <tr>
+                    <td width="100%" height="30px">
+                        &nbsp;
+                    </td>
+                </tr>
+            <tbody>
+        </table>
+        <table width="640" cellpadding="0" cellspacing="0" border="0" class="wrapper" bgcolor="#FFFFFF">
+            <tbody>
+                <tr>
+                    <td width="100%">
+                        <p style="font-size:16px; font-weight: bold; text-align: center;">Bienvenue sur Find My Dev !</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top">
+                        <table width="600" cellpadding="0" cellspacing="0" border="0" class="container">
+                            <tr>
+                                <td width="100%" height="30px">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" width="100%">
+                                    <p>Bonjour {{ firstName }},</p>
+                                    <p>Merci pour votre inscription sur Find My Dev.<br>
+                                        Afin d'être visible au maximum par les recruteurs, prenez le temps d'ajouter du contenu à votre profil membre via ce lien
+                                        <a href="{{ url('update_profile') }}" target="_blank">Mon compte</a> ou directement sur la page Mon Compte sur la plateforme.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" width="100%">
+                                    <p>Pour rappel, vos identifiants de connexion sont :</p>
+                                    <p>Votre email : {{ email }}</p>
+                                    <p>Votre mot de passe : vous seul le connaissez !</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" width="100%">
+                                    <p>Connectez-vous à votre compte via ce lien : <a href="{{ url('login') }}"  target="_blank">Je me connecte</a></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" height="30px" width="100%">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" width="100%">
+                                    <p>N'hésitez pas à nous contacter si vous avez la moindre question !</p>
+                                    <p>A bientôt sur Find My Dev.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" height="30px" width="100%">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table width="640" cellpadding="0" cellspacing="0" border="0" class="wrapper" bgcolor="#F2F2F2">
+            <tbody>
+            <tr>
+                <td width="100%" height="30px">
+                    &nbsp;
+                </td>
+            </tr>
+            <tbody>
+        </table>
+    </center>
+</body>
+</html>

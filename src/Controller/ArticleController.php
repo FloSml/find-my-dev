@@ -31,20 +31,17 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("admin/article/new", name="admin_article_new", methods={"GET","POST"})
+     * @Route("admin/article/new", name="admin_article_new")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
      * @return Response
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function articleNew(Request $request, EntityManagerInterface $entityManager): Response
     {
         // je crée un nouvel Article en créant une nouvelle instance de l'entité Article
         $article = new Article();
 
-        $message = "";
-
-        // J'utilise la méthode createForm pour créer le gabarit de
-        // formulaire pour l'article : ArticleType
+        // J'utilise la méthode createForm pour créer le gabarit de formulaire pour l'article : ArticleType
         // et je lui associe mon entité article vide
         $articleForm = $this->createForm(ArticleType::class, $article);
 
@@ -54,17 +51,14 @@ class ArticleController extends AbstractController
             // et je les associe à mon formulaire
             $articleForm->handleRequest($request);
             // Si les données de mon formulaire sont valides
-            // (que les types rentrés dans les inputs sont bons,
-            // que tous les champs obligatoires sont remplis)
             if ($articleForm->isSubmitted() && $articleForm->isValid()) {
-                $message = "L'article a bien été ajouté/modifié !";
                 // J'enregistre en BDD ma variable $article
                 // qui est remplie avec les données du formulaire
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($article);
                 $entityManager->flush();
         }
-            $this->addFlash('success', 'L\'article a bien été créé');
+            $this->addFlash('article-success', 'L\'article a bien été créé');
             return $this->redirectToRoute('blog');
         }
 
@@ -77,7 +71,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("admin/article/update/{id}", name="admin_article_update", methods={"GET","POST"})
+     * @Route("admin/article/update/{id}", name="admin_article_update")
      * @param ArticleRepository $articleRepository
      * @param Request $request
      * @param EntityManagerInterface $entityManager
@@ -96,7 +90,7 @@ class ArticleController extends AbstractController
                 $entityManager->persist($article);
                 $entityManager->flush();
             }
-            $this->addFlash('success', 'L\'article a bien été modifié');
+            $this->addFlash('article-success', 'L\'article a bien été modifié');
             return $this->redirectToRoute('blog');
         }
         $articleFormView = $articleForm->createView();
@@ -106,7 +100,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("admin/article/delete/{id}", name="admin_article_delete", methods={"GET","POST"})
+     * @Route("admin/article/delete/{id}", name="admin_article_delete")
      * @param ArticleRepository $articleRepository
      * @param EntityManagerInterface $entityManager
      * @param $id
@@ -123,8 +117,10 @@ class ArticleController extends AbstractController
         // Je valide la suppression en BDD avec la méthode flush()
         $entityManager->flush();
 
-        $this->addFlash('success', 'L\'article a bien été supprimé');
+        $this->addFlash('article-success', 'L\'article a bien été supprimé');
 
         return $this->redirectToRoute('blog');
     }
 }
+
+
